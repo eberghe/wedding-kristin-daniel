@@ -15,7 +15,7 @@ const translations = {
     lang_switch: 'Sprache wechseln zu Englisch',
 
     // Hero
-    hero_date: '26. August 2026',
+    hero_date: '26. August 2028',
     hero_location: 'Gut Hermannsberg, Bayern',
     hero_dresscode: 'Dresscode: Elegantes Sommeroutfit',
     hero_scroll: 'Nach unten scrollen',
@@ -39,7 +39,7 @@ const translations = {
     // RSVP
     rsvp_title: 'Anmeldung',
     rsvp_label: 'Seid ihr dabei?',
-    rsvp_intro: 'Wir freuen uns, wenn ihr euch bis zum 1. Juni 2026 anmeldet.',
+    rsvp_intro: 'Wir freuen uns, wenn ihr euch bis zum 1. Juni 2028 anmeldet.',
     rsvp_name: 'Dein vollständiger Name',
     rsvp_email: 'Deine E-Mail-Adresse',
     rsvp_attending_yes: 'Ich bin dabei 🎉',
@@ -98,7 +98,7 @@ const translations = {
     faq_5_q: 'Was ist der Dresscode genau?',
     faq_5_a: 'Elegantes Sommeroutfit — festlich, aber sommerlich leicht. Kleider, Anzüge, Hosenanzüge. Bitte kein Weiß (das gehört der Braut 😉) und kein allzu lässiges Outfit.',
     faq_6_q: 'Bis wann muss ich mich an- oder abmelden?',
-    faq_6_a: 'Wir freuen uns über eure Rückmeldung bis spätestens 1. Juni 2026, damit wir alles gut planen können.',
+    faq_6_a: 'Wir freuen uns über eure Rückmeldung bis spätestens 1. Juni 2028, damit wir alles gut planen können.',
     faq_open: 'Antwort anzeigen',
     faq_close: 'Antwort schließen',
 
@@ -119,7 +119,7 @@ const translations = {
     dresscode_img_placeholder: 'Foto folgt',
 
     // Footer
-    footer_made: 'Mit Liebe gestaltet · 26. August 2026',
+    footer_made: 'Mit Liebe gestaltet · 26. August 2028',
 
     // Admin
     admin_title: 'Admin Dashboard',
@@ -178,7 +178,7 @@ const translations = {
     nav_aria: 'Main navigation',
     lang_switch: 'Switch language to German',
 
-    hero_date: 'August 26, 2026',
+    hero_date: 'August 26, 2028',
     hero_location: 'Gut Hermannsberg, Bavaria',
     hero_dresscode: 'Dress Code: Elegant Summer Attire',
     hero_scroll: 'Scroll down',
@@ -200,7 +200,7 @@ const translations = {
 
     rsvp_title: 'RSVP',
     rsvp_label: 'Will you join us?',
-    rsvp_intro: 'Please let us know by June 1, 2026 so we can plan everything perfectly.',
+    rsvp_intro: 'Please let us know by June 1, 2028 so we can plan everything perfectly.',
     rsvp_name: 'Your full name',
     rsvp_email: 'Your email address',
     rsvp_attending_yes: "I'll be there 🎉",
@@ -256,7 +256,7 @@ const translations = {
     faq_5_q: 'What exactly is the dress code?',
     faq_5_a: 'Elegant summer attire — festive but light. Dresses, suits, trouser suits. Please no white (that belongs to the bride 😉) and nothing too casual.',
     faq_6_q: 'When is the RSVP deadline?',
-    faq_6_a: 'Please let us know by June 1, 2026 at the latest so we can plan everything well.',
+    faq_6_a: 'Please let us know by June 1, 2028 at the latest so we can plan everything well.',
     faq_open: 'Show answer',
     faq_close: 'Hide answer',
 
@@ -275,7 +275,7 @@ const translations = {
     dresscode_img_alt: 'Dress code inspiration',
     dresscode_img_placeholder: 'Photo coming soon',
 
-    footer_made: 'Made with love · August 26, 2026',
+    footer_made: 'Made with love · August 26, 2028',
 
     admin_title: 'Admin Dashboard',
     admin_password: 'Password',

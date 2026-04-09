@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useLang } from '../i18n'
 
-const WEDDING_DATE = new Date('2026-08-26T14:00:00')
+const WEDDING_DATE = new Date('2028-08-26T14:00:00')
 
 function getTimeLeft() {
   const now = new Date()

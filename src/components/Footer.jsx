@@ -14,7 +14,7 @@ export default function Footer() {
         className="absolute inset-0 w-full h-full opacity-20"
       />
       <div className="relative z-10 py-20 md:py-28 text-center px-4">
-        <p className="section-label text-cream/40 mb-4">26 · 08 · 2026</p>
+        <p className="section-label text-cream/40 mb-4">26 · 08 · 2028</p>
         <h2 className="font-script italic text-5xl md:text-7xl text-cream leading-tight">
           Kristin
           <span className="block text-3xl md:text-4xl text-blue-accent py-2">&</span>
