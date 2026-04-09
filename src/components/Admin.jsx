@@ -313,7 +313,7 @@ function PhotoUpload({ t }) {
       const { error } = await supabase.storage.from('wedding-photos').upload(`${slot}.jpg`, file, {
         upsert: true,
         contentType: file.type,
-        cacheControl: '3600',
+        cacheControl: '1',
       })
       if (error) throw error
       invalidatePhotoCache()
@@ -409,7 +409,7 @@ function DresscodeAdmin({ t }) {
       const { error } = await supabase.storage.from('wedding-photos').upload(`${slot}.jpg`, file, {
         upsert: true,
         contentType: file.type,
-        cacheControl: '3600',
+        cacheControl: '1',
       })
       if (error) throw error
       invalidatePhotoCache()
