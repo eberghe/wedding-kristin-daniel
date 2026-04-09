@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { supabase } from '../supabase'
 import { useLang } from '../i18n'
-import { getPhotoUrl } from '../utils/storage'
+import { getPhotoUrl, invalidatePhotoCache } from '../utils/storage'
 import {
   PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer,
   BarChart, Bar, XAxis, YAxis, CartesianGrid
@@ -310,15 +310,13 @@ function PhotoUpload({ t }) {
     reader.onload = e => setPreviews(p => ({ ...p, [slot]: e.target.result }))
     reader.readAsDataURL(file)
     try {
-      const path = `${slot}.jpg`
-      const opts = { contentType: file.type, cacheControl: '0' }
-      // update() uses PUT and replaces an existing file; upload() creates a new one
-      let { error } = await supabase.storage.from('wedding-photos').update(path, file, opts)
-      if (error) {
-        const res = await supabase.storage.from('wedding-photos').upload(path, file, opts)
-        error = res.error
-      }
+      const { error } = await supabase.storage.from('wedding-photos').upload(`${slot}.jpg`, file, {
+        upsert: true,
+        contentType: file.type,
+        cacheControl: '3600',
+      })
       if (error) throw error
+      invalidatePhotoCache()
       setStatuses(s => ({ ...s, [slot]: 'success' }))
     } catch {
       setStatuses(s => ({ ...s, [slot]: 'error' }))
@@ -408,14 +406,13 @@ function DresscodeAdmin({ t }) {
     reader.onload = e => setPhotoPreviews(p => ({ ...p, [slot]: e.target.result }))
     reader.readAsDataURL(file)
     try {
-      const path = `${slot}.jpg`
-      const opts = { contentType: file.type, cacheControl: '0' }
-      let { error } = await supabase.storage.from('wedding-photos').update(path, file, opts)
-      if (error) {
-        const res = await supabase.storage.from('wedding-photos').upload(path, file, opts)
-        error = res.error
-      }
+      const { error } = await supabase.storage.from('wedding-photos').upload(`${slot}.jpg`, file, {
+        upsert: true,
+        contentType: file.type,
+        cacheControl: '3600',
+      })
       if (error) throw error
+      invalidatePhotoCache()
       setPhotoStatuses(s => ({ ...s, [slot]: 'success' }))
     } catch {
       setPhotoStatuses(s => ({ ...s, [slot]: 'error' }))
