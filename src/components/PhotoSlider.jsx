@@ -40,7 +40,7 @@ function Lightbox({ images, startIndex, onClose }) {
         className="relative flex items-center justify-center w-full max-w-4xl px-16"
         onClick={e => e.stopPropagation()}
       >
-        <div className="bg-black/40 p-4 sm:p-6">
+        <div className="p-4 sm:p-6">
           <img
             src={images[index]}
             alt={`Kristin & Daniel — Foto ${index + 1} von ${images.length}`}
