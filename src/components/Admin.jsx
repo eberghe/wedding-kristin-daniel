@@ -229,6 +229,7 @@ function RSVPTable({ data, t, onDelete }) {
                   <th className="px-4 py-3 font-medium">{t('admin_col_allergies')}</th>
                   <th className="px-4 py-3 font-medium"><Th field="created_at" label={t('admin_col_date')} /></th>
                   <th className="px-4 py-3 font-medium w-10" aria-label="Aktionen" />
+
                 </tr>
               </thead>
               <tbody>
@@ -243,10 +244,18 @@ function RSVPTable({ data, t, onDelete }) {
                         {r.attending ? '✓ ' + t('admin_confirmed') : '✗ ' + t('admin_declined')}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-navy/70">{r.guest_count || 0}</td>
-                    <td className="px-4 py-3 text-navy/65 text-xs max-w-[160px]">
+                    <td className="px-4 py-3 text-navy/70 text-xs">
+                      <span className="font-medium text-sm">{r.guest_count || 0}</span>
+                      {(r.guest_names || []).filter(Boolean).map((n, i) => (
+                        <div key={i} className="text-navy/50 mt-0.5">{n}</div>
+                      ))}
+                    </td>
+                    <td className="px-4 py-3 text-navy/65 text-xs max-w-[180px]">
                       {(r.food_preferences || []).map((fp, fi) => (
-                        <div key={fi}><span className="font-medium">{fp.person}:</span> {fp.food}</div>
+                        <div key={fi} className={fi > 0 ? 'mt-1 pt-1 border-t border-navy/5' : ''}>
+                          <span className="font-medium text-navy/80">{fp.person}:</span>{' '}
+                          <span>{fp.food || '—'}</span>
+                        </div>
                       ))}
                     </td>
                     <td className="px-4 py-3 text-navy/55 text-xs">{r.allergies || '—'}</td>
@@ -301,11 +310,14 @@ function PhotoUpload({ t }) {
     reader.onload = e => setPreviews(p => ({ ...p, [slot]: e.target.result }))
     reader.readAsDataURL(file)
     try {
-      // Remove all possible existing variants first to avoid "already exists" errors
-      await Promise.all(['jpg', 'jpeg', 'png', 'webp'].map(ext =>
-        supabase.storage.from('wedding-photos').remove([`${slot}.${ext}`])
-      ))
-      const { error } = await supabase.storage.from('wedding-photos').upload(`${slot}.jpg`, file, { contentType: file.type })
+      const path = `${slot}.jpg`
+      const opts = { contentType: file.type, cacheControl: '0' }
+      // update() uses PUT and replaces an existing file; upload() creates a new one
+      let { error } = await supabase.storage.from('wedding-photos').update(path, file, opts)
+      if (error) {
+        const res = await supabase.storage.from('wedding-photos').upload(path, file, opts)
+        error = res.error
+      }
       if (error) throw error
       setStatuses(s => ({ ...s, [slot]: 'success' }))
     } catch {
@@ -396,10 +408,13 @@ function DresscodeAdmin({ t }) {
     reader.onload = e => setPhotoPreviews(p => ({ ...p, [slot]: e.target.result }))
     reader.readAsDataURL(file)
     try {
-      await Promise.all(['jpg', 'jpeg', 'png', 'webp'].map(ext =>
-        supabase.storage.from('wedding-photos').remove([`${slot}.${ext}`])
-      ))
-      const { error } = await supabase.storage.from('wedding-photos').upload(`${slot}.jpg`, file, { contentType: file.type })
+      const path = `${slot}.jpg`
+      const opts = { contentType: file.type, cacheControl: '0' }
+      let { error } = await supabase.storage.from('wedding-photos').update(path, file, opts)
+      if (error) {
+        const res = await supabase.storage.from('wedding-photos').upload(path, file, opts)
+        error = res.error
+      }
       if (error) throw error
       setPhotoStatuses(s => ({ ...s, [slot]: 'success' }))
     } catch {

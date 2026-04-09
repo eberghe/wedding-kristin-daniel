@@ -28,7 +28,7 @@ function Lightbox({ images, startIndex, onClose }) {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[200] bg-black/92 flex items-center justify-center"
+      className="fixed inset-0 w-screen h-screen z-[9999] bg-black/92 flex items-center justify-center"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -130,13 +130,13 @@ export default function PhotoSlider() {
                 key={i}
                 onClick={() => setLightboxIndex(realIndex)}
                 aria-label={`Foto ${realIndex + 1} in Lightbox öffnen`}
-                className="group flex-shrink-0 overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+                className="flex-shrink-0 overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
                 style={{ width: TILE_W, height: TILE_W }}
               >
                 <img
                   src={url}
                   alt={`Kristin & Daniel — Foto ${realIndex + 1}`}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover grayscale"
                   loading="lazy"
                   draggable="false"
                 />
