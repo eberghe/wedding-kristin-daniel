@@ -3,9 +3,8 @@ import { createPortal } from 'react-dom'
 import { getPhotoUrl } from '../utils/storage'
 
 const SLIDER_SLOTS = Array.from({ length: 8 }, (_, i) => `slider_${i + 1}`)
-// Width of each image tile + gap (must match the inline style below)
-const TILE_W = 224 // w-56 = 14rem = 224px
-const GAP = 12    // gap-3 = 0.75rem = 12px
+const TILE_W = 224 // px — must match inline style below
+const GAP = 12    // px — gap-3
 
 function Lightbox({ images, startIndex, onClose }) {
   const [index, setIndex] = useState(startIndex)
@@ -35,17 +34,19 @@ function Lightbox({ images, startIndex, onClose }) {
       aria-modal="true"
       aria-label="Foto-Lightbox"
     >
-      {/* Image container — stop click from bubbling to backdrop */}
+      {/* Image container with dark frame — stop click from bubbling to backdrop */}
       <div
         className="relative flex items-center justify-center w-full max-w-4xl px-16"
         onClick={e => e.stopPropagation()}
       >
-        <img
-          src={images[index]}
-          alt={`Kristin & Daniel — Foto ${index + 1} von ${images.length}`}
-          className="max-h-[85vh] max-w-full object-contain select-none"
-          draggable="false"
-        />
+        <div className="bg-black/40 p-4 sm:p-6">
+          <img
+            src={images[index]}
+            alt={`Kristin & Daniel — Foto ${index + 1} von ${images.length}`}
+            className="max-h-[80vh] max-w-full object-contain select-none block"
+            draggable="false"
+          />
+        </div>
         {/* Counter */}
         <p className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white/40 text-xs tracking-widest select-none">
           {index + 1} / {images.length}
@@ -88,7 +89,10 @@ function Lightbox({ images, startIndex, onClose }) {
 export default function PhotoSlider() {
   const [images, setImages] = useState([])
   const [lightboxIndex, setLightboxIndex] = useState(null)
-  const [paused, setPaused] = useState(false)
+  const [hovered, setHovered] = useState(false)
+
+  // Pause when hovering OR when lightbox is open
+  const paused = hovered || lightboxIndex !== null
 
   useEffect(() => {
     const load = async () => {
@@ -100,18 +104,16 @@ export default function PhotoSlider() {
 
   if (images.length === 0) return null
 
-  // Duplicate track for seamless infinite loop
   const track = [...images, ...images]
-  const trackWidth = images.length * (TILE_W + GAP)
-  const duration = Math.max(images.length * 3.5, 14) // seconds
+  const duration = Math.max(images.length * 10, 40) // slow, relaxed pace
 
   return (
     <>
       <section
         aria-label="Fotogalerie Kristin & Daniel"
         className="w-full overflow-hidden bg-cream py-10"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
         <div
           className="flex gap-3"
@@ -128,13 +130,13 @@ export default function PhotoSlider() {
                 key={i}
                 onClick={() => setLightboxIndex(realIndex)}
                 aria-label={`Foto ${realIndex + 1} in Lightbox öffnen`}
-                className="flex-shrink-0 overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+                className="group flex-shrink-0 overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
                 style={{ width: TILE_W, height: TILE_W }}
               >
                 <img
                   src={url}
                   alt={`Kristin & Daniel — Foto ${realIndex + 1}`}
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                   loading="lazy"
                   draggable="false"
                 />

@@ -301,7 +301,11 @@ function PhotoUpload({ t }) {
     reader.onload = e => setPreviews(p => ({ ...p, [slot]: e.target.result }))
     reader.readAsDataURL(file)
     try {
-      const { error } = await supabase.storage.from('wedding-photos').upload(`${slot}.jpg`, file, { upsert: true, contentType: file.type })
+      // Remove all possible existing variants first to avoid "already exists" errors
+      await Promise.all(['jpg', 'jpeg', 'png', 'webp'].map(ext =>
+        supabase.storage.from('wedding-photos').remove([`${slot}.${ext}`])
+      ))
+      const { error } = await supabase.storage.from('wedding-photos').upload(`${slot}.jpg`, file, { contentType: file.type })
       if (error) throw error
       setStatuses(s => ({ ...s, [slot]: 'success' }))
     } catch {
@@ -392,7 +396,10 @@ function DresscodeAdmin({ t }) {
     reader.onload = e => setPhotoPreviews(p => ({ ...p, [slot]: e.target.result }))
     reader.readAsDataURL(file)
     try {
-      const { error } = await supabase.storage.from('wedding-photos').upload(`${slot}.jpg`, file, { upsert: true, contentType: file.type })
+      await Promise.all(['jpg', 'jpeg', 'png', 'webp'].map(ext =>
+        supabase.storage.from('wedding-photos').remove([`${slot}.${ext}`])
+      ))
+      const { error } = await supabase.storage.from('wedding-photos').upload(`${slot}.jpg`, file, { contentType: file.type })
       if (error) throw error
       setPhotoStatuses(s => ({ ...s, [slot]: 'success' }))
     } catch {
@@ -456,7 +463,7 @@ function DresscodeAdmin({ t }) {
             <div key={slot} className="bg-white border border-navy/10 p-4">
               <h4 className="text-xs tracking-widest uppercase text-navy/50 mb-3">Foto {i + 1}</h4>
               {photoPreviews[slot]
-                ? <img src={photoPreviews[slot]} alt={`Vorschau Foto ${i + 1}`} className="w-full aspect-[3/4] object-cover grayscale mb-3" />
+                ? <img src={photoPreviews[slot]} alt={`Vorschau Foto ${i + 1}`} className="w-full aspect-[3/4] object-cover mb-3" />
                 : <div className="w-full aspect-[3/4] bg-cream flex items-center justify-center mb-3" role="img" aria-label="Kein Foto">
                     <span className="text-navy/25 text-xs tracking-wider uppercase">kein Foto</span>
                   </div>
