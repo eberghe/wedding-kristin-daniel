@@ -29,7 +29,7 @@ function Lightbox({ images, startIndex, onClose }) {
   return createPortal(
     <div
       className="fixed inset-0 w-screen h-screen z-[9999] flex items-center justify-center"
-      style={{ backgroundColor: '#0007' }}
+      style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
