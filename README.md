@@ -69,7 +69,7 @@ Alle werden automatisch Schwarz-Weiß angezeigt.
 
 ## Admin-Dashboard
 
-URL: `/admin` | Passwort: `kristindaniel2026`
+URL: `/admin` | Passwort: ``
 - RSVP-Tabelle (Filter, Sort, CSV-Export)
 - Statistik-Diagramme
 - Foto-Upload
