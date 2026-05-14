@@ -105,19 +105,7 @@ export default function Tagesablauf() {
           <FloralDivider className="mx-auto mt-4" color="#EFEEF5CC" />
         </div>
 
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-6 md:gap-4">
-          {ITEMS.map(({ key, time, Icon }) => (
-            <div key={key} className="flex flex-col items-center text-center gap-3">
-              <div className="text-blue-accent/70">
-                <Icon />
-              </div>
-              <p className="text-xs tracking-[0.2em] text-cream/50">{time}</p>
-              <p className="font-script text-2xl text-cream leading-tight">{t(`tagesablauf_${key}`)}</p>
-            </div>
-          ))}
-        </div>
-
-        <p className="text-center text-cream/35 text-xs tracking-wider mt-14 italic">
+        <p className="text-center text-cream/50 text-base tracking-wider italic font-display">
           {t('tagesablauf_note')}
         </p>
       </div>
