@@ -102,15 +102,15 @@ export default function RSVP() {
     return (
       <section id="rsvp" className="bg-cream-light py-20 md:py-28" aria-labelledby="rsvp-heading">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <FloralDivider className="mx-auto mb-8" color="#697C9F" />
+          <FloralDivider className="mx-auto mb-8" color="#5C7A5C" />
           <p
             role="alert"
             aria-live="assertive"
-            className="font-script italic text-3xl md:text-4xl text-navy"
+            className="font-display italic text-3xl md:text-4xl text-navy"
           >
             {t('rsvp_success')}
           </p>
-          <FloralDivider className="mx-auto mt-8" color="#697C9F" />
+          <FloralDivider className="mx-auto mt-8" color="#5C7A5C" />
         </div>
       </section>
     )
@@ -128,7 +128,7 @@ export default function RSVP() {
           <h2 id="rsvp-heading" className="font-display italic text-4xl md:text-5xl text-navy">
             {t('rsvp_title')}
           </h2>
-          <FloralDivider className="mx-auto mt-4" color="#697C9F" />
+          <FloralDivider className="mx-auto mt-4" color="#5C7A5C" />
           <p className="text-navy/60 text-sm mt-4">{t('rsvp_intro')}</p>
         </div>
 

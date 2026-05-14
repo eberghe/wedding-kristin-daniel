@@ -60,7 +60,7 @@ export function Hotels() {
           <h2 id="hotels-heading" className="font-display italic text-4xl md:text-5xl text-navy">
             {t('hotels_title')}
           </h2>
-          <FloralDivider className="mx-auto mt-4" color="#697C9F" />
+          <FloralDivider className="mx-auto mt-4" color="#5C7A5C" />
           <p className="text-navy/60 text-sm mt-4 max-w-md mx-auto">{t('hotels_intro')}</p>
         </div>
 
@@ -168,12 +168,12 @@ export function Contact() {
     >
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-12">
-          <FloralSmall className="mx-auto mb-4" color="#697C9F" />
+          <FloralSmall className="mx-auto mb-4" color="#5C7A5C" />
           <p className="section-label text-blue-muted mb-3">{t('contact_label')}</p>
           <h2 id="contact-heading" className="font-display italic text-4xl md:text-5xl text-navy">
             {t('contact_title')}
           </h2>
-          <FloralDivider className="mx-auto mt-4" color="#697C9F" />
+          <FloralDivider className="mx-auto mt-4" color="#5C7A5C" />
           <p className="text-navy/60 text-sm mt-4">{t('contact_intro')}</p>
         </div>
 

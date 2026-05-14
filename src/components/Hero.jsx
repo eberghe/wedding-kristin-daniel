@@ -15,11 +15,11 @@ export default function Hero() {
       className="relative min-h-screen bg-cream-light flex items-center pt-16"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full py-16 md:py-24">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 md:items-stretch">
 
           {/* Text block */}
-          <div ref={textRef} className="relative order-2 md:order-1">
-            <div className="border border-blue-accent/30 p-8 sm:p-12 relative">
+          <div ref={textRef} className="relative order-2 md:order-1 flex flex-col">
+            <div className="border border-sage/40 p-8 sm:p-12 relative flex-1">
               <p className="section-label text-blue-muted text-center mb-4" aria-hidden="true">
                 — ♡ —
               </p>
@@ -32,7 +32,7 @@ export default function Hero() {
                 Daniel
               </h1>
 
-              <FloralDivider className="mx-auto my-6" color="#697C9F" />
+              <FloralDivider className="mx-auto my-6" color="#5C7A5C" />
 
               <p className="text-center text-sm tracking-[0.2em] uppercase text-blue-muted">
                 {t('hero_date')}
@@ -40,7 +40,7 @@ export default function Hero() {
               <p className="text-center text-sm tracking-wider text-navy/60 mt-1">
                 {t('hero_location')}
               </p>
-              <p className="text-center text-xs tracking-widest uppercase text-blue-accent/70 mt-3">
+              <p className="text-center text-xs tracking-widest uppercase text-sage mt-3">
                 {t('hero_dresscode')}
               </p>
             </div>
@@ -51,25 +51,25 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Two photos: then & now */}
-          <div className="order-1 md:order-2 grid grid-cols-2 gap-3">
-            <div>
+          {/* Two photos: then & now — fill the full column height */}
+          <div className="order-1 md:order-2 flex gap-3 min-h-[420px] md:min-h-0">
+            <div className="flex-1 flex flex-col gap-2">
               <PhotoSlot
                 slot="hero_then"
                 alt={t('hero_then_label')}
-                className="w-full aspect-[3/4]"
+                className="flex-1 min-h-[200px]"
               />
-              <p className="text-center text-xs tracking-widest uppercase text-navy/35 mt-2">
+              <p className="text-center text-xs tracking-widest uppercase text-navy/35 shrink-0">
                 {t('hero_then_label')}
               </p>
             </div>
-            <div>
+            <div className="flex-1 flex flex-col gap-2">
               <PhotoSlot
                 slot="hero"
                 alt={t('hero_now_label')}
-                className="w-full aspect-[3/4]"
+                className="flex-1 min-h-[200px]"
               />
-              <p className="text-center text-xs tracking-widest uppercase text-navy/35 mt-2">
+              <p className="text-center text-xs tracking-widest uppercase text-navy/35 shrink-0">
                 {t('hero_now_label')}
               </p>
             </div>
@@ -81,7 +81,7 @@ export default function Hero() {
           <a
             href="#location"
             onClick={(e) => { e.preventDefault(); document.querySelector('#location')?.scrollIntoView({ behavior: 'smooth' }) }}
-            className="flex flex-col items-center gap-2 text-navy/40 hover:text-blue-accent transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+            className="flex flex-col items-center gap-2 text-navy/40 hover:text-sage transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
             aria-label={t('hero_scroll')}
           >
             <span className="text-xs tracking-widest uppercase">{t('hero_scroll')}</span>

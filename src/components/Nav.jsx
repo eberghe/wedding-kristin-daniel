@@ -65,7 +65,7 @@ export default function Nav() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+        scrolled ? 'bg-cream-light/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
       }`}
       role="banner"
     >
@@ -75,7 +75,7 @@ export default function Nav() {
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
-            className="font-script italic text-xl text-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+            className="font-display italic text-xl text-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
             aria-label="Kristin & Daniel — zurück zur Startseite"
           >
             K & D
@@ -149,7 +149,7 @@ export default function Nav() {
           role="dialog"
           aria-modal="true"
           aria-label={t('nav_aria')}
-          className="lg:hidden bg-white/98 backdrop-blur-sm border-t border-navy/10"
+          className="lg:hidden bg-cream-light/98 backdrop-blur-sm border-t border-navy/10"
         >
           <nav className="flex flex-col py-4 px-6 gap-1">
             {NAV_ITEMS.map(({ key, href }) => (

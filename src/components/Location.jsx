@@ -18,7 +18,7 @@ export default function Location() {
           <h2 id="location-heading" className="font-display italic text-4xl md:text-5xl text-cream">
             {t('location_title')}
           </h2>
-          <FloralDivider className="mx-auto mt-4" color="#EFEEF5" />
+          <FloralDivider className="mx-auto mt-4" color="#EFEEF5CC" />
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-10">
@@ -26,7 +26,7 @@ export default function Location() {
           <div className="border border-cream/20 p-6 sm:p-8">
             <h3 className="section-label text-cream/60 mb-3">{t('location_address_title')}</h3>
             <address className="not-italic">
-              <p className="font-script italic text-2xl text-cream mb-3">Gut Hermannsberg</p>
+              <p className="font-display italic text-2xl text-cream mb-3">Gut Hermannsberg</p>
               <p className="text-cream/70 text-sm leading-relaxed">
                 Hermannsberg 1<br />
                 83410 Laufen, Bayern<br />
@@ -73,7 +73,7 @@ export default function Location() {
         </div>
 
         {/* Schedule coming soon */}
-        <p className="text-center text-cream/50 text-sm tracking-wider mt-10 italic font-script text-xl">
+        <p className="text-center text-cream/50 text-sm tracking-wider mt-10 italic font-display text-xl">
           {t('location_schedule_coming')}
         </p>
       </div>
