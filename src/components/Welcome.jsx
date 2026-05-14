@@ -21,7 +21,7 @@ export default function Welcome() {
       {/* Card */}
       <div
         ref={ref}
-        className="relative z-10 mx-4 sm:mx-auto max-w-2xl w-full bg-navy/70 backdrop-blur-sm px-8 py-14 sm:px-14 sm:py-16 text-center"
+        className="relative z-10 mx-4 sm:mx-auto max-w-2xl w-full bg-navy/70 backdrop-blur-sm px-8 py-20 sm:px-14 sm:py-28 text-center"
       >
         <h2
           id="welcome-heading"

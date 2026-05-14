@@ -14,12 +14,12 @@ export default function Hero() {
       aria-labelledby="hero-heading"
       className="relative min-h-screen bg-navy flex flex-col overflow-hidden"
     >
-      {/* Split background: then | now */}
-      <div className="absolute inset-0 flex">
+      {/* Split background: then | now — stacked on mobile, side-by-side on sm+ */}
+      <div className="absolute inset-0 flex flex-col sm:flex-row">
         <div className="flex-1">
           <PhotoSlot slot="hero_then" alt="" className="w-full h-full" />
         </div>
-        <div className="w-px bg-cream/20 shrink-0" aria-hidden="true" />
+        <div className="h-px sm:h-auto sm:w-px bg-cream/20 shrink-0" aria-hidden="true" />
         <div className="flex-1">
           <PhotoSlot slot="hero" alt="" className="w-full h-full" />
         </div>
