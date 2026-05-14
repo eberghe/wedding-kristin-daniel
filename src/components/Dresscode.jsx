@@ -15,7 +15,7 @@ export default function Dresscode() {
             {t('dresscode_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4 mb-6" color="#5C7A5C" />
-          <p className="text-navy/60 text-sm leading-relaxed max-w-lg mx-auto">
+          <p className="text-navy/60 text-base leading-relaxed max-w-lg mx-auto">
             {t('dresscode_intro')}
           </p>
         </div>

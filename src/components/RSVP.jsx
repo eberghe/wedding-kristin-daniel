@@ -129,7 +129,7 @@ export default function RSVP() {
             {t('rsvp_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4" color="#5C7A5C" />
-          <p className="text-navy/60 text-sm mt-4">{t('rsvp_intro')}</p>
+          <p className="text-navy/60 text-base mt-4">{t('rsvp_intro')}</p>
         </div>
 
         <form onSubmit={handleSubmit} noValidate aria-label={t('rsvp_title')}>

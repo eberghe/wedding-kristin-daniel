@@ -61,17 +61,17 @@ export function Hotels() {
             {t('hotels_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4" color="#5C7A5C" />
-          <p className="text-navy/60 text-sm mt-4 max-w-md mx-auto">{t('hotels_intro')}</p>
+          <p className="text-navy/60 text-base mt-4 max-w-md mx-auto">{t('hotels_intro')}</p>
         </div>
 
         <div className="grid sm:grid-cols-3 gap-5">
           {HOTELS.map((hotel) => (
             <article key={hotel.name} className="bg-cream-light border border-blue-accent/20 p-6">
-              <h3 className="font-script text-xl text-navy mb-1">{hotel.name}</h3>
+              <h3 className="font-script text-2xl text-navy mb-1">{hotel.name}</h3>
               <p className="text-xs tracking-widest uppercase text-blue-muted mb-3">
                 {t('hotels_distance')}: {hotel.distance}
               </p>
-              <p className="text-navy/65 text-sm leading-relaxed mb-4">
+              <p className="text-navy/65 text-base leading-relaxed mb-4">
                 {hotel.note[lang] || hotel.note.de}
               </p>
               <a
@@ -126,7 +126,7 @@ export function FAQ() {
                     aria-expanded={isOpen}
                     aria-controls={answerId}
                     onClick={() => toggle(n)}
-                    className="w-full flex items-center justify-between px-6 py-4 text-left text-sm text-cream/85 hover:text-cream transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-cream/60"
+                    className="w-full flex items-center justify-between px-6 py-4 text-left text-base text-cream/85 hover:text-cream transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-cream/60"
                   >
                     <span>{t(`faq_${n}_q`)}</span>
                     <span
@@ -142,7 +142,7 @@ export function FAQ() {
                   role="region"
                   aria-labelledby={questionId}
                   hidden={!isOpen}
-                  className="px-6 pb-4 text-sm text-cream/65 leading-relaxed"
+                  className="px-6 pb-4 text-base text-cream/65 leading-relaxed"
                 >
                   {t(`faq_${n}_a`)}
                 </dd>
@@ -174,7 +174,7 @@ export function Contact() {
             {t('contact_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4" color="#5C7A5C" />
-          <p className="text-navy/60 text-sm mt-4">{t('contact_intro')}</p>
+          <p className="text-navy/60 text-base mt-4">{t('contact_intro')}</p>
         </div>
 
         {/* Tab toggle */}

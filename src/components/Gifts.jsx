@@ -57,7 +57,7 @@ export default function Gifts() {
             {t('gifts_title')}
           </h2>
           <FloralDivider className="mx-auto my-4" color="#EFEEF5" />
-          <p className="text-cream/70 text-sm leading-relaxed max-w-lg mx-auto">
+          <p className="text-cream/70 text-base leading-relaxed max-w-lg mx-auto">
             {t('gifts_intro')}
           </p>
         </div>
@@ -68,10 +68,10 @@ export default function Gifts() {
               <div className="flex justify-center mb-5 text-blue-accent/80">
                 <Icon />
               </div>
-              <h3 className="font-script text-xl text-cream mb-3">
+              <h3 className="font-script text-2xl text-cream mb-3">
                 {t(`gifts_${key}`)}
               </h3>
-              <p className="text-cream/65 text-sm leading-relaxed">
+              <p className="text-cream/65 text-base leading-relaxed">
                 {t(`gifts_${key}_text`)}
               </p>
             </div>
