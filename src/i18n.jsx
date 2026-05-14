@@ -336,11 +336,10 @@ const translations = {
 const LangContext = createContext()
 
 export function LangProvider({ children }) {
-  const [lang, setLang] = useState(() => localStorage.getItem('weddingLang') || 'de')
+  const [lang, setLang] = useState('de')
 
   const switchLang = (l) => {
     setLang(l)
-    localStorage.setItem('weddingLang', l)
     document.documentElement.lang = l
   }
 

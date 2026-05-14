@@ -38,24 +38,21 @@ export default function Hero() {
         </p>
 
         <h1 id="hero-heading" className="leading-none">
-          <span className="block font-script text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] text-cream drop-shadow-lg">
+          <span className="block font-script text-6xl sm:text-7xl md:text-8xl text-cream drop-shadow-lg">
             Kristin
           </span>
-          <span className="block font-script text-4xl sm:text-5xl md:text-6xl text-cream/75 my-1">
+          <span className="block font-script text-3xl sm:text-4xl text-cream/75 my-1">
             &amp;
           </span>
-          <span className="block font-script text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] text-cream drop-shadow-lg">
+          <span className="block font-script text-6xl sm:text-7xl md:text-8xl text-cream drop-shadow-lg">
             Daniel
           </span>
         </h1>
 
-        <FloralDivider className="mx-auto mt-8 mb-6 opacity-60" color="#EFEEF5" />
+        <FloralDivider className="mx-auto mt-6 mb-5 opacity-60" color="#EFEEF5" />
 
-        <p className="text-[11px] tracking-[0.3em] uppercase text-cream/80">
+        <p className="text-sm sm:text-base tracking-[0.25em] uppercase text-cream/90">
           {t('hero_date')}
-        </p>
-        <p className="text-xs tracking-wider text-cream/50 mt-1">
-          {t('hero_location')}
         </p>
 
         <div className="mt-10">
@@ -64,7 +61,7 @@ export default function Hero() {
       </div>
 
       {/* Then / Now labels at bottom corners */}
-      <div className="relative z-10 flex justify-between items-end px-6 pb-10 text-[9px] tracking-[0.3em] uppercase text-cream/35">
+      <div className="relative z-10 flex justify-between items-end px-6 pb-10 text-xs tracking-[0.25em] uppercase text-cream/55">
         <span>{t('hero_then_label')}</span>
         <a
           href="#location"

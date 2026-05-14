@@ -25,7 +25,6 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close menu on outside click
   useEffect(() => {
     if (!menuOpen) return
     const handler = (e) => {
@@ -38,7 +37,6 @@ export default function Nav() {
     return () => document.removeEventListener('mousedown', handler)
   }, [menuOpen])
 
-  // Trap focus in mobile menu
   useEffect(() => {
     if (!menuOpen || !menuRef.current) return
     const focusables = menuRef.current.querySelectorAll('a, button')
@@ -62,6 +60,8 @@ export default function Nav() {
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const light = !scrolled
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -71,14 +71,17 @@ export default function Nav() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-14 md:h-16">
-          {/* Logo / Name */}
+
+          {/* Logo */}
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
-            className="font-script text-xl text-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+            className={`font-script text-xl transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent ${
+              light ? 'text-cream' : 'text-navy'
+            }`}
             aria-label="Kristin & Daniel — zurück zur Startseite"
           >
-            K & D
+            K &amp; D
           </a>
 
           {/* Desktop nav */}
@@ -88,7 +91,11 @@ export default function Nav() {
                 key={key}
                 href={href}
                 onClick={(e) => handleNavClick(e, href)}
-                className="text-xs tracking-widest uppercase text-navy/70 hover:text-navy transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+                className={`text-xs tracking-widest uppercase transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent ${
+                  light
+                    ? 'text-cream/75 hover:text-cream'
+                    : 'text-navy/70 hover:text-navy'
+                }`}
               >
                 {t(key)}
               </a>
@@ -98,33 +105,26 @@ export default function Nav() {
           <div className="flex items-center gap-3">
             {/* Language switcher */}
             <div role="group" aria-label="Sprache / Language" className="flex gap-1">
-              <button
-                onClick={() => switchLang('de')}
-                aria-pressed={lang === 'de'}
-                aria-label="Deutsch"
-                className={`px-2 py-1 text-xs border transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-blue-accent ${
-                  lang === 'de'
-                    ? 'bg-blue-accent text-white border-blue-accent'
-                    : 'border-navy/20 text-navy/60 hover:border-blue-accent'
-                }`}
-              >
-                🇩🇪
-              </button>
-              <button
-                onClick={() => switchLang('en')}
-                aria-pressed={lang === 'en'}
-                aria-label="English"
-                className={`px-2 py-1 text-xs border transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-blue-accent ${
-                  lang === 'en'
-                    ? 'bg-blue-accent text-white border-blue-accent'
-                    : 'border-navy/20 text-navy/60 hover:border-blue-accent'
-                }`}
-              >
-                🇬🇧
-              </button>
+              {['de', 'en'].map((l) => (
+                <button
+                  key={l}
+                  onClick={() => switchLang(l)}
+                  aria-pressed={lang === l}
+                  aria-label={l === 'de' ? 'Deutsch' : 'English'}
+                  className={`px-2 py-1 text-xs border transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-blue-accent ${
+                    lang === l
+                      ? 'bg-blue-accent text-white border-blue-accent'
+                      : light
+                        ? 'border-cream/30 text-cream/60 hover:border-cream'
+                        : 'border-navy/20 text-navy/60 hover:border-blue-accent'
+                  }`}
+                >
+                  {l === 'de' ? '🇩🇪' : '🇬🇧'}
+                </button>
+              ))}
             </div>
 
-            {/* Hamburger - mobile */}
+            {/* Hamburger */}
             <button
               ref={hamburgerRef}
               onClick={() => setMenuOpen(!menuOpen)}
@@ -133,9 +133,16 @@ export default function Nav() {
               aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
               className="lg:hidden flex flex-col gap-1.5 p-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
             >
-              <span className={`block h-px w-5 bg-navy transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`block h-px w-5 bg-navy transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-              <span className={`block h-px w-5 bg-navy transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              {[
+                menuOpen ? 'rotate-45 translate-y-2' : '',
+                menuOpen ? 'opacity-0' : '',
+                menuOpen ? '-rotate-45 -translate-y-2' : '',
+              ].map((extra, i) => (
+                <span
+                  key={i}
+                  className={`block h-px w-5 transition-all duration-300 ${light ? 'bg-cream' : 'bg-navy'} ${extra}`}
+                />
+              ))}
             </button>
           </div>
         </div>
