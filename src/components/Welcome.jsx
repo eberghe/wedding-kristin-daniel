@@ -14,7 +14,7 @@ export default function Welcome() {
     >
       {/* Background photo */}
       <div className="absolute inset-0">
-        <PhotoSlot slot="welcome" alt="" className="w-full h-full" />
+        <PhotoSlot slot="welcome" alt="" className="w-full h-full" grayscale={false} />
         <div className="absolute inset-0 bg-navy/60" />
       </div>
 

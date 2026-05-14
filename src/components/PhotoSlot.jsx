@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { getPhotoUrl } from '../utils/storage'
 
 // Photo slots: 'hero' | 'gifts' | 'footer'
-export default function PhotoSlot({ slot, className = '', alt = '', children }) {
+export default function PhotoSlot({ slot, className = '', alt = '', grayscale = true, children }) {
   const [url, setUrl] = useState(null)
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function PhotoSlot({ slot, className = '', alt = '', children }) 
         <img
           src={url}
           alt={alt}
-          className="w-full h-full object-cover grayscale"
+          className={`w-full h-full object-cover${grayscale ? ' grayscale' : ''}`}
           loading="lazy"
         />
         {children}
