@@ -68,7 +68,7 @@ export default function Gifts() {
               <div className="flex justify-center mb-5 text-blue-accent/80">
                 <Icon />
               </div>
-              <h3 className="font-script text-2xl text-cream mb-3">
+              <h3 className="font-script text-3xl text-cream mb-3">
                 {t(`gifts_${key}`)}
               </h3>
               <p className="text-cream/65 text-base leading-relaxed">

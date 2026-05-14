@@ -67,7 +67,7 @@ export function Hotels() {
         <div className="grid sm:grid-cols-3 gap-5">
           {HOTELS.map((hotel) => (
             <article key={hotel.name} className="bg-cream-light border border-blue-accent/20 p-6">
-              <h3 className="font-script text-2xl text-navy mb-1">{hotel.name}</h3>
+              <h3 className="font-script text-3xl text-navy mb-1">{hotel.name}</h3>
               <p className="text-xs tracking-widest uppercase text-blue-muted mb-3">
                 {t('hotels_distance')}: {hotel.distance}
               </p>

@@ -16,12 +16,23 @@ export default function Nav() {
   const { lang, switchLang, t } = useLang()
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
   const menuRef = useRef(null)
   const hamburgerRef = useRef(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40)
+      const mid = window.scrollY + window.innerHeight / 3
+      let current = ''
+      NAV_ITEMS.forEach(({ href }) => {
+        const el = document.querySelector(href)
+        if (el && el.offsetTop <= mid) current = href.slice(1)
+      })
+      setActiveSection(current)
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -86,20 +97,23 @@ export default function Nav() {
 
           {/* Desktop nav */}
           <nav aria-label={t('nav_aria')} className="hidden lg:flex items-center gap-6">
-            {NAV_ITEMS.map(({ key, href }) => (
-              <a
-                key={key}
-                href={href}
-                onClick={(e) => handleNavClick(e, href)}
-                className={`text-xs tracking-widest uppercase transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent ${
-                  light
-                    ? 'text-cream/75 hover:text-cream'
-                    : 'text-navy/70 hover:text-navy'
-                }`}
-              >
-                {t(key)}
-              </a>
-            ))}
+            {NAV_ITEMS.map(({ key, href }) => {
+              const isActive = activeSection === href.slice(1)
+              return (
+                <a
+                  key={key}
+                  href={href}
+                  onClick={(e) => handleNavClick(e, href)}
+                  className={`text-xs tracking-widest uppercase transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent border-b pb-0.5 ${
+                    light
+                      ? `hover:text-cream ${isActive ? 'text-cream border-cream/70' : 'text-cream/75 border-transparent'}`
+                      : `hover:text-navy ${isActive ? 'text-navy border-blue-accent' : 'text-navy/70 border-transparent'}`
+                  }`}
+                >
+                  {t(key)}
+                </a>
+              )
+            })}
           </nav>
 
           <div className="flex items-center gap-3">
@@ -159,16 +173,22 @@ export default function Nav() {
           className="lg:hidden bg-cream-light/98 backdrop-blur-sm border-t border-navy/10"
         >
           <nav className="flex flex-col py-4 px-6 gap-1">
-            {NAV_ITEMS.map(({ key, href }) => (
-              <a
-                key={key}
-                href={href}
-                onClick={(e) => handleNavClick(e, href)}
-                className="py-3 text-sm tracking-widest uppercase text-navy/70 hover:text-navy border-b border-navy/5 last:border-0 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
-              >
-                {t(key)}
-              </a>
-            ))}
+            {NAV_ITEMS.map(({ key, href }) => {
+              const isActive = activeSection === href.slice(1)
+              return (
+                <a
+                  key={key}
+                  href={href}
+                  onClick={(e) => handleNavClick(e, href)}
+                  className={`py-3 text-sm tracking-widest uppercase border-b border-navy/5 last:border-0 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent flex items-center gap-2 ${
+                    isActive ? 'text-navy' : 'text-navy/70 hover:text-navy'
+                  }`}
+                >
+                  {isActive && <span className="w-1 h-1 rounded-full bg-blue-accent flex-shrink-0" aria-hidden="true" />}
+                  {t(key)}
+                </a>
+              )
+            })}
           </nav>
         </div>
       )}
