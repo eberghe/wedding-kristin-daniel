@@ -10,12 +10,9 @@ import {
 
 const PASSWORD = 'kristindaniel2026'
 const COLORS = ['#697C9F', '#2E3D52', '#6E6C83', '#9BA8C0']
-const PHOTO_SLOTS = ['hero', 'hero_then', 'footer']
+const PHOTO_SLOTS = ['hero', 'hero_then', 'welcome', 'footer']
 const WITNESS_SLOTS = ['witness_k1', 'witness_k2', 'witness_d1', 'witness_d2']
 const SLIDER_SLOTS = Array.from({ length: 8 }, (_, i) => `slider_${i + 1}`)
-const DRESSCODE_SLOTS = ['dresscode_1', 'dresscode_2', 'dresscode_3', 'dresscode_4', 'dresscode_5', 'dresscode_6']
-const COLOR_KEYS = ['dresscode_color_1', 'dresscode_color_2', 'dresscode_color_3', 'dresscode_color_4']
-const DEFAULT_DRESSCODE_COLORS = ['#697C9F', '#2E3D52', '#6E6C83', '#9BA8C0']
 
 function Login({ onLogin }) {
   const { t } = useLang()
@@ -297,6 +294,7 @@ function PhotoUpload({ t }) {
   const labels = {
     hero: t('admin_upload_hero'),
     hero_then: t('admin_upload_hero_then'),
+    welcome: t('admin_upload_welcome'),
     footer: t('admin_upload_footer'),
     witness_k1: 'Trauzeugin K1',
     witness_k2: 'Trauzeugin K2',
@@ -400,135 +398,6 @@ function PhotoUpload({ t }) {
   )
 }
 
-function DresscodeAdmin({ t }) {
-  const [photoStatuses, setPhotoStatuses] = useState({})
-  const [photoPreviews, setPhotoPreviews] = useState({})
-  const [colors, setColors] = useState(DEFAULT_DRESSCODE_COLORS)
-  const [colorStatus, setColorStatus] = useState(null)
-
-  useEffect(() => {
-    const loadColors = async () => {
-      try {
-        const { data } = await supabase
-          .from('site_settings')
-          .select('key, value')
-          .in('key', COLOR_KEYS)
-        if (data && data.length > 0) {
-          const map = Object.fromEntries(data.map(r => [r.key, r.value]))
-          setColors(COLOR_KEYS.map((k, i) => map[k] || DEFAULT_DRESSCODE_COLORS[i]))
-        }
-      } catch {}
-    }
-    const loadPreviews = async () => {
-      DRESSCODE_SLOTS.forEach(async (slot) => {
-        const url = await getPhotoUrl(slot)
-        if (url) setPhotoPreviews(p => ({ ...p, [slot]: url }))
-      })
-    }
-    loadColors()
-    loadPreviews()
-  }, [])
-
-  const handlePhotoUpload = async (slot, file) => {
-    if (!file) return
-    setPhotoStatuses(s => ({ ...s, [slot]: 'uploading' }))
-    const reader = new FileReader()
-    reader.onload = e => setPhotoPreviews(p => ({ ...p, [slot]: e.target.result }))
-    reader.readAsDataURL(file)
-    try {
-      const { error } = await supabase.storage.from('wedding-photos').upload(`${slot}.jpg`, file, {
-        upsert: true,
-        contentType: file.type,
-        cacheControl: '1',
-      })
-      if (error) throw error
-      invalidatePhotoCache()
-      setPhotoStatuses(s => ({ ...s, [slot]: 'success' }))
-    } catch {
-      setPhotoStatuses(s => ({ ...s, [slot]: 'error' }))
-    }
-  }
-
-  const handleSaveColors = async () => {
-    setColorStatus('saving')
-    try {
-      const rows = COLOR_KEYS.map((key, i) => ({ key, value: colors[i] }))
-      const { error } = await supabase
-        .from('site_settings')
-        .upsert(rows, { onConflict: 'key' })
-      if (error) throw error
-      setColorStatus('saved')
-      setTimeout(() => setColorStatus(null), 3000)
-    } catch {
-      setColorStatus('error')
-      setTimeout(() => setColorStatus(null), 3000)
-    }
-  }
-
-  return (
-    <div className="space-y-10">
-      {/* Color palette */}
-      <div>
-        <h3 className="text-xs tracking-widest uppercase text-navy/60 mb-1">{t('admin_dresscode_colors_title')}</h3>
-        <p className="text-sm text-navy/50 mb-5 leading-relaxed">{t('admin_dresscode_colors_desc')}</p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-5">
-          {colors.map((color, i) => (
-            <div key={i} className="bg-white border border-navy/10 p-4 flex flex-col items-center gap-3">
-              <div className="w-12 h-12 rounded-full border border-navy/10" style={{ backgroundColor: color }} />
-              <label className="sr-only">{t('admin_dresscode_color')} {i + 1}</label>
-              <input
-                type="color"
-                value={color}
-                onChange={e => setColors(c => c.map((v, idx) => idx === i ? e.target.value : v))}
-                aria-label={`${t('admin_dresscode_color')} ${i + 1}`}
-                className="w-full h-8 cursor-pointer border border-navy/20 p-0.5 bg-white"
-              />
-              <span className="text-xs font-mono text-navy/50">{color}</span>
-            </div>
-          ))}
-        </div>
-        <button
-          onClick={handleSaveColors}
-          disabled={colorStatus === 'saving'}
-          className="bg-navy text-cream px-6 py-2.5 text-xs tracking-widest uppercase hover:bg-navy/80 transition-colors disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
-        >
-          {colorStatus === 'saving' ? 'Speichern…' : colorStatus === 'saved' ? t('admin_dresscode_saved') : colorStatus === 'error' ? t('admin_dresscode_error') : t('admin_dresscode_save')}
-        </button>
-      </div>
-
-      {/* Dresscode photos */}
-      <div>
-        <h3 className="text-xs tracking-widest uppercase text-navy/60 mb-1">{t('admin_dresscode_photos_title')}</h3>
-        <p className="text-sm text-navy/50 mb-5 leading-relaxed">{t('admin_dresscode_photos_desc')}</p>
-        <div className="grid sm:grid-cols-3 gap-4">
-          {DRESSCODE_SLOTS.map((slot, i) => (
-            <div key={slot} className="bg-white border border-navy/10 p-4">
-              <h4 className="text-xs tracking-widest uppercase text-navy/50 mb-3">Foto {i + 1}</h4>
-              {photoPreviews[slot]
-                ? <img src={photoPreviews[slot]} alt={`Vorschau Foto ${i + 1}`} className="w-full aspect-[3/4] object-cover mb-3" />
-                : <div className="w-full aspect-[3/4] bg-cream flex items-center justify-center mb-3" role="img" aria-label="Kein Foto">
-                    <span className="text-navy/25 text-xs tracking-wider uppercase">kein Foto</span>
-                  </div>
-              }
-              <label htmlFor={`upload-${slot}`} className="block w-full text-center border border-navy/20 px-3 py-2 text-xs tracking-widest uppercase text-navy/70 hover:border-blue-accent hover:text-blue-accent transition-colors cursor-pointer">
-                {photoStatuses[slot] === 'uploading' ? 'Hochladen…' : photoStatuses[slot] === 'success' ? '✓ Gespeichert' : photoStatuses[slot] === 'error' ? '✗ Fehler' : t('admin_upload_btn')}
-                <input
-                  id={`upload-${slot}`}
-                  type="file"
-                  accept="image/jpeg,image/png,image/webp"
-                  className="sr-only"
-                  onChange={e => handlePhotoUpload(slot, e.target.files[0])}
-                  aria-label={`Foto ${i + 1} hochladen`}
-                />
-              </label>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export default function Admin() {
   const { t } = useLang()
   const [authed, setAuthed] = useState(() => sessionStorage.getItem('weddingAdmin') === '1')
@@ -557,7 +426,6 @@ export default function Admin() {
     { id: 'rsvp', label: t('admin_rsvp_tab') },
     { id: 'stats', label: t('admin_stats_tab') },
     { id: 'photos', label: t('admin_photos_tab') },
-    { id: 'dresscode', label: t('admin_dresscode_tab') },
   ]
 
   return (
@@ -596,9 +464,6 @@ export default function Admin() {
             </div>
             <div id="panel-photos" role="tabpanel" aria-labelledby="tab-photos" hidden={tab !== 'photos'}>
               {tab === 'photos' && <PhotoUpload t={t} />}
-            </div>
-            <div id="panel-dresscode" role="tabpanel" aria-labelledby="tab-dresscode" hidden={tab !== 'dresscode'}>
-              {tab === 'dresscode' && <DresscodeAdmin t={t} />}
             </div>
           </>
         }

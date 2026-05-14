@@ -27,6 +27,12 @@ const translations = {
     countdown_seconds: 'Sekunden',
     countdown_label: 'Countdown bis zur Hochzeit',
 
+    // Welcome
+    welcome_title: 'Unser besonderer Tag',
+    welcome_text: 'Wir freuen uns so sehr, diesen besonderen Tag mit euch zu teilen. Nach all den gemeinsamen Jahren feiern wir diesen Moment mit den Menschen, die uns am meisten bedeuten — euch. Es wird ein Fest der Liebe, der Freude und unvergesslicher Erinnerungen.',
+    welcome_sign: 'Mit Liebe,',
+    welcome_names: 'Kristin & Daniel',
+
     // Location
     location_title: 'Location & Anfahrt',
     location_label: 'Wo wir feiern',
@@ -148,6 +154,7 @@ const translations = {
     admin_upload_slider_desc: 'Bis zu 8 quadratische Fotos für den Foto-Slider. Nur hochgeladene Fotos erscheinen im Slider. Empfohlen: JPG, quadratisches Format, mind. 800 px.',
     admin_upload_hero: 'Hero Foto (Heute)',
     admin_upload_hero_then: 'Hero Foto (Damals)',
+    admin_upload_welcome: 'Welcome Foto',
     admin_upload_footer: 'Footer Foto',
     admin_upload_witnesses_title: 'Trauzeugen-Fotos',
     admin_upload_witnesses_desc: 'Profilfotos für die vier Trauzeugen. Empfohlen: JPG, quadratisches Format, mind. 400 px.',
@@ -194,6 +201,12 @@ const translations = {
     countdown_minutes: 'Minutes',
     countdown_seconds: 'Seconds',
     countdown_label: 'Countdown to the wedding',
+
+    // Welcome
+    welcome_title: 'Our Special Day',
+    welcome_text: 'We are so happy to share this special day with you. After all these years together, we celebrate this moment with the people who mean the most to us — you. It will be a celebration filled with love, joy, and memories that will last a lifetime.',
+    welcome_sign: 'With love,',
+    welcome_names: 'Kristin & Daniel',
 
     location_title: 'Location & Directions',
     location_label: 'Where we celebrate',
@@ -308,6 +321,7 @@ const translations = {
     admin_upload_slider_desc: 'Up to 8 square photos for the photo slider. Only uploaded photos will appear in the slider. Recommended: JPG, square format, min. 800 px.',
     admin_upload_hero: 'Hero Photo (Now)',
     admin_upload_hero_then: 'Hero Photo (Then)',
+    admin_upload_welcome: 'Welcome Photo',
     admin_upload_footer: 'Footer Photo',
     admin_upload_witnesses_title: 'Witness Photos',
     admin_upload_witnesses_desc: 'Profile photos for the four witnesses. Recommended: JPG, square format, min. 400 px.',
