@@ -48,16 +48,16 @@ export default function Gifts() {
     <section
       id="gifts"
       aria-labelledby="gifts-heading"
-      className="bg-navy text-cream py-20 md:py-28"
+      className="bg-cream-light py-20 md:py-28"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-14">
-          <p className="section-label text-cream/50 mb-3">{t('gifts_label')}</p>
-          <h2 id="gifts-heading" className="font-script text-4xl md:text-5xl text-cream">
+          <p className="section-label text-blue-muted mb-3">{t('gifts_label')}</p>
+          <h2 id="gifts-heading" className="font-script text-4xl md:text-5xl text-navy">
             {t('gifts_title')}
           </h2>
-          <FloralDivider className="mx-auto my-4" color="#EFEEF5" />
-          <p className="text-cream/70 text-base leading-relaxed max-w-lg mx-auto">
+          <FloralDivider className="mx-auto my-4" color="#5C7A5C" />
+          <p className="text-navy/65 text-base leading-relaxed max-w-lg mx-auto">
             {t('gifts_intro')}
           </p>
         </div>
@@ -65,13 +65,13 @@ export default function Gifts() {
         <div className="grid sm:grid-cols-3 gap-8 md:gap-12 mb-14">
           {GIFTS.map(({ key, Icon }) => (
             <div key={key} className="text-center">
-              <div className="flex justify-center mb-5 text-blue-accent/80">
+              <div className="flex justify-center mb-5 text-blue-accent">
                 <Icon />
               </div>
-              <h3 className="font-script text-3xl text-cream mb-3">
+              <h3 className="font-script text-3xl text-navy mb-3">
                 {t(`gifts_${key}`)}
               </h3>
-              <p className="text-cream/65 text-base leading-relaxed">
+              <p className="text-navy/65 text-base leading-relaxed">
                 {t(`gifts_${key}_text`)}
               </p>
             </div>
@@ -84,7 +84,7 @@ export default function Gifts() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t('gifts_paypal_aria')}
-            className="inline-block border border-cream/40 text-cream px-8 py-3 text-xs tracking-widest uppercase hover:bg-cream/10 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
+            className="inline-block border border-navy/30 text-navy px-8 py-3 text-xs tracking-widest uppercase hover:bg-navy/5 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
           >
             {t('gifts_paypal')} ↗
           </a>

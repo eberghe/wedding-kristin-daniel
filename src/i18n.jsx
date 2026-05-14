@@ -11,6 +11,7 @@ const translations = {
     nav_hotels: 'Unterkünfte',
     nav_faq: 'FAQ',
     nav_contact: 'Kontakt',
+    nav_tagesablauf: 'Tagesablauf',
     nav_aria: 'Hauptnavigation',
     lang_switch: 'Sprache wechseln zu Englisch',
 
@@ -32,6 +33,17 @@ const translations = {
     welcome_title: 'Wie alles begann',
     welcome_text: '[Hier kommt eure Geschichte hin — wie habt ihr euch kennengelernt? Was war der besondere Moment? Kristin & Daniel, ihr könnt diesen Text noch anpassen.]',
     welcome_names: 'Kristin & Daniel',
+
+    // Tagesablauf
+    tagesablauf_title: 'Der Tag',
+    tagesablauf_label: 'Was euch erwartet',
+    tagesablauf_ceremony: 'Zeremonie',
+    tagesablauf_drinks: 'Sektempfang',
+    tagesablauf_cake: 'Tortenanschnitt',
+    tagesablauf_dinner: 'Dinner',
+    tagesablauf_party: 'Party',
+    tagesablauf_end: 'Heimfahrt',
+    tagesablauf_note: 'Der genaue Ablauf folgt in Kürze.',
 
     // Location
     location_title: 'Location & Anfahrt',
@@ -188,6 +200,7 @@ const translations = {
     nav_hotels: 'Stay',
     nav_faq: 'FAQ',
     nav_contact: 'Contact',
+    nav_tagesablauf: 'Schedule',
     nav_aria: 'Main navigation',
     lang_switch: 'Switch language to German',
 
@@ -208,6 +221,17 @@ const translations = {
     welcome_title: 'How It All Began',
     welcome_text: '[Your story goes here — how did you meet? What was the special moment? Kristin & Daniel, you can update this text.]',
     welcome_names: 'Kristin & Daniel',
+
+    // Tagesablauf
+    tagesablauf_title: 'The Day',
+    tagesablauf_label: 'What to expect',
+    tagesablauf_ceremony: 'Ceremony',
+    tagesablauf_drinks: 'Drinks',
+    tagesablauf_cake: 'Cake Cutting',
+    tagesablauf_dinner: 'Dinner',
+    tagesablauf_party: 'Party',
+    tagesablauf_end: 'Hometime',
+    tagesablauf_note: 'The detailed schedule will follow soon.',
 
     location_title: 'Location & Directions',
     location_label: 'Where we celebrate',

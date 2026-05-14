@@ -12,7 +12,7 @@ export default function Welcome() {
       <div className="grid lg:grid-cols-2">
 
         {/* Left: then + now photos side by side */}
-        <div className="grid grid-cols-2 min-h-[320px] lg:min-h-[520px]">
+        <div className="grid grid-cols-2 min-h-[460px] lg:min-h-[680px]">
           <PhotoSlot slot="hero_then" alt={t('hero_then_label')} className="h-full" />
           <PhotoSlot slot="hero" alt={t('hero_now_label')} className="h-full" />
         </div>

@@ -20,7 +20,7 @@ export default function Hero() {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-navy/50" />
+      <div className="absolute inset-0 bg-navy/60" />
 
       {/* Main content — centered vertically */}
       <div

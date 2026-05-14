@@ -112,7 +112,7 @@ export default function PhotoSlider() {
     <>
       <section
         aria-label="Fotogalerie Kristin & Daniel"
-        className="w-full overflow-hidden bg-navy py-10"
+        className="w-full overflow-hidden bg-cream-light py-10"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >

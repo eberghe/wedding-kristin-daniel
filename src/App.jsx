@@ -9,6 +9,7 @@ import Gifts from './components/Gifts'
 import { Hotels, FAQ, Contact } from './components/Sections'
 import Dresscode from './components/Dresscode'
 import Welcome from './components/Welcome'
+import Tagesablauf from './components/Tagesablauf'
 import Footer from './components/Footer'
 import Admin from './components/Admin'
 
@@ -23,6 +24,7 @@ function PublicSite() {
         <Location />
         <PhotoSlider />
         <RSVP />
+        <Tagesablauf />
         <Gifts />
         <Dresscode />
         <Hotels />

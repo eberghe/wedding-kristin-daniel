@@ -5,6 +5,7 @@ const NAV_ITEMS = [
   { key: 'nav_home', href: '#home' },
   { key: 'nav_location', href: '#location' },
   { key: 'nav_rsvp', href: '#rsvp' },
+  { key: 'nav_tagesablauf', href: '#tagesablauf' },
   { key: 'nav_gifts', href: '#gifts' },
   { key: 'nav_dresscode', href: '#dresscode' },
   { key: 'nav_hotels', href: '#hotels' },
