@@ -1,4 +1,5 @@
 import { useLang } from '../i18n'
+import { FloralDivider } from './Florals'
 import { useFadeIn } from '../hooks/useFadeIn'
 import PhotoSlot from './PhotoSlot'
 
@@ -7,35 +8,31 @@ export default function Welcome() {
   const ref = useFadeIn()
 
   return (
-    <section
-      id="welcome"
-      aria-labelledby="welcome-heading"
-      className="relative min-h-[70vh] flex items-center justify-center overflow-hidden"
-    >
-      {/* Background photo */}
-      <div className="absolute inset-0">
-        <PhotoSlot slot="welcome" alt="" className="w-full h-full" grayscale={false} />
-        <div className="absolute inset-0 bg-navy/60" />
-      </div>
+    <section id="welcome" aria-labelledby="welcome-heading" className="bg-cream-light">
+      <div className="grid lg:grid-cols-2">
 
-      {/* Card */}
-      <div
-        ref={ref}
-        className="relative z-10 mx-4 sm:mx-auto max-w-2xl w-full bg-navy/70 backdrop-blur-sm px-8 py-20 sm:px-14 sm:py-28 text-center"
-      >
-        <h2
-          id="welcome-heading"
-          className="font-script text-4xl sm:text-5xl text-cream mb-6"
-        >
-          {t('welcome_title')}
-        </h2>
+        {/* Left: then + now photos side by side */}
+        <div className="grid grid-cols-2 min-h-[320px] lg:min-h-[520px]">
+          <PhotoSlot slot="hero_then" alt={t('hero_then_label')} className="h-full" />
+          <PhotoSlot slot="hero" alt={t('hero_now_label')} className="h-full" />
+        </div>
 
-        <p className="text-cream/80 text-base leading-relaxed italic mb-8 font-display">
-          {t('welcome_text')}
-        </p>
+        {/* Right: story text */}
+        <div ref={ref} className="flex flex-col justify-center px-8 py-14 sm:px-14 sm:py-20 lg:py-24">
+          <p className="section-label text-blue-muted mb-3">{t('welcome_label')}</p>
+          <h2
+            id="welcome-heading"
+            className="font-script text-4xl md:text-5xl text-navy mb-2"
+          >
+            {t('welcome_title')}
+          </h2>
+          <FloralDivider className="mt-2 mb-6" color="#5C7A5C" />
+          <p className="text-navy/65 text-base leading-relaxed">
+            {t('welcome_text')}
+          </p>
+          <p className="mt-8 font-script text-2xl text-navy/70">{t('welcome_names')}</p>
+        </div>
 
-        <p className="text-cream/60 text-sm tracking-wider mb-1">{t('welcome_sign')}</p>
-        <p className="font-script text-3xl text-cream/90">{t('welcome_names')}</p>
       </div>
     </section>
   )

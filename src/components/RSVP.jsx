@@ -210,7 +210,8 @@ export default function RSVP() {
                 <label htmlFor="rsvp-guest-count" className="block text-xs tracking-widest uppercase text-navy/60 mb-1.5">
                   {t('rsvp_guests_count')}
                 </label>
-                <p id="guest-count-hint" className="text-xs text-navy/40 mb-2">{t('rsvp_guests_count_help')}</p>
+                <p id="guest-count-hint" className="text-xs text-navy/40 mb-1">{t('rsvp_guests_count_help')}</p>
+                <p className="text-xs text-blue-accent/80 italic mb-2">{t('rsvp_guests_note')}</p>
                 <input
                   id="rsvp-guest-count"
                   type="number"

@@ -20,7 +20,7 @@ export default {
         },
       },
       fontFamily: {
-        script: ['"Great Vibes"', 'cursive'],
+        script: ['"WindSong"', 'cursive'],
         sans: ['"Playfair Display"', 'Georgia', 'serif'],
         display: ['"Playfair Display"', 'Georgia', 'serif'],
       },

@@ -294,7 +294,7 @@ function PhotoUpload({ t }) {
   const labels = {
     hero: t('admin_upload_hero'),
     hero_then: t('admin_upload_hero_then'),
-    welcome: t('admin_upload_welcome'),
+    welcome: t('admin_upload_bg'),
     footer: t('admin_upload_footer'),
     witness_k1: 'Trauzeugin K1',
     witness_k2: 'Trauzeugin K2',

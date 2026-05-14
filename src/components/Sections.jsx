@@ -52,7 +52,7 @@ export function Hotels() {
     <section
       id="hotels"
       aria-labelledby="hotels-heading"
-      className="bg-cream py-20 md:py-28"
+      className="bg-cream-light py-20 md:py-28"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-12">

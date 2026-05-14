@@ -44,7 +44,7 @@ function Lightbox({ images, startIndex, onClose }) {
           <img
             src={images[index]}
             alt={`Kristin & Daniel — Foto ${index + 1} von ${images.length}`}
-            className="max-h-[80vh] max-w-full object-contain select-none block"
+            className="max-h-[80vh] max-w-full object-contain select-none block grayscale"
             draggable="false"
           />
         </div>
@@ -112,7 +112,7 @@ export default function PhotoSlider() {
     <>
       <section
         aria-label="Fotogalerie Kristin & Daniel"
-        className="w-full overflow-hidden bg-cream py-10"
+        className="w-full overflow-hidden bg-navy py-10"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >

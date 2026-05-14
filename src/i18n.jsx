@@ -28,9 +28,9 @@ const translations = {
     countdown_label: 'Countdown bis zur Hochzeit',
 
     // Welcome
-    welcome_title: 'Unser besonderer Tag',
-    welcome_text: 'Wir freuen uns so sehr, diesen besonderen Tag mit euch zu teilen. Nach all den gemeinsamen Jahren feiern wir diesen Moment mit den Menschen, die uns am meisten bedeuten — euch. Es wird ein Fest der Liebe, der Freude und unvergesslicher Erinnerungen.',
-    welcome_sign: 'Mit Liebe,',
+    welcome_label: 'Unsere Geschichte',
+    welcome_title: 'Wie alles begann',
+    welcome_text: '[Hier kommt eure Geschichte hin — wie habt ihr euch kennengelernt? Was war der besondere Moment? Kristin & Daniel, ihr könnt diesen Text noch anpassen.]',
     welcome_names: 'Kristin & Daniel',
 
     // Location
@@ -55,6 +55,7 @@ const translations = {
     rsvp_attending_label: 'Wirst du kommen?',
     rsvp_guests_count: 'Wie viele Personen kommen mit dir?',
     rsvp_guests_count_help: '0 = du kommst allein',
+    rsvp_guests_note: 'Nur eingeladene Gäste dürfen mit angemeldet werden. Keine +1!',
     rsvp_guest_name: 'Name Begleitperson',
     rsvp_food_label: 'Essen',
     rsvp_food_meat: 'Fleisch',
@@ -154,7 +155,7 @@ const translations = {
     admin_upload_slider_desc: 'Bis zu 8 quadratische Fotos für den Foto-Slider. Nur hochgeladene Fotos erscheinen im Slider. Empfohlen: JPG, quadratisches Format, mind. 800 px.',
     admin_upload_hero: 'Hero Foto (Heute)',
     admin_upload_hero_then: 'Hero Foto (Damals)',
-    admin_upload_welcome: 'Welcome Foto',
+    admin_upload_bg: 'Hero Hintergrund',
     admin_upload_footer: 'Footer Foto',
     admin_upload_witnesses_title: 'Trauzeugen-Fotos',
     admin_upload_witnesses_desc: 'Profilfotos für die vier Trauzeugen. Empfohlen: JPG, quadratisches Format, mind. 400 px.',
@@ -203,9 +204,9 @@ const translations = {
     countdown_label: 'Countdown to the wedding',
 
     // Welcome
-    welcome_title: 'Our Special Day',
-    welcome_text: 'We are so happy to share this special day with you. After all these years together, we celebrate this moment with the people who mean the most to us — you. It will be a celebration filled with love, joy, and memories that will last a lifetime.',
-    welcome_sign: 'With love,',
+    welcome_label: 'Our Story',
+    welcome_title: 'How It All Began',
+    welcome_text: '[Your story goes here — how did you meet? What was the special moment? Kristin & Daniel, you can update this text.]',
     welcome_names: 'Kristin & Daniel',
 
     location_title: 'Location & Directions',
@@ -228,6 +229,7 @@ const translations = {
     rsvp_attending_label: 'Will you attend?',
     rsvp_guests_count: 'How many guests are joining you?',
     rsvp_guests_count_help: '0 = you are coming alone',
+    rsvp_guests_note: 'Only invited guests may be registered. No +1!',
     rsvp_guest_name: 'Guest name',
     rsvp_food_label: 'Meal',
     rsvp_food_meat: 'Meat',
@@ -321,7 +323,7 @@ const translations = {
     admin_upload_slider_desc: 'Up to 8 square photos for the photo slider. Only uploaded photos will appear in the slider. Recommended: JPG, square format, min. 800 px.',
     admin_upload_hero: 'Hero Photo (Now)',
     admin_upload_hero_then: 'Hero Photo (Then)',
-    admin_upload_welcome: 'Welcome Photo',
+    admin_upload_bg: 'Hero Background',
     admin_upload_footer: 'Footer Photo',
     admin_upload_witnesses_title: 'Witness Photos',
     admin_upload_witnesses_desc: 'Profile photos for the four witnesses. Recommended: JPG, square format, min. 400 px.',

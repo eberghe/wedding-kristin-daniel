@@ -14,15 +14,9 @@ export default function Hero() {
       aria-labelledby="hero-heading"
       className="relative min-h-screen bg-navy flex flex-col overflow-hidden"
     >
-      {/* Split background: then | now — stacked on mobile, side-by-side on sm+ */}
-      <div className="absolute inset-0 flex flex-col sm:flex-row">
-        <div className="flex-1">
-          <PhotoSlot slot="hero_then" alt="" className="w-full h-full" />
-        </div>
-        <div className="h-px sm:h-auto sm:w-px bg-cream/20 shrink-0" aria-hidden="true" />
-        <div className="flex-1">
-          <PhotoSlot slot="hero" alt="" className="w-full h-full" />
-        </div>
+      {/* Background photo */}
+      <div className="absolute inset-0">
+        <PhotoSlot slot="welcome" alt="" className="w-full h-full" grayscale={false} />
       </div>
 
       {/* Overlay */}
@@ -60,12 +54,11 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Then / Now labels at bottom corners */}
-      <div className="relative z-10 flex justify-between items-end px-6 pb-10 text-xs tracking-[0.25em] uppercase text-cream/55">
-        <span>{t('hero_then_label')}</span>
+      {/* Scroll indicator */}
+      <div className="relative z-10 flex justify-center pb-10">
         <a
-          href="#location"
-          onClick={(e) => { e.preventDefault(); document.querySelector('#location')?.scrollIntoView({ behavior: 'smooth' }) }}
+          href="#welcome"
+          onClick={(e) => { e.preventDefault(); document.querySelector('#welcome')?.scrollIntoView({ behavior: 'smooth' }) }}
           className="flex flex-col items-center gap-2 text-cream/35 hover:text-cream/60 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream/50"
           aria-label={t('hero_scroll')}
         >
@@ -75,7 +68,6 @@ export default function Hero() {
             <circle cx="8" cy="7" r="2" fill="currentColor" className="animate-bounce"/>
           </svg>
         </a>
-        <span>{t('hero_now_label')}</span>
       </div>
     </section>
   )
