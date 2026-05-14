@@ -15,9 +15,9 @@ export default function Footer() {
       />
       <div className="relative z-10 py-20 md:py-28 text-center px-4">
         <p className="section-label text-cream/40 mb-4">26 · 08 · 2028</p>
-        <h2 className="font-script italic text-5xl md:text-7xl text-cream leading-tight">
+        <h2 className="font-script text-6xl md:text-8xl text-cream leading-tight">
           Kristin
-          <span className="block text-3xl md:text-4xl text-blue-accent py-2">&</span>
+          <span className="block font-display italic text-3xl md:text-4xl text-blue-accent py-2">&amp;</span>
           Daniel
         </h2>
         <FloralDivider className="mx-auto my-6" color="#EFEEF5" />

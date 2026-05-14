@@ -1,5 +1,5 @@
 import { useLang } from '../i18n'
-import { FloralCorner, FloralDivider } from './Florals'
+import { FloralDivider } from './Florals'
 import Countdown from './Countdown'
 import PhotoSlot from './PhotoSlot'
 import { useFadeIn } from '../hooks/useFadeIn'
@@ -14,35 +14,21 @@ export default function Hero() {
       aria-labelledby="hero-heading"
       className="relative min-h-screen bg-cream-light flex items-center pt-16"
     >
-      {/* Layout: text left, photo right on md+ */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full py-16 md:py-24">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
 
           {/* Text block */}
           <div ref={textRef} className="relative order-2 md:order-1">
-            {/* Floral corner decorations */}
-            <FloralCorner
-              className="absolute -top-6 -left-6 opacity-60"
-              color="#697C9F"
-              size={100}
-            />
-            <FloralCorner
-              className="absolute -bottom-6 -right-6 rotate-180 opacity-40"
-              color="#697C9F"
-              size={80}
-            />
-
-            {/* Thin border frame */}
             <div className="border border-blue-accent/30 p-8 sm:p-12 relative">
               <p className="section-label text-blue-muted text-center mb-4" aria-hidden="true">
                 — ♡ —
               </p>
               <h1
                 id="hero-heading"
-                className="font-script italic text-5xl sm:text-6xl md:text-7xl text-navy text-center leading-tight"
+                className="font-script text-6xl sm:text-7xl md:text-8xl text-navy text-center leading-tight"
               >
                 Kristin
-                <span className="block text-3xl sm:text-4xl text-blue-accent py-1">&</span>
+                <span className="block font-display italic text-3xl sm:text-4xl text-blue-accent py-2">&amp;</span>
                 Daniel
               </h1>
 
@@ -65,14 +51,28 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Photo */}
-          {/* <!-- Replace with actual couple photo: hero-photo --> */}
-          <div className="order-1 md:order-2">
-            <PhotoSlot
-              slot="hero"
-              alt="Kristin und Daniel"
-              className="w-full aspect-[3/4] md:aspect-[2/3]"
-            />
+          {/* Two photos: then & now */}
+          <div className="order-1 md:order-2 grid grid-cols-2 gap-3">
+            <div>
+              <PhotoSlot
+                slot="hero_then"
+                alt={t('hero_then_label')}
+                className="w-full aspect-[3/4]"
+              />
+              <p className="text-center text-xs tracking-widest uppercase text-navy/35 mt-2">
+                {t('hero_then_label')}
+              </p>
+            </div>
+            <div>
+              <PhotoSlot
+                slot="hero"
+                alt={t('hero_now_label')}
+                className="w-full aspect-[3/4]"
+              />
+              <p className="text-center text-xs tracking-widest uppercase text-navy/35 mt-2">
+                {t('hero_now_label')}
+              </p>
+            </div>
           </div>
         </div>
 

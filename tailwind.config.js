@@ -10,13 +10,18 @@ export default {
         },
         'blue-accent': '#697C9F',
         'blue-muted': '#6E6C83',
+        sage: {
+          DEFAULT: '#5C7A5C',
+          light: '#7A9B7A',
+        },
         cream: {
-          DEFAULT: '#EFEEF5',
-          light: '#F8F8FC',
+          DEFAULT: '#F2EDE3',
+          light: '#FAF7F0',
         },
       },
       fontFamily: {
-        script: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        script: ['"Great Vibes"', 'cursive'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },

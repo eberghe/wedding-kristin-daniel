@@ -10,7 +10,8 @@ import {
 
 const PASSWORD = 'kristindaniel2026'
 const COLORS = ['#697C9F', '#2E3D52', '#6E6C83', '#9BA8C0']
-const PHOTO_SLOTS = ['hero', 'gifts', 'footer']
+const PHOTO_SLOTS = ['hero', 'hero_then', 'footer']
+const WITNESS_SLOTS = ['witness_k1', 'witness_k2', 'witness_d1', 'witness_d2']
 const SLIDER_SLOTS = Array.from({ length: 8 }, (_, i) => `slider_${i + 1}`)
 const DRESSCODE_SLOTS = ['dresscode_1', 'dresscode_2', 'dresscode_3', 'dresscode_4', 'dresscode_5', 'dresscode_6']
 const COLOR_KEYS = ['dresscode_color_1', 'dresscode_color_2', 'dresscode_color_3', 'dresscode_color_4']
@@ -293,10 +294,18 @@ function RSVPTable({ data, t, onDelete }) {
 function PhotoUpload({ t }) {
   const [statuses, setStatuses] = useState({})
   const [previews, setPreviews] = useState({})
-  const labels = { hero: t('admin_upload_hero'), gifts: t('admin_upload_gifts'), footer: t('admin_upload_footer') }
+  const labels = {
+    hero: t('admin_upload_hero'),
+    hero_then: t('admin_upload_hero_then'),
+    footer: t('admin_upload_footer'),
+    witness_k1: 'Trauzeugin K1',
+    witness_k2: 'Trauzeugin K2',
+    witness_d1: 'Trauzeuge D1',
+    witness_d2: 'Trauzeuge D2',
+  }
 
   useEffect(() => {
-    const allSlots = [...PHOTO_SLOTS, ...SLIDER_SLOTS]
+    const allSlots = [...PHOTO_SLOTS, ...WITNESS_SLOTS, ...SLIDER_SLOTS]
     allSlots.forEach(async (slot) => {
       const url = await getPhotoUrl(slot)
       if (url) setPreviews(p => ({ ...p, [slot]: url }))
@@ -338,6 +347,27 @@ function PhotoUpload({ t }) {
                 : <div className="w-full h-36 bg-cream flex items-center justify-center mb-3" role="img" aria-label="Kein Foto"><span className="text-navy/25 text-xs tracking-wider uppercase">kein Foto</span></div>
               }
               <label htmlFor={`upload-${slot}`} className="block w-full text-center border border-navy/20 px-4 py-2.5 text-xs tracking-widest uppercase text-navy/70 hover:border-blue-accent hover:text-blue-accent transition-colors cursor-pointer">
+                {statuses[slot] === 'uploading' ? 'Hochladen…' : statuses[slot] === 'success' ? '✓ Gespeichert' : statuses[slot] === 'error' ? '✗ Fehler' : t('admin_upload_btn')}
+                <input id={`upload-${slot}`} type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" onChange={e => handleUpload(slot, e.target.files[0])} aria-label={`${labels[slot]} hochladen`} />
+              </label>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Witness photos */}
+      <div>
+        <h3 className="text-xs tracking-widest uppercase text-navy/60 mb-1">{t('admin_upload_witnesses_title')}</h3>
+        <p className="text-sm text-navy/50 mb-5 leading-relaxed">{t('admin_upload_witnesses_desc')}</p>
+        <div className="grid sm:grid-cols-4 gap-4">
+          {WITNESS_SLOTS.map(slot => (
+            <div key={slot} className="bg-white border border-navy/10 p-4">
+              <h4 className="text-xs tracking-widest uppercase text-navy/50 mb-3">{labels[slot]}</h4>
+              {previews[slot]
+                ? <img src={previews[slot]} alt={`Vorschau ${labels[slot]}`} className="w-full aspect-square object-cover grayscale rounded-full mb-3" />
+                : <div className="w-full aspect-square bg-cream rounded-full flex items-center justify-center mb-3" role="img" aria-label="Kein Foto"><span className="text-navy/25 text-xs tracking-wider uppercase">kein Foto</span></div>
+              }
+              <label htmlFor={`upload-${slot}`} className="block w-full text-center border border-navy/20 px-3 py-2 text-xs tracking-widest uppercase text-navy/70 hover:border-blue-accent hover:text-blue-accent transition-colors cursor-pointer">
                 {statuses[slot] === 'uploading' ? 'Hochladen…' : statuses[slot] === 'success' ? '✓ Gespeichert' : statuses[slot] === 'error' ? '✗ Fehler' : t('admin_upload_btn')}
                 <input id={`upload-${slot}`} type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" onChange={e => handleUpload(slot, e.target.files[0])} aria-label={`${labels[slot]} hochladen`} />
               </label>

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLang } from '../i18n'
 import { FloralDivider, FloralSmall } from './Florals'
 import { useFadeIn } from '../hooks/useFadeIn'
+import PhotoSlot from './PhotoSlot'
 
 const HOTELS = [
   {
@@ -26,6 +27,23 @@ const HOTELS = [
 
 const FAQ_COUNT = 6
 
+const WITNESS_TABS = [
+  {
+    person: 'Kristin',
+    witnesses: [
+      { role: 'Trauzeugin', name: 'Trauzeugin 1', phone: '+49 151 00000000', email: 'trauzeugin1@beispiel.de', slot: 'witness_k1' },
+      { role: 'Trauzeugin', name: 'Trauzeugin 2', phone: '+49 151 00000001', email: 'trauzeugin2@beispiel.de', slot: 'witness_k2' },
+    ],
+  },
+  {
+    person: 'Daniel',
+    witnesses: [
+      { role: 'Trauzeuge', name: 'Trauzeuge 1', phone: '+49 151 00000002', email: 'trauzeuge1@beispiel.de', slot: 'witness_d1' },
+      { role: 'Trauzeuge', name: 'Trauzeuge 2', phone: '+49 151 00000003', email: 'trauzeuge2@beispiel.de', slot: 'witness_d2' },
+    ],
+  },
+]
+
 export function Hotels() {
   const { t, lang } = useLang()
   const ref = useFadeIn()
@@ -39,7 +57,7 @@ export function Hotels() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-12">
           <p className="section-label text-blue-muted mb-3">{t('hotels_label')}</p>
-          <h2 id="hotels-heading" className="font-script italic text-4xl md:text-5xl text-navy">
+          <h2 id="hotels-heading" className="font-display italic text-4xl md:text-5xl text-navy">
             {t('hotels_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4" color="#697C9F" />
@@ -48,8 +66,8 @@ export function Hotels() {
 
         <div className="grid sm:grid-cols-3 gap-5">
           {HOTELS.map((hotel) => (
-            <article key={hotel.name} className="bg-white border border-blue-accent/20 p-6">
-              <h3 className="font-script italic text-xl text-navy mb-1">{hotel.name}</h3>
+            <article key={hotel.name} className="bg-cream-light border border-blue-accent/20 p-6">
+              <h3 className="font-display italic text-xl text-navy mb-1">{hotel.name}</h3>
               <p className="text-xs tracking-widest uppercase text-blue-muted mb-3">
                 {t('hotels_distance')}: {hotel.distance}
               </p>
@@ -89,7 +107,7 @@ export function FAQ() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-12">
           <p className="section-label text-cream/50 mb-3">{t('faq_label')}</p>
-          <h2 id="faq-heading" className="font-script italic text-4xl md:text-5xl text-cream">
+          <h2 id="faq-heading" className="font-display italic text-4xl md:text-5xl text-cream">
             {t('faq_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4" color="#EFEEF5" />
@@ -140,44 +158,55 @@ export function FAQ() {
 export function Contact() {
   const { t } = useLang()
   const ref = useFadeIn()
-
-  const witnesses = [
-    {
-      role: 'Trauzeugin',
-      name: 'Sophie Müller',
-      phone: '+49 151 12345678',
-      email: 'sophie@beispiel.de',
-    },
-    {
-      role: 'Trauzeuge',
-      name: 'Felix Wagner',
-      phone: '+49 151 87654321',
-      email: 'felix@beispiel.de',
-    },
-  ]
+  const [activeTab, setActiveTab] = useState(0)
 
   return (
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="bg-white py-20 md:py-28"
+      className="bg-cream-light py-20 md:py-28"
     >
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-12">
           <FloralSmall className="mx-auto mb-4" color="#697C9F" />
           <p className="section-label text-blue-muted mb-3">{t('contact_label')}</p>
-          <h2 id="contact-heading" className="font-script italic text-4xl md:text-5xl text-navy">
+          <h2 id="contact-heading" className="font-display italic text-4xl md:text-5xl text-navy">
             {t('contact_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4" color="#697C9F" />
           <p className="text-navy/60 text-sm mt-4">{t('contact_intro')}</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-6">
-          {witnesses.map((w) => (
-            <article key={w.name} className="border border-blue-accent/20 p-6 sm:p-8 text-center">
+        {/* Tab toggle */}
+        <div className="flex justify-center gap-1 mb-10" role="tablist" aria-label={t('contact_tab_aria')}>
+          {WITNESS_TABS.map((tab, i) => (
+            <button
+              key={tab.person}
+              role="tab"
+              aria-selected={activeTab === i}
+              onClick={() => setActiveTab(i)}
+              className={`px-8 py-2.5 text-xs tracking-widest uppercase transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent ${
+                activeTab === i
+                  ? 'bg-navy text-cream'
+                  : 'border border-navy/20 text-navy/60 hover:border-blue-accent hover:text-navy'
+              }`}
+            >
+              {tab.person}
+            </button>
+          ))}
+        </div>
+
+        {/* Witnesses */}
+        <div className="grid sm:grid-cols-2 gap-6" role="tabpanel">
+          {WITNESS_TABS[activeTab].witnesses.map((w) => (
+            <article key={w.slot} className="border border-blue-accent/20 p-6 sm:p-8 text-center bg-white/60">
+              <PhotoSlot
+                slot={w.slot}
+                alt={w.name}
+                className="w-24 h-24 rounded-full mx-auto mb-5 overflow-hidden"
+              />
               <p className="section-label text-blue-muted mb-2">{w.role}</p>
-              <h3 className="font-script italic text-2xl text-navy mb-4">{w.name}</h3>
+              <h3 className="font-display italic text-2xl text-navy mb-4">{w.name}</h3>
               <div className="flex flex-col gap-2">
                 <a
                   href={`tel:${w.phone.replace(/\s/g, '')}`}

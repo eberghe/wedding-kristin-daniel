@@ -100,7 +100,7 @@ export default function RSVP() {
 
   if (status === 'success') {
     return (
-      <section id="rsvp" className="bg-white py-20 md:py-28" aria-labelledby="rsvp-heading">
+      <section id="rsvp" className="bg-cream-light py-20 md:py-28" aria-labelledby="rsvp-heading">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
           <FloralDivider className="mx-auto mb-8" color="#697C9F" />
           <p
@@ -120,12 +120,12 @@ export default function RSVP() {
     <section
       id="rsvp"
       aria-labelledby="rsvp-heading"
-      className="bg-white py-20 md:py-28"
+      className="bg-cream-light py-20 md:py-28"
     >
       <div className="max-w-2xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-12">
           <p className="section-label text-blue-muted mb-3">{t('rsvp_label')}</p>
-          <h2 id="rsvp-heading" className="font-script italic text-4xl md:text-5xl text-navy">
+          <h2 id="rsvp-heading" className="font-display italic text-4xl md:text-5xl text-navy">
             {t('rsvp_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4" color="#697C9F" />
