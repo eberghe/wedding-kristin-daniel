@@ -15,7 +15,7 @@ const translations = {
     lang_switch: 'Sprache wechseln zu Englisch',
 
     // Hero
-    hero_date: '26. August 2028',
+    hero_date: '2. September 2028',
     hero_location: 'Gut Hermannsberg, Bayern',
     hero_dresscode: 'Dresscode: Festlich-Elegant',
     hero_scroll: 'Nach unten scrollen',
@@ -96,7 +96,7 @@ const translations = {
     faq_title: 'Häufige Fragen',
     faq_label: 'FAQ',
     faq_1_q: 'Wann soll ich anreisen?',
-    faq_1_a: 'Wir empfehlen die Anreise am Vortag oder am Morgen des 26. August, damit ihr entspannt und pünktlich seid. Der Einlass ist ab 14:00 Uhr.',
+    faq_1_a: 'Wir empfehlen die Anreise am Vortag oder am Morgen des 2. September, damit ihr entspannt und pünktlich seid. Der Einlass ist ab 14:00 Uhr.',
     faq_2_q: 'Gibt es Parkplätze?',
     faq_2_a: 'Ja, am Gut stehen ausreichend Parkplätze zur Verfügung. Die Zufahrt ist ausgeschildert. Alternativ empfehlen wir Fahrgemeinschaften.',
     faq_3_q: 'Ist die Feier outdoor?',
@@ -128,7 +128,7 @@ const translations = {
     dresscode_img_placeholder: 'Foto folgt',
 
     // Footer
-    footer_made: 'Mit Liebe gestaltet · 26. August 2028',
+    footer_made: 'Mit Liebe gestaltet · 2. September 2028',
 
     // Admin
     admin_title: 'Admin Dashboard',
@@ -190,7 +190,7 @@ const translations = {
     nav_aria: 'Main navigation',
     lang_switch: 'Switch language to German',
 
-    hero_date: 'August 26, 2028',
+    hero_date: 'September 2, 2028',
     hero_location: 'Gut Hermannsberg, Bavaria',
     hero_dresscode: 'Dress Code: Formal Elegant',
     hero_scroll: 'Scroll down',
@@ -266,7 +266,7 @@ const translations = {
     faq_title: 'Frequently Asked Questions',
     faq_label: 'FAQ',
     faq_1_q: 'When should I arrive?',
-    faq_1_a: 'We recommend arriving the evening before or the morning of August 26 so you can be relaxed and on time. Doors open at 2:00 PM.',
+    faq_1_a: 'We recommend arriving the evening before or the morning of September 2 so you can be relaxed and on time. Doors open at 2:00 PM.',
     faq_2_q: 'Is there parking available?',
     faq_2_a: 'Yes, there is ample parking at the estate. The entrance is signposted. We also recommend carpooling.',
     faq_3_q: 'Is the celebration outdoors?',
@@ -296,7 +296,7 @@ const translations = {
     dresscode_img_alt: 'Dress code inspiration',
     dresscode_img_placeholder: 'Photo coming soon',
 
-    footer_made: 'Made with love · August 26, 2028',
+    footer_made: 'Made with love · September 2, 2028',
 
     admin_title: 'Admin Dashboard',
     admin_password: 'Password',
