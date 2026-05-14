@@ -6,91 +6,79 @@ import { useFadeIn } from '../hooks/useFadeIn'
 
 export default function Hero() {
   const { t } = useLang()
-  const textRef = useFadeIn(0.1)
+  const ref = useFadeIn(0.1)
 
   return (
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="relative min-h-screen bg-cream-light flex items-center pt-16"
+      className="relative min-h-screen bg-navy flex flex-col overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full py-16 md:py-24">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 md:items-stretch">
-
-          {/* Text block */}
-          <div ref={textRef} className="relative order-2 md:order-1 flex flex-col">
-            <div className="border border-sage/40 p-8 sm:p-12 relative flex-1">
-              <p className="section-label text-blue-muted text-center mb-4" aria-hidden="true">
-                — ♡ —
-              </p>
-              <h1
-                id="hero-heading"
-                className="font-script text-6xl sm:text-7xl md:text-8xl text-navy text-center leading-tight"
-              >
-                Kristin
-                <span className="block font-display italic text-3xl sm:text-4xl text-blue-accent py-2">&amp;</span>
-                Daniel
-              </h1>
-
-              <FloralDivider className="mx-auto my-6" color="#5C7A5C" />
-
-              <p className="text-center text-sm tracking-[0.2em] uppercase text-blue-muted">
-                {t('hero_date')}
-              </p>
-              <p className="text-center text-sm tracking-wider text-navy/60 mt-1">
-                {t('hero_location')}
-              </p>
-              <p className="text-center text-xs tracking-widest uppercase text-sage mt-3">
-                {t('hero_dresscode')}
-              </p>
-            </div>
-
-            {/* Countdown */}
-            <div className="mt-10">
-              <Countdown />
-            </div>
-          </div>
-
-          {/* Two photos: then & now — fill the full column height */}
-          <div className="order-1 md:order-2 flex gap-3 min-h-[420px] md:min-h-0">
-            <div className="flex-1 flex flex-col gap-2">
-              <PhotoSlot
-                slot="hero_then"
-                alt={t('hero_then_label')}
-                className="flex-1 min-h-[200px]"
-              />
-              <p className="text-center text-xs tracking-widest uppercase text-navy/35 shrink-0">
-                {t('hero_then_label')}
-              </p>
-            </div>
-            <div className="flex-1 flex flex-col gap-2">
-              <PhotoSlot
-                slot="hero"
-                alt={t('hero_now_label')}
-                className="flex-1 min-h-[200px]"
-              />
-              <p className="text-center text-xs tracking-widest uppercase text-navy/35 shrink-0">
-                {t('hero_now_label')}
-              </p>
-            </div>
-          </div>
+      {/* Split background: then | now */}
+      <div className="absolute inset-0 flex">
+        <div className="flex-1">
+          <PhotoSlot slot="hero_then" alt="" className="w-full h-full" />
         </div>
-
-        {/* Scroll indicator */}
-        <div className="flex justify-center mt-16" aria-hidden="true">
-          <a
-            href="#location"
-            onClick={(e) => { e.preventDefault(); document.querySelector('#location')?.scrollIntoView({ behavior: 'smooth' }) }}
-            className="flex flex-col items-center gap-2 text-navy/40 hover:text-sage transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
-            aria-label={t('hero_scroll')}
-          >
-            <span className="text-xs tracking-widest uppercase">{t('hero_scroll')}</span>
-            <svg width="16" height="24" viewBox="0 0 16 24" fill="none" aria-hidden="true">
-              <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" strokeWidth="1"/>
-              <circle cx="8" cy="7" r="2" fill="currentColor" className="animate-bounce"/>
-            </svg>
-          </a>
+        <div className="w-px bg-cream/20 shrink-0" aria-hidden="true" />
+        <div className="flex-1">
+          <PhotoSlot slot="hero" alt="" className="w-full h-full" />
         </div>
+      </div>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-navy/50" />
+
+      {/* Main content — centered vertically */}
+      <div
+        ref={ref}
+        className="relative z-10 flex flex-col items-center justify-center flex-1 text-cream text-center px-6 py-28"
+      >
+        <p className="text-[10px] tracking-[0.35em] uppercase text-cream/50 mb-6" aria-hidden="true">
+          — ♡ —
+        </p>
+
+        <h1 id="hero-heading" className="leading-none">
+          <span className="block font-script text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] text-cream drop-shadow-lg">
+            Kristin
+          </span>
+          <span className="block font-script text-4xl sm:text-5xl md:text-6xl text-cream/75 my-1">
+            &amp;
+          </span>
+          <span className="block font-script text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] text-cream drop-shadow-lg">
+            Daniel
+          </span>
+        </h1>
+
+        <FloralDivider className="mx-auto mt-8 mb-6 opacity-60" color="#EFEEF5" />
+
+        <p className="text-[11px] tracking-[0.3em] uppercase text-cream/80">
+          {t('hero_date')}
+        </p>
+        <p className="text-xs tracking-wider text-cream/50 mt-1">
+          {t('hero_location')}
+        </p>
+
+        <div className="mt-10">
+          <Countdown light />
+        </div>
+      </div>
+
+      {/* Then / Now labels at bottom corners */}
+      <div className="relative z-10 flex justify-between items-end px-6 pb-10 text-[9px] tracking-[0.3em] uppercase text-cream/35">
+        <span>{t('hero_then_label')}</span>
+        <a
+          href="#location"
+          onClick={(e) => { e.preventDefault(); document.querySelector('#location')?.scrollIntoView({ behavior: 'smooth' }) }}
+          className="flex flex-col items-center gap-2 text-cream/35 hover:text-cream/60 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream/50"
+          aria-label={t('hero_scroll')}
+        >
+          <span className="text-[9px] tracking-[0.3em] uppercase">{t('hero_scroll')}</span>
+          <svg width="14" height="22" viewBox="0 0 16 24" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" strokeWidth="1"/>
+            <circle cx="8" cy="7" r="2" fill="currentColor" className="animate-bounce"/>
+          </svg>
+        </a>
+        <span>{t('hero_now_label')}</span>
       </div>
     </section>
   )

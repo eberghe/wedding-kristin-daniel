@@ -21,8 +21,8 @@ export default {
       },
       fontFamily: {
         script: ['"Great Vibes"', 'cursive'],
+        sans: ['"Playfair Display"', 'Georgia', 'serif'],
         display: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

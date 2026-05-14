@@ -17,7 +17,7 @@ function getTimeLeft() {
 
 function pad(n) { return String(n).padStart(2, '0') }
 
-export default function Countdown() {
+export default function Countdown({ light = false }) {
   const { t } = useLang()
   const [time, setTime] = useState(getTimeLeft())
 
@@ -40,20 +40,17 @@ export default function Countdown() {
       aria-live="off"
       className="flex gap-4 sm:gap-8 justify-center items-end"
     >
-      {units.map(({ value, label }, i) => (
+      {units.map(({ value, label }) => (
         <div key={label} className="flex flex-col items-center">
           <span
-            className="font-display text-3xl sm:text-4xl md:text-5xl text-navy leading-none"
+            className={`font-display text-3xl sm:text-4xl md:text-5xl leading-none ${light ? 'text-cream' : 'text-navy'}`}
             aria-label={`${value} ${label}`}
           >
             {pad(value)}
           </span>
-          <span className="text-[10px] tracking-widest uppercase text-blue-muted mt-1">
+          <span className={`text-[10px] tracking-widest uppercase mt-1 ${light ? 'text-cream/50' : 'text-blue-muted'}`}>
             {label}
           </span>
-          {i < units.length - 1 && (
-            <span className="absolute" aria-hidden="true" />
-          )}
         </div>
       ))}
     </div>

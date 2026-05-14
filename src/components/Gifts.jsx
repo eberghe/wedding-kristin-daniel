@@ -53,7 +53,7 @@ export default function Gifts() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-14">
           <p className="section-label text-cream/50 mb-3">{t('gifts_label')}</p>
-          <h2 id="gifts-heading" className="font-display italic text-4xl md:text-5xl text-cream">
+          <h2 id="gifts-heading" className="font-script text-4xl md:text-5xl text-cream">
             {t('gifts_title')}
           </h2>
           <FloralDivider className="mx-auto my-4" color="#EFEEF5" />
@@ -68,7 +68,7 @@ export default function Gifts() {
               <div className="flex justify-center mb-5 text-blue-accent/80">
                 <Icon />
               </div>
-              <h3 className="font-display italic text-xl text-cream mb-3">
+              <h3 className="font-script text-xl text-cream mb-3">
                 {t(`gifts_${key}`)}
               </h3>
               <p className="text-cream/65 text-sm leading-relaxed">

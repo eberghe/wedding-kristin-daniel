@@ -57,7 +57,7 @@ export function Hotels() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-12">
           <p className="section-label text-blue-muted mb-3">{t('hotels_label')}</p>
-          <h2 id="hotels-heading" className="font-display italic text-4xl md:text-5xl text-navy">
+          <h2 id="hotels-heading" className="font-script text-4xl md:text-5xl text-navy">
             {t('hotels_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4" color="#5C7A5C" />
@@ -67,7 +67,7 @@ export function Hotels() {
         <div className="grid sm:grid-cols-3 gap-5">
           {HOTELS.map((hotel) => (
             <article key={hotel.name} className="bg-cream-light border border-blue-accent/20 p-6">
-              <h3 className="font-display italic text-xl text-navy mb-1">{hotel.name}</h3>
+              <h3 className="font-script text-xl text-navy mb-1">{hotel.name}</h3>
               <p className="text-xs tracking-widest uppercase text-blue-muted mb-3">
                 {t('hotels_distance')}: {hotel.distance}
               </p>
@@ -107,7 +107,7 @@ export function FAQ() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-12">
           <p className="section-label text-cream/50 mb-3">{t('faq_label')}</p>
-          <h2 id="faq-heading" className="font-display italic text-4xl md:text-5xl text-cream">
+          <h2 id="faq-heading" className="font-script text-4xl md:text-5xl text-cream">
             {t('faq_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4" color="#EFEEF5" />
@@ -170,7 +170,7 @@ export function Contact() {
         <div ref={ref} className="text-center mb-12">
           <FloralSmall className="mx-auto mb-4" color="#5C7A5C" />
           <p className="section-label text-blue-muted mb-3">{t('contact_label')}</p>
-          <h2 id="contact-heading" className="font-display italic text-4xl md:text-5xl text-navy">
+          <h2 id="contact-heading" className="font-script text-4xl md:text-5xl text-navy">
             {t('contact_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4" color="#5C7A5C" />
@@ -206,7 +206,7 @@ export function Contact() {
                 className="w-24 h-24 rounded-full mx-auto mb-5 overflow-hidden"
               />
               <p className="section-label text-blue-muted mb-2">{w.role}</p>
-              <h3 className="font-display italic text-2xl text-navy mb-4">{w.name}</h3>
+              <h3 className="font-script text-2xl text-navy mb-4">{w.name}</h3>
               <div className="flex flex-col gap-2">
                 <a
                   href={`tel:${w.phone.replace(/\s/g, '')}`}

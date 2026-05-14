@@ -17,7 +17,7 @@ export default function Footer() {
         <p className="section-label text-cream/40 mb-4">26 · 08 · 2028</p>
         <h2 className="font-script text-6xl md:text-8xl text-cream leading-tight">
           Kristin
-          <span className="block font-display italic text-3xl md:text-4xl text-blue-accent py-2">&amp;</span>
+          <span className="block font-script text-3xl md:text-4xl text-blue-accent py-2">&amp;</span>
           Daniel
         </h2>
         <FloralDivider className="mx-auto my-6" color="#EFEEF5" />

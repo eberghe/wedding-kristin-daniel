@@ -33,7 +33,7 @@ function Login({ onLogin }) {
   return (
     <div className="min-h-screen bg-cream flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
-        <h1 className="font-script italic text-4xl text-navy text-center mb-2">Kristin & Daniel</h1>
+        <h1 className="font-script text-4xl text-navy text-center mb-2">Kristin & Daniel</h1>
         <p className="text-center text-xs tracking-widest uppercase text-blue-muted mb-8">Admin</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -88,7 +88,7 @@ function Stats({ data, t }) {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {cards.map(c => (
           <div key={c.label} className="bg-white border border-navy/10 p-5 text-center">
-            <p className="font-script italic text-4xl text-navy">{c.value}</p>
+            <p className="font-script text-4xl text-navy">{c.value}</p>
             <p className="text-xs tracking-widest uppercase text-blue-muted mt-1">{c.label}</p>
           </div>
         ))}
@@ -145,7 +145,7 @@ function ConfirmModal({ title, message, confirmLabel, onConfirm, onCancel }) {
       aria-labelledby="confirm-title"
     >
       <div className="bg-white max-w-sm w-full p-7" onClick={e => e.stopPropagation()}>
-        <h3 id="confirm-title" className="font-script italic text-2xl text-navy mb-2">{title}</h3>
+        <h3 id="confirm-title" className="font-script text-2xl text-navy mb-2">{title}</h3>
         <p className="text-sm text-navy/65 leading-relaxed mb-7">{message}</p>
         <div className="flex gap-3 justify-end">
           <button
@@ -564,7 +564,7 @@ export default function Admin() {
     <div className="min-h-screen bg-cream">
       <header className="bg-navy text-cream px-4 sm:px-6 py-4 flex items-center justify-between">
         <div>
-          <a href="/" className="font-script italic text-2xl text-cream hover:text-cream/80 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream/60">Kristin & Daniel</a>
+          <a href="/" className="font-script text-2xl text-cream hover:text-cream/80 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream/60">Kristin & Daniel</a>
           <p className="text-cream/40 text-xs tracking-widest uppercase">Admin Dashboard</p>
         </div>
         <button onClick={handleLogout} className="text-xs tracking-widest uppercase text-cream/60 hover:text-cream border border-cream/20 px-4 py-2 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream/60">

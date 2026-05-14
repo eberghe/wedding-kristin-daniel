@@ -106,7 +106,7 @@ export default function RSVP() {
           <p
             role="alert"
             aria-live="assertive"
-            className="font-display italic text-3xl md:text-4xl text-navy"
+            className="font-script text-3xl md:text-4xl text-navy"
           >
             {t('rsvp_success')}
           </p>
@@ -125,7 +125,7 @@ export default function RSVP() {
       <div className="max-w-2xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-12">
           <p className="section-label text-blue-muted mb-3">{t('rsvp_label')}</p>
-          <h2 id="rsvp-heading" className="font-display italic text-4xl md:text-5xl text-navy">
+          <h2 id="rsvp-heading" className="font-script text-4xl md:text-5xl text-navy">
             {t('rsvp_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4" color="#5C7A5C" />

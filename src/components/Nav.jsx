@@ -75,7 +75,7 @@ export default function Nav() {
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
-            className="font-display italic text-xl text-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+            className="font-script text-xl text-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
             aria-label="Kristin & Daniel — zurück zur Startseite"
           >
             K & D

@@ -15,7 +15,7 @@ export default function Location() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-12">
           <p className="section-label text-cream/50 mb-3">{t('location_label')}</p>
-          <h2 id="location-heading" className="font-display italic text-4xl md:text-5xl text-cream">
+          <h2 id="location-heading" className="font-script text-4xl md:text-5xl text-cream">
             {t('location_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4" color="#EFEEF5CC" />
@@ -26,7 +26,7 @@ export default function Location() {
           <div className="border border-cream/20 p-6 sm:p-8">
             <h3 className="section-label text-cream/60 mb-3">{t('location_address_title')}</h3>
             <address className="not-italic">
-              <p className="font-display italic text-2xl text-cream mb-3">Gut Hermannsberg</p>
+              <p className="font-script text-2xl text-cream mb-3">Gut Hermannsberg</p>
               <p className="text-cream/70 text-sm leading-relaxed">
                 Hermannsberg 1<br />
                 83410 Laufen, Bayern<br />

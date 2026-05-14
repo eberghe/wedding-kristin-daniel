@@ -11,7 +11,7 @@ export default function Dresscode() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
         <div ref={ref}>
           <p className="section-label text-blue-muted mb-3">{t('dresscode_label')}</p>
-          <h2 id="dresscode-heading" className="font-display italic text-4xl md:text-5xl text-navy">
+          <h2 id="dresscode-heading" className="font-script text-4xl md:text-5xl text-navy">
             {t('dresscode_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4 mb-6" color="#5C7A5C" />
