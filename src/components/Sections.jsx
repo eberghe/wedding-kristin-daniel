@@ -25,21 +25,21 @@ const HOTELS = [
   },
 ]
 
-const FAQ_COUNT = 6
+const FAQ_COUNT = 7
 
 const WITNESS_TABS = [
   {
     person: 'Kristin',
     witnesses: [
-      { role: 'Trauzeugin', name: 'Trauzeugin 1', phone: '+49 151 00000000', email: 'trauzeugin1@beispiel.de', slot: 'witness_k1' },
-      { role: 'Trauzeugin', name: 'Trauzeugin 2', phone: '+49 151 00000001', email: 'trauzeugin2@beispiel.de', slot: 'witness_k2' },
+      { role: 'Trauzeugin', name: 'Nadine Goodluck',  phone: '0176 56912013', slot: 'witness_k1' },
+      { role: 'Trauzeugin', name: 'Lena Rollbühler',  phone: '0175 6705709',  slot: 'witness_k2' },
     ],
   },
   {
     person: 'Daniel',
     witnesses: [
-      { role: 'Trauzeuge', name: 'Trauzeuge 1', phone: '+49 151 00000002', email: 'trauzeuge1@beispiel.de', slot: 'witness_d1' },
-      { role: 'Trauzeuge', name: 'Trauzeuge 2', phone: '+49 151 00000003', email: 'trauzeuge2@beispiel.de', slot: 'witness_d2' },
+      { role: 'Trauzeuge',  name: 'Stephan Weigl-Köthe', phone: '0152 03401586', slot: 'witness_d1' },
+      { role: 'Trauzeugin', name: 'Hanna Schrüfer',       phone: '0176 23883207', slot: 'witness_d2' },
     ],
   },
 ]
@@ -215,13 +215,15 @@ export function Contact() {
                 >
                   {t('contact_phone')}: {w.phone}
                 </a>
-                <a
-                  href={`mailto:${w.email}`}
-                  className="text-sm text-navy/65 hover:text-blue-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
-                  aria-label={`${t('contact_email')}: ${w.email}`}
-                >
-                  {w.email}
-                </a>
+                {w.email && (
+                  <a
+                    href={`mailto:${w.email}`}
+                    className="text-sm text-navy/65 hover:text-blue-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+                    aria-label={`${t('contact_email')}: ${w.email}`}
+                  >
+                    {w.email}
+                  </a>
+                )}
               </div>
             </article>
           ))}

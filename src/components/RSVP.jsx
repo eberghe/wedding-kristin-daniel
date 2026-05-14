@@ -240,31 +240,7 @@ export default function RSVP() {
                 </div>
               ))}
 
-              {/* Food preferences */}
-              <div className="mt-6 mb-5 border-t border-navy/10 pt-6">
-                <p className="text-xs tracking-widest uppercase text-navy/60 mb-4">
-                  {t('rsvp_food_label')}
-                </p>
-                <div className="flex flex-col gap-4">
-                  {/* Main person */}
-                  <FoodSelect
-                    id="food-main"
-                    label={`${t('rsvp_for')} ${form.name || 'dich'}`}
-                    value={form.foodPreferences[0]?.food || ''}
-                    onChange={e => handleFood(0, e.target.value)}
-                  />
-                  {/* Guests */}
-                  {form.guestNames.map((gName, i) => (
-                    <FoodSelect
-                      key={i}
-                      id={`food-guest-${i}`}
-                      label={`${t('rsvp_for')} ${gName || `Gast ${i + 1}`}`}
-                      value={form.foodPreferences[i + 1]?.food || ''}
-                      onChange={e => handleFood(i + 1, e.target.value)}
-                    />
-                  ))}
-                </div>
-              </div>
+              {/* Food preferences — hidden until menu is confirmed */}
             </div>
           )}
 

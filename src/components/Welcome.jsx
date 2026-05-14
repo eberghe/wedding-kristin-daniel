@@ -27,9 +27,11 @@ export default function Welcome() {
             {t('welcome_title')}
           </h2>
           <FloralDivider className="mt-2 mb-6" color="#5C7A5C" />
-          <p className="text-navy/65 text-base leading-relaxed">
-            {t('welcome_text')}
-          </p>
+          <div className="flex flex-col gap-4">
+            {t('welcome_text').split('\n\n').map((p, i) => (
+              <p key={i} className="text-navy/65 text-base leading-relaxed">{p}</p>
+            ))}
+          </div>
           <p className="mt-8 font-script text-2xl text-navy/70">{t('welcome_names')}</p>
         </div>
 
