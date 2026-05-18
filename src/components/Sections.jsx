@@ -165,7 +165,7 @@ export function Contact() {
       aria-labelledby="contact-heading"
       className="bg-cream-light py-20 md:py-28"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-14">
           <FloralSmall className="mx-auto mb-4" color="#5C7A5C" />
           <p className="section-label text-blue-muted mb-3">{t('contact_label')}</p>
@@ -176,34 +176,32 @@ export function Contact() {
           <p className="text-navy/60 text-base mt-4">{t('contact_intro')}</p>
         </div>
 
-        <div className="flex flex-col gap-14">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-8">
           {WITNESS_TABS.map((tab) => (
-            <div key={tab.person}>
-              {/* Group heading */}
-              <div className="text-center mb-8">
+            <div key={tab.person} className="flex-1">
+              {/* Group heading with full-width divider */}
+              <div className="text-center mb-6">
                 <p className="font-script text-3xl sm:text-4xl text-navy mb-2">{tab.person}</p>
-                <FloralDivider className="mx-auto" color="#5C7A5C" />
+                <FloralDivider className="w-full" color="#5C7A5C" />
               </div>
 
-              {/* Witness cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {/* Witness cards — always 2 columns */}
+              <div className="grid grid-cols-2 gap-4 sm:gap-5">
                 {tab.witnesses.map((w) => (
                   <article
                     key={w.slot}
-                    className="relative border border-blue-accent/20 p-7 text-center bg-white/60 flex flex-col items-center overflow-hidden"
+                    className="relative border border-blue-accent/20 p-5 sm:p-6 text-center bg-white/60 flex flex-col items-center overflow-hidden"
                   >
-                    {/* Corner decor */}
                     <FloralCorner className="absolute top-0 right-0 opacity-40" color="#697C9F" size={80} />
                     <FloralCorner className="absolute bottom-0 left-0 opacity-40 rotate-180" color="#697C9F" size={80} />
 
                     <PhotoSlot
                       slot={w.slot}
                       alt={w.name}
-                      className="w-24 h-24 rounded-full mx-auto mb-5 overflow-hidden relative z-10"
+                      className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4 overflow-hidden relative z-10"
                     />
-                    <p className="section-label text-blue-muted mb-3 relative z-10">{w.role}</p>
-                    <h3 className="font-display text-xl sm:text-2xl text-navy mb-1 relative z-10">{w.name}</h3>
-                    <FloralDivider className="mx-auto my-3 relative z-10" color="#5C7A5C" />
+                    <p className="section-label text-blue-muted mb-2 relative z-10">{w.role}</p>
+                    <h3 className="font-display text-base sm:text-xl text-navy mb-3 relative z-10">{w.name}</h3>
                     <a
                       href={`tel:${w.phone.replace(/\s/g, '')}`}
                       className="text-sm text-navy/65 hover:text-blue-accent transition-colors duration-200 relative z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
