@@ -12,7 +12,7 @@ export default function Hero() {
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="relative min-h-screen bg-navy flex flex-col overflow-hidden"
+      className="relative h-screen bg-navy flex flex-col overflow-hidden"
     >
       {/* Background photo */}
       <div className="absolute inset-0">
