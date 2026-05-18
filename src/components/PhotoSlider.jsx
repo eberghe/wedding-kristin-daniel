@@ -3,8 +3,20 @@ import { createPortal } from 'react-dom'
 import { getPhotoUrl } from '../utils/storage'
 
 const SLIDER_SLOTS = Array.from({ length: 8 }, (_, i) => `slider_${i + 1}`)
-const TILE_W = 224 // px — must match inline style below
-const GAP = 12    // px — gap-3
+const TILE_W = 220 // px — polaroid outer width
+const GAP = 28    // px — breathing room between polaroids
+
+// Each image gets a distinct rotation that repeats after 8
+const ROTATIONS = [
+  '-rotate-[3deg]',
+  'rotate-[2deg]',
+  '-rotate-[1.5deg]',
+  'rotate-[3.5deg]',
+  '-rotate-[2.5deg]',
+  'rotate-[1deg]',
+  '-rotate-[4deg]',
+  'rotate-[2.5deg]',
+]
 
 function Lightbox({ images, startIndex, onClose }) {
   const [index, setIndex] = useState(startIndex)
@@ -112,13 +124,14 @@ export default function PhotoSlider() {
     <>
       <section
         aria-label="Fotogalerie Kristin & Daniel"
-        className="w-full overflow-hidden bg-cream-light py-10"
+        className="w-full overflow-hidden bg-cream-light py-14"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
         <div
-          className="flex gap-3"
+          className="flex items-center"
           style={{
+            gap: GAP,
             width: `${track.length * (TILE_W + GAP)}px`,
             animation: `slider-scroll ${duration}s linear infinite`,
             animationPlayState: paused ? 'paused' : 'running',
@@ -126,21 +139,24 @@ export default function PhotoSlider() {
         >
           {track.map((url, i) => {
             const realIndex = i % images.length
+            const rotation = ROTATIONS[realIndex % ROTATIONS.length]
             return (
               <button
                 key={i}
                 onClick={() => setLightboxIndex(realIndex)}
                 aria-label={`Foto ${realIndex + 1} in Lightbox öffnen`}
-                className="flex-shrink-0 overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
-                style={{ width: TILE_W, height: TILE_W }}
+                className={`relative flex-shrink-0 transition-transform duration-300 ease-out hover:scale-[1.06] hover:rotate-0 hover:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent ${rotation}`}
+                style={{ width: TILE_W }}
               >
-                <img
-                  src={url}
-                  alt={`Kristin & Daniel — Foto ${realIndex + 1}`}
-                  className="w-full h-full object-cover grayscale"
-                  loading="lazy"
-                  draggable="false"
-                />
+                <div className="bg-white p-3 pb-10 shadow-[0_6px_24px_rgba(46,61,82,0.16)]">
+                  <img
+                    src={url}
+                    alt={`Kristin & Daniel — Foto ${realIndex + 1}`}
+                    className="w-full aspect-square object-cover grayscale block"
+                    loading="lazy"
+                    draggable="false"
+                  />
+                </div>
               </button>
             )
           })}
