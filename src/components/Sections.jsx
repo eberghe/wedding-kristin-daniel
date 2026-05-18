@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useLang } from '../i18n'
-import { FloralDivider, FloralSmall, FloralCorner } from './Florals'
+import { FloralDivider, FloralSmall } from './Florals'
 import { useFadeIn } from '../hooks/useFadeIn'
 import PhotoSlot from './PhotoSlot'
 
@@ -155,6 +155,45 @@ export function FAQ() {
   )
 }
 
+function WitnessCard({ w, t }) {
+  return (
+    <article className="border border-blue-accent/20 p-5 sm:p-6 text-center bg-white/60 flex flex-col items-center">
+      <PhotoSlot
+        slot={w.slot}
+        alt={w.name}
+        className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4 overflow-hidden"
+      />
+      <p className="section-label text-blue-muted mb-2">{w.role}</p>
+      <h3 className="font-display text-base sm:text-lg text-navy mb-3 leading-snug">{w.name}</h3>
+      <a
+        href={`tel:${w.phone.replace(/\s/g, '')}`}
+        className="text-sm text-navy/65 hover:text-blue-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+        aria-label={`${t('contact_phone')}: ${w.phone}`}
+      >
+        {w.phone}
+      </a>
+      {w.email && (
+        <a
+          href={`mailto:${w.email}`}
+          className="text-sm text-navy/65 hover:text-blue-accent transition-colors duration-200 mt-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+          aria-label={`${t('contact_email')}: ${w.email}`}
+        >
+          {w.email}
+        </a>
+      )}
+    </article>
+  )
+}
+
+function GroupHeading({ person }) {
+  return (
+    <div className="text-center pb-1">
+      <p className="font-script text-3xl text-navy mb-2">{person}</p>
+      <FloralDivider className="w-full" color="#5C7A5C" />
+    </div>
+  )
+}
+
 export function Contact() {
   const { t } = useLang()
   const ref = useFadeIn()
@@ -176,52 +215,27 @@ export function Contact() {
           <p className="text-navy/60 text-base mt-4">{t('contact_intro')}</p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-8">
+        {/* Mobile / tablet: two stacked groups */}
+        <div className="lg:hidden flex flex-col gap-10">
           {WITNESS_TABS.map((tab) => (
-            <div key={tab.person} className="flex-1">
-              {/* Group heading with full-width divider */}
-              <div className="text-center mb-6">
-                <p className="font-script text-3xl sm:text-4xl text-navy mb-2">{tab.person}</p>
-                <FloralDivider className="w-full" color="#5C7A5C" />
-              </div>
-
-              {/* Witness cards — always 2 columns */}
-              <div className="grid grid-cols-2 gap-4 sm:gap-5">
-                {tab.witnesses.map((w) => (
-                  <article
-                    key={w.slot}
-                    className="relative border border-blue-accent/20 p-5 sm:p-6 text-center bg-white/60 flex flex-col items-center overflow-hidden"
-                  >
-                    <FloralCorner className="absolute top-0 right-0 opacity-40" color="#697C9F" size={80} />
-                    <FloralCorner className="absolute bottom-0 left-0 opacity-40 rotate-180" color="#697C9F" size={80} />
-
-                    <PhotoSlot
-                      slot={w.slot}
-                      alt={w.name}
-                      className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4 overflow-hidden relative z-10"
-                    />
-                    <p className="section-label text-blue-muted mb-2 relative z-10">{w.role}</p>
-                    <h3 className="font-display text-base sm:text-xl text-navy mb-3 relative z-10">{w.name}</h3>
-                    <a
-                      href={`tel:${w.phone.replace(/\s/g, '')}`}
-                      className="text-sm text-navy/65 hover:text-blue-accent transition-colors duration-200 relative z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
-                      aria-label={`${t('contact_phone')}: ${w.phone}`}
-                    >
-                      {w.phone}
-                    </a>
-                    {w.email && (
-                      <a
-                        href={`mailto:${w.email}`}
-                        className="text-sm text-navy/65 hover:text-blue-accent transition-colors duration-200 mt-1 relative z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
-                        aria-label={`${t('contact_email')}: ${w.email}`}
-                      >
-                        {w.email}
-                      </a>
-                    )}
-                  </article>
-                ))}
+            <div key={tab.person}>
+              <GroupHeading person={tab.person} />
+              <div className="grid grid-cols-2 gap-4 mt-6">
+                {tab.witnesses.map((w) => <WitnessCard key={w.slot} w={w} t={t} />)}
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* Desktop: single 4-col grid — headings row 1, all 4 cards row 2 (equal height) */}
+        <div className="hidden lg:grid lg:grid-cols-4 lg:gap-5">
+          {WITNESS_TABS.map((tab) => (
+            <div key={tab.person} className="col-span-2 pb-6">
+              <GroupHeading person={tab.person} />
+            </div>
+          ))}
+          {WITNESS_TABS.flatMap((tab) => tab.witnesses).map((w) => (
+            <WitnessCard key={w.slot} w={w} t={t} />
           ))}
         </div>
       </div>
