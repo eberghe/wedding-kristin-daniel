@@ -25,7 +25,7 @@ const HOTELS = [
   },
 ]
 
-const FAQ_COUNT = 6
+const FAQ_COUNT = 8
 
 const WITNESS_TABS = [
   {
@@ -155,10 +155,13 @@ export function FAQ() {
   )
 }
 
+const ALL_WITNESSES = WITNESS_TABS.flatMap((tab) =>
+  tab.witnesses.map((w) => ({ ...w, group: tab.person }))
+)
+
 export function Contact() {
   const { t } = useLang()
   const ref = useFadeIn()
-  const [activeTab, setActiveTab] = useState(0)
 
   return (
     <section
@@ -166,7 +169,7 @@ export function Contact() {
       aria-labelledby="contact-heading"
       className="bg-cream-light py-20 md:py-28"
     >
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div ref={ref} className="text-center mb-12">
           <FloralSmall className="mx-auto mb-4" color="#5C7A5C" />
           <p className="section-label text-blue-muted mb-3">{t('contact_label')}</p>
@@ -177,54 +180,33 @@ export function Contact() {
           <p className="text-navy/60 text-base mt-4">{t('contact_intro')}</p>
         </div>
 
-        {/* Tab toggle */}
-        <div className="flex justify-center gap-1 mb-10" role="tablist" aria-label={t('contact_tab_aria')}>
-          {WITNESS_TABS.map((tab, i) => (
-            <button
-              key={tab.person}
-              role="tab"
-              aria-selected={activeTab === i}
-              onClick={() => setActiveTab(i)}
-              className={`px-8 py-2.5 text-xs tracking-widest uppercase transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent ${
-                activeTab === i
-                  ? 'bg-navy text-cream'
-                  : 'border border-navy/20 text-navy/60 hover:border-blue-accent hover:text-navy'
-              }`}
-            >
-              {tab.person}
-            </button>
-          ))}
-        </div>
-
-        {/* Witnesses */}
-        <div className="grid sm:grid-cols-2 gap-6" role="tabpanel">
-          {WITNESS_TABS[activeTab].witnesses.map((w) => (
-            <article key={w.slot} className="border border-blue-accent/20 p-6 sm:p-8 text-center bg-white/60">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {ALL_WITNESSES.map((w) => (
+            <article key={w.slot} className="border border-blue-accent/20 p-5 sm:p-6 text-center bg-white/60 flex flex-col items-center">
               <PhotoSlot
                 slot={w.slot}
                 alt={w.name}
-                className="w-24 h-24 rounded-full mx-auto mb-5 overflow-hidden"
+                className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4 overflow-hidden"
               />
-              <p className="section-label text-blue-muted mb-2">{w.role}</p>
-              <h3 className="font-script text-2xl text-navy mb-4">{w.name}</h3>
-              <div className="flex flex-col gap-2">
+              <p className="text-xs tracking-widest uppercase text-blue-muted mb-1">{w.group}</p>
+              <p className="section-label text-navy/50 mb-2 text-xs">{w.role}</p>
+              <h3 className="font-script text-xl sm:text-2xl text-navy mb-3 leading-tight">{w.name}</h3>
+              <a
+                href={`tel:${w.phone.replace(/\s/g, '')}`}
+                className="text-sm text-navy/65 hover:text-blue-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+                aria-label={`${t('contact_phone')}: ${w.phone}`}
+              >
+                {w.phone}
+              </a>
+              {w.email && (
                 <a
-                  href={`tel:${w.phone.replace(/\s/g, '')}`}
-                  className="text-sm text-navy/65 hover:text-blue-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
-                  aria-label={`${t('contact_phone')}: ${w.phone}`}
+                  href={`mailto:${w.email}`}
+                  className="text-sm text-navy/65 hover:text-blue-accent transition-colors duration-200 mt-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+                  aria-label={`${t('contact_email')}: ${w.email}`}
                 >
-                  {t('contact_phone')}: {w.phone}
+                  {w.email}
                 </a>
-                {w.email && (
-                  <a
-                    href={`mailto:${w.email}`}
-                    className="text-sm text-navy/65 hover:text-blue-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
-                    aria-label={`${t('contact_email')}: ${w.email}`}
-                  >
-                    {w.email}
-                  </a>
-                )}
-              </div>
+              )}
             </article>
           ))}
         </div>

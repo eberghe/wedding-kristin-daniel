@@ -31,7 +31,7 @@ const translations = {
     // Welcome
     welcome_label: 'Unsere Geschichte',
     welcome_title: 'Wie alles begann',
-    welcome_text: 'Wenn wir heute auf unsere Geschichte zurückblicken, fühlt es sich fast so an, als hätten sich unsere Wege schon lange gekreuzt, bevor wir überhaupt verstanden haben, was daraus einmal werden würde. Wir kennen uns bereits seit unserer Kindheit, gingen zusammen zur Schule, hatten gemeinsame Freunde und waren uns immer wieder näher, ohne es tatsächlich zu wissen.\n\nAls wir 2020 zusammenkamen, hat sich auf einmal alles richtig angefühlt. Nach nur sechs Monaten sind wir zusammengezogen und haben seitdem Seite an Seite so vieles getragen und erlebt: zwei Ausbildungen, unzählige Umzüge, dann der Beginn von Kristins Studium, eine Zeit der Fernbeziehung, immer wieder Prüfungen und auch schwere Zeiten liegen hinter uns.\n\nUmso schöner fühlt es sich heute an, dass wir verlobt sind und diesen Weg nun ganz bewusst gemeinsam weitergehen dürfen.\n\nNun können wir es kaum erwarten, all das, was hinter uns liegt und alles, was die Zukunft noch für uns bereithält, gemeinsam mit euch feiern zu dürfen.',
+    welcome_text: 'Wenn wir heute auf unsere Geschichte zurückblicken, fühlt es sich fast so an, als hätten sich unsere Wege schon lange gekreuzt, bevor wir überhaupt verstanden haben, was daraus einmal werden würde. Wir kennen uns bereits seit unserer frühen Kindheit, gingen auf die gleiche Schule, hatten gemeinsame Freunde und waren uns immer wieder näher, ohne es tatsächlich zu wissen.\n\nAls wir 2020 zusammenkamen, hat sich auf einmal alles richtig angefühlt. Nach sechs Monaten sind wir zusammengezogen und haben seitdem Seite an Seite so vieles getragen und erlebt: Zwei Ausbildungen, einige Umzüge, der Beginn von Kristins Studium, eine Zeit der Fernbeziehung, immer wieder Prüfungen und auch schwere Zeiten liegen hinter uns.\n\nUmso schöner fühlt es sich heute an, dass wir verlobt sind und diesen Weg nun ganz bewusst als zukünftige Ehepartner gemeinsam weitergehen dürfen.\n\nNun können wir es kaum erwarten, all das, was hinter und vor uns liegt zusammen an einem Tag mit euch feiern zu dürfen.\n\nWir freuen uns auf euch!',
     welcome_names: 'Kristin & Daniel',
 
     // Tagesablauf
@@ -120,6 +120,10 @@ const translations = {
     faq_5_a: 'Der Dresscode ist elegant-festlich. Kleider und Anzüge in gedämpften Farben sind willkommen.',
     faq_6_q: 'Bis wann muss ich mich an- oder abmelden?',
     faq_6_a: 'Wir freuen uns über eure Rückmeldung bis zum 01. Juni 2028, damit wir adäquat planen können.',
+    faq_7_q: 'Wann soll ich anreisen?',
+    faq_7_a: 'Ab 14:30 Uhr ist Einlass, die freie Trauung wird um 15 Uhr starten. Um pünktlich zu kommen, könnt ihr gerne in der Früh oder einen Tag vorher anreisen.',
+    faq_8_q: 'Darf ich eine Einlage vorbereiten?',
+    faq_8_a: 'Wir freuen uns natürlich über jeden, der uns mit einer Einlage eine Freude machen möchte (sofern der zeitliche Rahmen dies zulässt). Bitte wendet euch dazu an unsere Trauzeugen. Diese werden das Programm koordinieren, mit uns abstimmen und euch ggf. bei der Vorbereitung unterstützen.',
     faq_open: 'Antwort anzeigen',
     faq_close: 'Antwort schließen',
 
@@ -134,7 +138,7 @@ const translations = {
     // Dresscode
     dresscode_title: 'Dresscode',
     dresscode_label: 'Was ihr anziehen könnt',
-    dresscode_intro: 'Wir wünschen uns festlich-elegante Kleidung. Lange Kleider, Anzüge und Hosenanzüge in gedämpften Farben sind herzlich willkommen. Bitte kein Weiß — das gehört ganz der Braut — und auch lässige Kleidung wird nicht gern gesehen.',
+    dresscode_intro: 'Wir wünschen uns festlich-elegante Kleidung. Lange Kleider, Anzüge und Hosenanzüge in gedämpften Farben sind willkommen. Bitte kein Weiß – dies gehört ganz der Braut – und von lässiger Kleidung bitten wir ebenfalls abzusehen.',
     dresscode_palette_label: 'Unsere Farbpalette',
     dresscode_color_label: 'Farbe',
     dresscode_img_alt: 'Dresscode-Inspiration',
@@ -303,6 +307,10 @@ const translations = {
     faq_5_a: 'The dress code is formal elegant. Dresses and suits in muted tones are very welcome.',
     faq_6_q: 'When is the RSVP deadline?',
     faq_6_a: 'Please let us know by June 1, 2028 so we can plan accordingly.',
+    faq_7_q: 'When should I arrive?',
+    faq_7_a: 'Doors open at 2:30 pm; the ceremony will begin at 3:00 pm. To arrive on time, feel free to travel in the morning or the day before.',
+    faq_8_q: 'Can I prepare a performance?',
+    faq_8_a: 'We would of course love for anyone who wants to surprise us with a performance to do so (time permitting). Please get in touch with our witnesses, who will coordinate the programme, align with us, and help you prepare if needed.',
     faq_open: 'Show answer',
     faq_close: 'Hide answer',
 
