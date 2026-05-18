@@ -135,6 +135,8 @@ export default function PhotoSlider() {
             width: `${track.length * (TILE_W + GAP)}px`,
             animation: `slider-scroll ${duration}s linear infinite`,
             animationPlayState: paused ? 'paused' : 'running',
+            willChange: 'transform',
+            backfaceVisibility: 'hidden',
           }}
         >
           {track.map((url, i) => {
@@ -145,7 +147,7 @@ export default function PhotoSlider() {
                 key={i}
                 onClick={() => setLightboxIndex(realIndex)}
                 aria-label={`Foto ${realIndex + 1} in Lightbox öffnen`}
-                className={`relative flex-shrink-0 transition-transform duration-300 ease-out hover:scale-[1.06] hover:rotate-0 hover:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent ${rotation}`}
+                className={`flex-shrink-0 transition-transform duration-300 ease-out hover:scale-[1.06] hover:rotate-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent ${rotation}`}
                 style={{ width: TILE_W }}
               >
                 <div className="bg-white p-3 pb-10 shadow-[0_6px_24px_rgba(46,61,82,0.16)]">
