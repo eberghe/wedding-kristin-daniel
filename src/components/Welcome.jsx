@@ -6,7 +6,7 @@ import PhotoSlot from './PhotoSlot'
 function Polaroid({ slot, label, className = '' }) {
   return (
     <div className={`bg-white shadow-[0_6px_28px_rgba(46,61,82,0.18)] p-3 pb-10 ${className}`}>
-      <PhotoSlot slot={slot} alt={label} className="w-full aspect-square" grayscale={false} />
+      <PhotoSlot slot={slot} alt={label} className="w-full aspect-square" grayscale={true} />
       <p className="text-center mt-3 font-script text-navy/55 text-xl leading-none">{label}</p>
     </div>
   )
@@ -24,10 +24,10 @@ export default function Welcome() {
 
         {/* Mobile: stacked vertically */}
         <div className="lg:hidden flex flex-col items-center gap-6 py-14 bg-cream-light">
-          <div className="w-[70%] max-w-[280px] -rotate-[3deg] transition-all duration-500 hover:rotate-0 hover:scale-[1.03] hover:shadow-2xl cursor-pointer">
+          <div className="w-[80%] max-w-[320px] -rotate-[3deg] transition-all duration-500 hover:rotate-0 hover:scale-[1.03] hover:shadow-2xl cursor-pointer">
             <Polaroid slot="hero_then" label={t('hero_then_label')} />
           </div>
-          <div className="w-[70%] max-w-[280px] rotate-[2deg] transition-all duration-500 hover:rotate-0 hover:scale-[1.03] hover:shadow-2xl cursor-pointer">
+          <div className="w-[80%] max-w-[320px] rotate-[2deg] transition-all duration-500 hover:rotate-0 hover:scale-[1.03] hover:shadow-2xl cursor-pointer">
             <Polaroid slot="hero" label={t('hero_now_label')} />
           </div>
         </div>
@@ -36,7 +36,7 @@ export default function Welcome() {
         <div className="hidden lg:flex items-center justify-center relative min-h-[680px] bg-cream-light overflow-hidden">
           {/* Damals — behind by default, hover brings to front */}
           <div
-            className="absolute w-[46%] z-10 hover:z-30
+            className="absolute w-[52%] z-10 hover:z-30
               -translate-x-[28%] translate-y-[6%] -rotate-[5deg]
               transition-all duration-500 ease-out
               hover:scale-[1.04] hover:-rotate-[3deg] hover:shadow-2xl
@@ -47,7 +47,7 @@ export default function Welcome() {
 
           {/* Heute — in front by default */}
           <div
-            className="absolute w-[46%] z-20 hover:z-30
+            className="absolute w-[52%] z-20 hover:z-30
               translate-x-[28%] -translate-y-[5%] rotate-[4deg]
               transition-all duration-500 ease-out
               hover:scale-[1.04] hover:rotate-[2deg] hover:shadow-2xl
