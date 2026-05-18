@@ -21,9 +21,9 @@ export default function Location() {
           <FloralDivider className="mx-auto mt-4" color="#EFEEF5CC" />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-10">
+        <div className="grid md:grid-cols-2 gap-8 mb-10 md:items-stretch">
           {/* Address */}
-          <div className="border border-cream/20 p-6 sm:p-8">
+          <div className="border border-cream/20 p-6 sm:p-8 h-full flex flex-col justify-between">
             <h3 className="section-label text-cream/60 mb-3">{t('location_address_title')}</h3>
             <address className="not-italic">
               <p className="font-script text-2xl text-cream mb-3">Gut Hermannsberg</p>
@@ -45,12 +45,12 @@ export default function Location() {
           </div>
 
           {/* Info cards */}
-          <div className="flex flex-col gap-4">
-            <div className="border border-cream/20 p-5 bg-cream/5">
+          <div className="flex flex-col gap-4 h-full">
+            <div className="border border-cream/20 p-6 sm:p-8 bg-cream/5 flex-1 flex flex-col justify-center">
               <h3 className="section-label text-cream/60 mb-2">{t('location_outdoor_title')}</h3>
               <p className="text-cream/75 text-base leading-relaxed">{t('location_outdoor_text')}</p>
             </div>
-            <div className="border border-cream/20 p-5 bg-cream/5">
+            <div className="border border-cream/20 p-6 sm:p-8 bg-cream/5 flex-1 flex flex-col justify-center">
               <h3 className="section-label text-cream/60 mb-2">{t('location_parking_title')}</h3>
               <p className="text-cream/75 text-base leading-relaxed">{t('location_parking_text')}</p>
             </div>
