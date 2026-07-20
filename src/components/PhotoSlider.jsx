@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import { getPhotoUrl } from '../utils/storage'
 
 const SLIDER_SLOTS = Array.from({ length: 8 }, (_, i) => `slider_${i + 1}`)
-const STATIC_IMAGES = [] // prepend local images here: e.g. ['/images/slider-1.jpg']
+const STATIC_IMAGES = ['/images/slider-1.jpg']
 const TILE_W = 220 // px — polaroid outer width
 const GAP = 28    // px — breathing room between polaroids
 
