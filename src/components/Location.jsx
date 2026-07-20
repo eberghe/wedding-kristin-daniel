@@ -72,10 +72,6 @@ export default function Location() {
           />
         </div>
 
-        {/* Schedule coming soon */}
-        <p className="text-center text-cream/50 text-sm tracking-wider mt-10 italic font-display text-xl">
-          {t('location_schedule_coming')}
-        </p>
       </div>
     </section>
   )

@@ -32,25 +32,20 @@ export default function Welcome() {
           </div>
         </div>
 
-        {/* Desktop: overlapping */}
-        <div className="hidden lg:flex items-center justify-center relative min-h-[680px] bg-cream-light overflow-hidden">
-          {/* Damals — behind by default, hover brings to front */}
+        {/* Desktop: side by side, both fully visible */}
+        <div className="hidden lg:flex items-center justify-center gap-8 py-16 bg-cream-light px-10">
           <div
-            className="absolute w-[52%] z-10 hover:z-30
-              -translate-x-[28%] translate-y-[6%] -rotate-[5deg]
+            className="w-[44%] -rotate-[4deg]
               transition-all duration-500 ease-out
-              hover:scale-[1.04] hover:-rotate-[3deg] hover:shadow-2xl
+              hover:scale-[1.04] hover:rotate-0 hover:shadow-2xl
               cursor-pointer"
           >
             <Polaroid slot="hero_then" label={t('hero_then_label')} />
           </div>
-
-          {/* Heute — in front by default */}
           <div
-            className="absolute w-[52%] z-20 hover:z-30
-              translate-x-[28%] -translate-y-[5%] rotate-[4deg]
+            className="w-[44%] rotate-[3deg]
               transition-all duration-500 ease-out
-              hover:scale-[1.04] hover:rotate-[2deg] hover:shadow-2xl
+              hover:scale-[1.04] hover:rotate-0 hover:shadow-2xl
               cursor-pointer"
           >
             <Polaroid slot="hero" label={t('hero_now_label')} />

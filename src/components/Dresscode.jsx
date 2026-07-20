@@ -2,7 +2,7 @@ import { useLang } from '../i18n'
 import { FloralDivider } from './Florals'
 import { useFadeIn } from '../hooks/useFadeIn'
 
-const COLORS = ['#697C9F', '#2E3D52', '#6E6C83', '#9BA8C0']
+const COLORS = ['#87BA63', '#1B6342', '#99D8E8', '#183873', '#381C0A', '#E8D7C5']
 
 export default function Dresscode() {
   const { t } = useLang()
@@ -17,9 +17,11 @@ export default function Dresscode() {
             {t('dresscode_title')}
           </h2>
           <FloralDivider className="mx-auto mt-4 mb-6" color="#EFEEF5" />
-          <p className="text-cream/65 text-base leading-relaxed max-w-lg mx-auto">
-            {t('dresscode_intro')}
-          </p>
+          <div className="text-cream/65 text-base leading-relaxed max-w-lg mx-auto space-y-4">
+            {t('dresscode_intro').split('\n\n').map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
 
           {/* Color palette */}
           <div className="flex justify-center gap-4 mt-8">

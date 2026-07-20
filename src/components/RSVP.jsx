@@ -41,6 +41,7 @@ export default function RSVP() {
     attending: '',
     guestCount: 0,
     guestNames: [],
+    guestEmails: [],
     foodPreferences: [{ person: '', food: '' }],
     allergies: '',
   })
@@ -51,9 +52,9 @@ export default function RSVP() {
   const handleGuestCount = (e) => {
     const count = Math.max(0, Math.min(10, parseInt(e.target.value) || 0))
     const names = Array.from({ length: count }, (_, i) => form.guestNames[i] || '')
-    // food: index 0 = main person, 1..count = guests
+    const emails = Array.from({ length: count }, (_, i) => form.guestEmails[i] || '')
     const foods = Array.from({ length: count + 1 }, (_, i) => form.foodPreferences[i] || { person: '', food: '' })
-    setForm(f => ({ ...f, guestCount: count, guestNames: names, foodPreferences: foods }))
+    setForm(f => ({ ...f, guestCount: count, guestNames: names, guestEmails: emails, foodPreferences: foods }))
   }
 
   const handleGuestName = (i, value) => {
@@ -62,6 +63,12 @@ export default function RSVP() {
     const foods = [...form.foodPreferences]
     foods[i + 1] = { ...(foods[i + 1] || {}), person: value }
     setForm(f => ({ ...f, guestNames: names, foodPreferences: foods }))
+  }
+
+  const handleGuestEmail = (i, value) => {
+    const emails = [...form.guestEmails]
+    emails[i] = value
+    setForm(f => ({ ...f, guestEmails: emails }))
   }
 
   const handleFood = (index, value) => {
@@ -80,6 +87,7 @@ export default function RSVP() {
       attending: form.attending === 'yes',
       guest_count: form.guestCount,
       guest_names: form.guestNames.filter(Boolean),
+      guest_emails: form.guestEmails.filter(Boolean),
       food_preferences: form.foodPreferences.map((fp, i) => ({
         person: i === 0 ? form.name : form.guestNames[i - 1] || `Gast ${i}`,
         food: fp.food || '',
@@ -211,7 +219,7 @@ export default function RSVP() {
                   {t('rsvp_guests_count')}
                 </label>
                 <p id="guest-count-hint" className="text-xs text-navy/40 mb-1">{t('rsvp_guests_count_help')}</p>
-                <p className="text-xs text-blue-accent/80 italic mb-2">{t('rsvp_guests_note')}</p>
+                <p className="text-sm font-semibold text-blue-accent mb-2 border border-blue-accent/30 bg-blue-accent/5 px-3 py-2">{t('rsvp_guests_note')}</p>
                 <input
                   id="rsvp-guest-count"
                   type="number"
@@ -224,19 +232,34 @@ export default function RSVP() {
                 />
               </div>
 
-              {/* Guest names */}
+              {/* Guest names + emails */}
               {form.guestNames.map((name, i) => (
-                <div key={i} className="mb-4">
-                  <label htmlFor={`guest-name-${i}`} className="block text-xs tracking-widest uppercase text-navy/60 mb-1.5">
-                    {t('rsvp_guest_name')} {i + 1}
-                  </label>
-                  <input
-                    id={`guest-name-${i}`}
-                    type="text"
-                    value={name}
-                    onChange={e => handleGuestName(i, e.target.value)}
-                    className="w-full border border-navy/20 bg-white px-4 py-3 text-navy text-sm placeholder:text-navy/30 focus:border-blue-accent focus:outline-none transition-colors"
-                  />
+                <div key={i} className="mb-5 grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor={`guest-name-${i}`} className="block text-xs tracking-widest uppercase text-navy/60 mb-1.5">
+                      {t('rsvp_guest_name')} {i + 1}
+                    </label>
+                    <input
+                      id={`guest-name-${i}`}
+                      type="text"
+                      value={name}
+                      onChange={e => handleGuestName(i, e.target.value)}
+                      className="w-full border border-navy/20 bg-white px-4 py-3 text-navy text-sm placeholder:text-navy/30 focus:border-blue-accent focus:outline-none transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor={`guest-email-${i}`} className="block text-xs tracking-widest uppercase text-navy/60 mb-1.5">
+                      {t('rsvp_guest_email')} {i + 1}
+                    </label>
+                    <input
+                      id={`guest-email-${i}`}
+                      type="email"
+                      value={form.guestEmails[i] || ''}
+                      onChange={e => handleGuestEmail(i, e.target.value)}
+                      placeholder="email@beispiel.de"
+                      className="w-full border border-navy/20 bg-white px-4 py-3 text-navy text-sm placeholder:text-navy/30 focus:border-blue-accent focus:outline-none transition-colors"
+                    />
+                  </div>
                 </div>
               ))}
 

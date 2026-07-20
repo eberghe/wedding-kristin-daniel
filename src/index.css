@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,7 @@
 
 @layer base {
   html { scroll-behavior: smooth; font-size: 112.5%; }
-  body { font-family: 'Playfair Display', Georgia, serif; color: #2E3D52; -webkit-font-smoothing: antialiased; }
+  body { font-family: 'Cormorant Garamond', Georgia, serif; color: #2E3D52; -webkit-font-smoothing: antialiased; }
   *:focus-visible { outline: 2px solid #697C9F; outline-offset: 2px; }
   a:hover { text-decoration-line: underline; }
 }
@@ -23,7 +23,7 @@
 .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-.font-script { font-family: 'WindSong', cursive; }
+.font-script { font-family: 'Pinyon Script', cursive; }
 
 @keyframes slider-scroll {
   from { transform: translate3d(0, 0, 0); }

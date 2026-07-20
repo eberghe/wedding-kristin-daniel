@@ -20,9 +20,9 @@ export default {
         },
       },
       fontFamily: {
-        script: ['"WindSong"', 'cursive'],
-        sans: ['"Playfair Display"', 'Georgia', 'serif'],
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        script: ['"Pinyon Script"', 'cursive'],
+        sans: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
       },
     },
   },
