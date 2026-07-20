@@ -1,7 +1,6 @@
 import { useLang } from '../i18n'
 import { FloralDivider } from './Florals'
 import Countdown from './Countdown'
-import PhotoSlot from './PhotoSlot'
 import { useFadeIn } from '../hooks/useFadeIn'
 
 export default function Hero() {
@@ -14,13 +13,18 @@ export default function Hero() {
       aria-labelledby="hero-heading"
       className="relative h-screen bg-navy flex flex-col overflow-hidden"
     >
-      {/* Background photo */}
+      {/* Background illustration */}
       <div className="absolute inset-0">
-        <PhotoSlot slot="welcome" alt="" className="w-full h-full" grayscale={false} />
+        <img
+          src="/images/hero-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover object-center"
+        />
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-navy/70" />
+      <div className="absolute inset-0 bg-navy/55" />
 
       {/* Main content — centered vertically */}
       <div

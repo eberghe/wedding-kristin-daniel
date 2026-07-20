@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { getPhotoUrl } from '../utils/storage'
 
 const SLIDER_SLOTS = Array.from({ length: 8 }, (_, i) => `slider_${i + 1}`)
+const STATIC_IMAGES = [] // prepend local images here: e.g. ['/images/slider-1.jpg']
 const TILE_W = 220 // px — polaroid outer width
 const GAP = 28    // px — breathing room between polaroids
 
@@ -110,7 +111,7 @@ export default function PhotoSlider() {
   useEffect(() => {
     const load = async () => {
       const results = await Promise.all(SLIDER_SLOTS.map(slot => getPhotoUrl(slot)))
-      setImages(results.filter(Boolean))
+      setImages([...STATIC_IMAGES, ...results.filter(Boolean)].filter(Boolean))
     }
     load()
   }, [])
