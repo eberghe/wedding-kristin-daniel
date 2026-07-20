@@ -26,15 +26,15 @@ export default function Location() {
           <div className="border border-cream/20 p-6 sm:p-8 h-full flex flex-col justify-between">
             <h3 className="section-label text-cream/60 mb-3">{t('location_address_title')}</h3>
             <address className="not-italic">
-              <p className="font-script text-2xl text-cream mb-3">Gut Hermannsberg</p>
+              <p className="font-script text-2xl text-cream mb-3">Schloss Jägersburg</p>
               <p className="text-cream/70 text-base leading-relaxed">
-                Hermannsberg 1<br />
-                83410 Laufen, Bayern<br />
+                Fürstenweg 1<br />
+                91330 Eggolsheim-Bammersdorf<br />
                 Deutschland
               </p>
             </address>
             <a
-              href="https://maps.google.com/?q=Gut+Hermannsberg+Laufen+Bayern"
+              href="https://maps.app.goo.gl/SNsDduQY3V3xVJQH6"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block mt-4 text-xs tracking-widest uppercase border border-cream/40 px-5 py-2.5 text-cream/80 hover:bg-cream/10 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
@@ -62,7 +62,7 @@ export default function Location() {
           <iframe
             title={t('location_map_label')}
             aria-label={t('location_map_label')}
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2694.0!2d12.9!3d47.94!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zGut+Hermannsberg!5e0!3m2!1sde!2sde!4v1234567890"
+            src="https://maps.google.com/maps?q=Schloss+Jägersburg,+Fürstenweg+1,+91330+Eggolsheim-Bammersdorf&output=embed"
             width="100%"
             height="300"
             style={{ border: 0, filter: 'grayscale(1) invert(0.9) contrast(0.9)' }}

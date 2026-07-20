@@ -54,7 +54,7 @@ const translations = {
     location_parking_title: 'Parken',
     location_parking_text: 'Ausreichend Parkplätze sind vor Ort vorhanden. Bitte folgt dazu der Beschilderung.',
     location_schedule_coming: 'Der genaue Tagesablauf folgt in Kürze.',
-    location_map_label: 'Karte zu Gut Hermannsberg',
+    location_map_label: 'Karte zu Schloss Jägersburg',
 
     // RSVP
     rsvp_title: 'Anmeldung',
@@ -246,7 +246,7 @@ const translations = {
     location_parking_title: 'Parking',
     location_parking_text: 'Ample parking is available on site. Please follow the signs on arrival.',
     location_schedule_coming: 'The detailed day schedule will follow soon.',
-    location_map_label: 'Map to Gut Hermannsberg',
+    location_map_label: 'Map to Schloss Jägersburg',
 
     rsvp_title: 'RSVP',
     rsvp_label: 'Will you join us?',
