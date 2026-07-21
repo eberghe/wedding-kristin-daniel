@@ -99,10 +99,6 @@ export default function RSVP() {
       guest_names: form.guestNames.filter(Boolean),
       guest_emails: form.guestEmails.filter(Boolean),
       cake: form.bringingCake && form.cakeType.trim() ? form.cakeType.trim() : null,
-      food_preferences: form.foodPreferences.map((fp, i) => ({
-        person: i === 0 ? form.name : form.guestNames[i - 1] || `Gast ${i}`,
-        food: fp.food || '',
-      })),
       allergies: form.allergies.trim(),
       language: lang,
     }
