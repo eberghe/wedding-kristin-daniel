@@ -64,16 +64,19 @@ function Stats({ data, t }) {
     { name: t('admin_declined'), value: declined },
   ].filter(d => d.value > 0)
 
+  const cakesCommitted = data.filter(r => r.cake).length
+
   const cards = [
     { label: t('admin_total_responses'), value: data.length },
     { label: t('admin_confirmed'), value: confirmed },
     { label: t('admin_declined'), value: declined },
     { label: t('admin_total_guests'), value: totalGuests },
+    { label: 'Kuchen zugesagt', value: `${cakesCommitted} / 18` },
   ]
 
   return (
     <div>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
         {cards.map(c => (
           <div key={c.label} className="bg-white border border-navy/10 p-5 text-center">
             <p className="font-script text-4xl text-navy">{c.value}</p>
@@ -156,12 +159,12 @@ function RSVPTable({ data, t, onDelete }) {
     })
 
   const exportCSV = () => {
-    const headers = [t('admin_col_name'), t('admin_col_email'), t('admin_col_attending'), t('admin_col_guests'), 'Gäste E-Mails', t('admin_col_allergies'), t('admin_col_date')]
+    const headers = [t('admin_col_name'), t('admin_col_email'), t('admin_col_attending'), t('admin_col_guests'), 'Gäste E-Mails', 'Kuchen', t('admin_col_allergies'), t('admin_col_date')]
     const rows = data.map(r => [
       r.name, r.email, r.attending ? 'Ja' : 'Nein',
       (r.guest_names || []).filter(Boolean).join(', ') || r.guest_count || 0,
       (r.guest_emails || []).filter(Boolean).join(', ') || '',
-      r.allergies || '', new Date(r.created_at).toLocaleDateString('de-DE'),
+      r.cake || '', r.allergies || '', new Date(r.created_at).toLocaleDateString('de-DE'),
     ])
     const csv = [headers, ...rows].map(row => row.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n')
     const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' })
@@ -197,6 +200,7 @@ function RSVPTable({ data, t, onDelete }) {
                     <th key={f} className="px-4 py-3 font-medium"><Th field={f} label={l} /></th>
                   ))}
                   <th className="px-4 py-3 font-medium">{t('admin_col_guests')}</th>
+                  <th className="px-4 py-3 font-medium">Kuchen</th>
                   <th className="px-4 py-3 font-medium">{t('admin_col_allergies')}</th>
                   <th className="px-4 py-3 font-medium"><Th field="created_at" label={t('admin_col_date')} /></th>
                   <th className="px-4 py-3 font-medium w-10" aria-label="Aktionen" />
@@ -226,6 +230,7 @@ function RSVPTable({ data, t, onDelete }) {
                         </div>
                       ))}
                     </td>
+                    <td className="px-4 py-3 text-navy/70 text-xs">{r.cake || '—'}</td>
                     <td className="px-4 py-3 text-navy/55 text-xs">{r.allergies || '—'}</td>
                     <td className="px-4 py-3 text-navy/45 text-xs whitespace-nowrap">{new Date(r.created_at).toLocaleDateString('de-DE')}</td>
                     <td className="px-4 py-3">
