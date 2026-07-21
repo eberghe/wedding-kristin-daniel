@@ -320,7 +320,7 @@ const translations = {
     faq_3_q: 'Is the celebration outdoors?',
     faq_3_a: 'The celebrations will take place both outside in good weather and indoors in the evening.',
     faq_4_q: 'Can I bring a plus one or children?',
-    faq_4_a: 'Please only bring guests who are explicitly named on your invitation. A plus one beyond that is only possible after checking with us. Children are also explicitly invited — if you have any questions about this, please get in touch with our best man or maid of honor.',
+    faq_4_a: 'Please only bring those guests (including children) who are explicitly named on your invitation. A plus one beyond that is only possible after checking with us. If you have any questions, please get in touch with our best man or maid of honor.',
     faq_5_q: 'What is the dress code?',
     faq_5_a: 'The dress code is a guideline for how to dress. It is formal elegant. Dresses and suits in muted tones are very welcome.',
     faq_6_q: 'Can I prepare a performance?',
