@@ -33,15 +33,17 @@ export default function Location() {
                 Deutschland
               </p>
             </address>
-            <a
-              href="https://maps.app.goo.gl/SNsDduQY3V3xVJQH6"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-4 text-xs tracking-widest uppercase border border-cream/40 px-5 py-2.5 text-cream/80 hover:bg-cream/10 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
-              aria-label="Route auf Google Maps öffnen (öffnet externe Seite)"
-            >
-              Google Maps ↗
-            </a>
+            <div>
+              <a
+                href="https://maps.app.goo.gl/SNsDduQY3V3xVJQH6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-4 text-xs tracking-widest uppercase border border-cream/40 px-5 py-2.5 text-cream/80 hover:bg-cream/10 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
+                aria-label="Route auf Google Maps öffnen (öffnet externe Seite)"
+              >
+                Google Maps ↗
+              </a>
+            </div>
           </div>
 
           {/* Info cards */}
