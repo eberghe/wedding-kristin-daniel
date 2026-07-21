@@ -31,15 +31,15 @@ const WITNESS_TABS = [
   {
     person: 'Kristin',
     witnesses: [
-      { role: 'Trauzeugin', name: 'Nadine Goodluck',  phone: '0176 56912013', slot: 'witness_k1' },
-      { role: 'Trauzeugin', name: 'Lena Rollbühler',  phone: '0175 6705709',  slot: 'witness_k2' },
+      { roleKey: 'contact_role_moh', name: 'Nadine Goodluck',    phone: '0176 56912013', slot: 'witness_k1' },
+      { roleKey: 'contact_role_moh', name: 'Lena Rollbühler',    phone: '0175 6705709',  slot: 'witness_k2' },
     ],
   },
   {
     person: 'Daniel',
     witnesses: [
-      { role: 'Trauzeuge',  name: 'Stephan Weigl-Köthe', phone: '0152 03401586', slot: 'witness_d1' },
-      { role: 'Trauzeugin', name: 'Hanna Schrüfer',       phone: '0176 23883207', slot: 'witness_d2' },
+      { roleKey: 'contact_role_bm',  name: 'Stephan Weigl-Köthe', phone: '0152 03401586', slot: 'witness_d1' },
+      { roleKey: 'contact_role_moh', name: 'Hanna Schrüfer',       phone: '0176 23883207', slot: 'witness_d2' },
     ],
   },
 ]
@@ -163,7 +163,7 @@ function WitnessCard({ w, t }) {
         alt={w.name}
         className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4 overflow-hidden"
       />
-      <p className="section-label text-blue-muted mb-2">{w.role}</p>
+      <p className="section-label text-blue-muted mb-2">{t(w.roleKey)}</p>
       <h3 className="font-display text-base sm:text-lg text-navy mb-3 leading-snug">{w.name}</h3>
       <a
         href={`tel:${w.phone.replace(/\s/g, '')}`}

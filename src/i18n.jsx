@@ -134,6 +134,8 @@ const translations = {
     contact_phone: 'Telefon',
     contact_email: 'E-Mail',
     contact_tab_aria: 'Trauzeugen auswählen',
+    contact_role_moh: 'Trauzeugin',
+    contact_role_bm: 'Trauzeuge',
 
     // Dresscode
     dresscode_title: 'Dresscode',
@@ -304,11 +306,11 @@ const translations = {
     faq_3_q: 'Is the celebration outdoors?',
     faq_3_a: 'The celebrations will take place both outside in good weather and indoors in the evening.',
     faq_4_q: 'Can I bring a plus one or children?',
-    faq_4_a: 'Please only bring guests who are explicitly named on your invitation. A plus one beyond that is only possible after checking with us. Children are also explicitly invited — if you have any questions about this, please get in touch with our witnesses.',
+    faq_4_a: 'Please only bring guests who are explicitly named on your invitation. A plus one beyond that is only possible after checking with us. Children are also explicitly invited — if you have any questions about this, please get in touch with our best man or maid of honor.',
     faq_5_q: 'What is the dress code?',
     faq_5_a: 'The dress code is a guideline for how to dress. It is formal elegant. Dresses and suits in muted tones are very welcome.',
     faq_6_q: 'Can I prepare a performance?',
-    faq_6_a: 'We would of course love for anyone who wants to surprise us with a performance to do so (time permitting). Please get in touch with our witnesses (see below), who will coordinate the programme, align with us, and help you prepare if needed.',
+    faq_6_a: 'We would of course love for anyone who wants to surprise us with a performance to do so (time permitting). Please get in touch with our best man or maid of honor (see below), who will coordinate the programme, align with us, and help you prepare if needed.',
     faq_7_q: 'When is the RSVP deadline?',
     faq_7_a: 'Please let us know by June 1, 2027 so we can plan accordingly.',
     faq_open: 'Show answer',
@@ -316,10 +318,12 @@ const translations = {
 
     contact_title: 'Contact',
     contact_label: 'Any questions?',
-    contact_intro: 'For any questions, requests, or ideas for performances at the wedding celebration, please get in touch with our witnesses of honour.',
+    contact_intro: 'For any questions, requests, or ideas for performances at the wedding celebration, please get in touch with our best man or maid of honor.',
     contact_phone: 'Phone',
     contact_email: 'Email',
     contact_tab_aria: 'Select witnesses',
+    contact_role_moh: 'Maid of Honor',
+    contact_role_bm: 'Best Man',
 
     // Dresscode
     dresscode_title: 'Dress Code',
