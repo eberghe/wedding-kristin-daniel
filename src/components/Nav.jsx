@@ -88,12 +88,16 @@ export default function Nav() {
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
-            className={`font-script text-xl transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent ${
-              light ? 'text-cream' : 'text-navy'
-            }`}
+            className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
             aria-label="Kristin & Daniel — zurück zur Startseite"
           >
-            K &amp; D
+            <img
+              src="/images/k-d_logo.svg"
+              alt=""
+              aria-hidden="true"
+              className="h-9 md:h-10 w-auto transition-all duration-300"
+              style={{ filter: light ? 'brightness(0) invert(1)' : 'brightness(0)' }}
+            />
           </a>
 
           {/* Desktop nav */}
