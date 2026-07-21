@@ -124,7 +124,7 @@ const translations = {
     faq_3_q: 'Ist die Feier outdoor?',
     faq_3_a: 'Die Feierlichkeiten werden sowohl draußen, bei schönem Wetter, als auch abends drinnen stattfinden.',
     faq_4_q: 'Darf ich eine Begleitperson oder Kinder mitbringen?',
-    faq_4_a: 'Bitte bringt nur die Personen mit, die explizit auf den Einladungen geladen wurden. Plus eins darüber ist nur mit Rücksprache möglich. Auch Kinder werden explizit eingeladen — bei Unstimmigkeiten meldet euch gerne bei unseren Trauzeugen.',
+    faq_4_a: 'Bitte bringt nur die Personen (auch Kinder) mit, die explizit auf den Einladungen geladen wurden. Plus eins darüber ist nur mit Rücksprache möglich. Bei Unstimmigkeiten meldet euch gerne bei unseren Trauzeugen.',
     faq_5_q: 'Was ist der Dresscode?',
     faq_5_a: 'Der Dresscode ist der Richtwert, nach dem ihr euch kleiden solltet. Er ist elegant-festlich. Kleider und Anzüge in gedämpften Farben sind willkommen.',
     faq_6_q: 'Darf ich eine Einlage vorbereiten?',
