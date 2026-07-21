@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { useLang } from '../i18n'
 
 const NAV_ITEMS = [
-  { key: 'nav_home', href: '#home' },
   { key: 'nav_location', href: '#location' },
   { key: 'nav_rsvp', href: '#rsvp' },
   { key: 'nav_tagesablauf', href: '#tagesablauf' },
@@ -95,7 +94,7 @@ export default function Nav() {
               src="/images/k-d_logo.svg"
               alt=""
               aria-hidden="true"
-              className="h-9 md:h-10 w-auto transition-all duration-300"
+              className="h-11 md:h-12 w-auto transition-all duration-300"
               style={{ filter: light ? 'brightness(0) invert(1)' : 'brightness(0)' }}
             />
           </a>
