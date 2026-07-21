@@ -25,7 +25,7 @@ const HOTELS = [
   },
 ]
 
-const FAQ_COUNT = 8
+const FAQ_COUNT = 7
 
 const WITNESS_TABS = [
   {
