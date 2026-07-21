@@ -2,7 +2,12 @@ import { useLang } from '../i18n'
 import { FloralDivider } from './Florals'
 import { useFadeIn } from '../hooks/useFadeIn'
 
-const COLORS = ['#87BA63', '#1B6342', '#99D8E8', '#183873', '#381C0A', '#E8D7C5']
+const COLORS = [
+  { hex: '#A0C5E8', outline: false },
+  { hex: '#B4CAB3', outline: false },
+  { hex: '#5B6959', outline: false },
+  { hex: '#2E3D52', outline: true },
+]
 
 export default function Dresscode() {
   const { t } = useLang()
@@ -25,11 +30,15 @@ export default function Dresscode() {
 
           {/* Color palette */}
           <div className="flex justify-center gap-4 mt-8">
-            {COLORS.map((color) => (
-              <div key={color} className="flex flex-col items-center gap-2">
+            {COLORS.map(({ hex, outline }) => (
+              <div key={hex} className="flex flex-col items-center gap-2">
                 <div
-                  className="w-10 h-10 rounded-full border border-cream/20 shadow-sm"
-                  style={{ backgroundColor: color }}
+                  className="w-10 h-10 rounded-full shadow-sm"
+                  style={{
+                    backgroundColor: hex,
+                    outline: outline ? '2px solid rgba(255,255,255,0.6)' : 'none',
+                    outlineOffset: '2px',
+                  }}
                   aria-hidden="true"
                 />
               </div>
