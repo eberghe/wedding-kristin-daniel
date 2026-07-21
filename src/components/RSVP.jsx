@@ -49,6 +49,8 @@ export default function RSVP() {
   })
   const [status, setStatus] = useState('idle') // idle | submitting | success | error
   const [cakeCount, setCakeCount] = useState(null)
+  const [showCakeModal, setShowCakeModal] = useState(false)
+  const [cakeList, setCakeList] = useState(null) // null = not yet fetched
 
   useEffect(() => {
     supabase.from('rsvp_responses').select('cake').not('cake', 'is', null).neq('cake', '')
@@ -56,6 +58,17 @@ export default function RSVP() {
         if (!error) setCakeCount(data?.length || 0)
       })
   }, [])
+
+  const openCakeModal = async () => {
+    setShowCakeModal(true)
+    if (cakeList !== null) return
+    const { data, error } = await supabase
+      .from('rsvp_responses')
+      .select('cake')
+      .not('cake', 'is', null)
+      .neq('cake', '')
+    setCakeList(error ? [] : (data?.map(r => r.cake) || []))
+  }
 
   const set = (field, value) => setForm(f => ({ ...f, [field]: value }))
 
@@ -281,7 +294,21 @@ export default function RSVP() {
             const allCovered = committed >= CAKES_NEEDED
             return (
               <div className="mb-5 border border-blue-accent/30 bg-blue-accent/5 p-5">
-                <p className="text-xs tracking-widest uppercase text-blue-accent mb-2">{t('rsvp_cake_title')}</p>
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-xs tracking-widest uppercase text-blue-accent">{t('rsvp_cake_title')}</p>
+                  <button
+                    type="button"
+                    onClick={openCakeModal}
+                    className="flex items-center gap-1.5 text-xs text-blue-accent/70 hover:text-blue-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    {t('rsvp_cake_list_btn')}
+                  </button>
+                </div>
                 {allCovered && !form.bringingCake ? (
                   <p className="text-sm text-navy/70">{t('rsvp_cake_all_covered')}</p>
                 ) : (
@@ -354,6 +381,72 @@ export default function RSVP() {
           </button>
         </form>
       </div>
+
+      {/* Cake list modal */}
+      {showCakeModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy/60 backdrop-blur-sm"
+          onClick={(e) => { if (e.target === e.currentTarget) setShowCakeModal(false) }}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="cake-modal-title"
+        >
+          <div className="bg-cream-light w-full max-w-sm shadow-xl">
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-navy/10">
+              <h3 id="cake-modal-title" className="font-script text-2xl text-navy">
+                {t('rsvp_cake_modal_title')}
+              </h3>
+              <button
+                onClick={() => setShowCakeModal(false)}
+                aria-label={t('rsvp_cake_modal_close')}
+                className="text-navy/40 hover:text-navy transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+
+            {/* Body */}
+            <div className="px-6 py-5">
+              {cakeList === null ? (
+                <p className="text-sm text-navy/50 text-center py-4">{t('rsvp_cake_modal_loading')}</p>
+              ) : cakeList.length === 0 ? (
+                <div className="text-center py-6">
+                  <span className="text-3xl" aria-hidden="true">🎂</span>
+                  <p className="text-sm text-navy/60 mt-3">{t('rsvp_cake_modal_empty')}</p>
+                </div>
+              ) : (
+                <>
+                  {cakeList.length >= 18 && (
+                    <p className="text-xs tracking-widest uppercase text-blue-accent mb-4 text-center">{t('rsvp_cake_modal_full')}</p>
+                  )}
+                  <p className="text-xs tracking-widest uppercase text-navy/50 mb-3">{t('rsvp_cake_modal_so_far')}</p>
+                  <ul className="flex flex-col gap-2">
+                    {cakeList.map((cake, i) => (
+                      <li key={i} className="flex items-center gap-3 text-sm text-navy/80 border-b border-navy/8 pb-2 last:border-0 last:pb-0">
+                        <span className="text-base" aria-hidden="true">🍰</span>
+                        {cake}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </div>
+
+            {/* Footer */}
+            <div className="px-6 pb-5">
+              <button
+                onClick={() => setShowCakeModal(false)}
+                className="w-full text-xs tracking-widest uppercase border border-navy/30 text-navy/70 py-2.5 hover:bg-navy/5 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+              >
+                {t('rsvp_cake_modal_close')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
