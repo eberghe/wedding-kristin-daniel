@@ -14,12 +14,13 @@ export default function Footer() {
         className="absolute inset-0 w-full h-full opacity-20"
       />
       <div className="relative z-10 py-20 md:py-28 text-center px-4">
+        <img
+          src="/images/k-d_logo.svg"
+          alt="Kristin & Daniel"
+          className="mx-auto mb-8 w-40 md:w-56"
+          style={{ filter: 'brightness(0) invert(1)', opacity: 0.9 }}
+        />
         <p className="section-label text-cream/40 mb-4">13 · 08 · 2027</p>
-        <h2 className="font-script text-6xl md:text-8xl text-cream leading-tight">
-          Kristin
-          <span className="block font-script text-3xl md:text-4xl text-blue-accent py-2">&amp;</span>
-          Daniel
-        </h2>
         <FloralDivider className="mx-auto my-6" color="#EFEEF5" />
         <p className="text-cream/40 text-xs tracking-widest uppercase">
           {t('footer_made')}
