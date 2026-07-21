@@ -147,7 +147,7 @@ const translations = {
     // Dresscode
     dresscode_title: 'Dresscode',
     dresscode_label: 'Was ihr anziehen könnt',
-    dresscode_intro: 'Wir wünschen uns festlich-elegante Kleidung. Lange Kleider, Anzüge und Hosenanzüge in gedeckten Grün- und Blautönen sind willkommen. (Farben zur Orientierung siehe unten)\n\nBitte kein Weiß – dies gehört ganz der Braut – und von lässiger Kleidung bitten wir ebenfalls abzusehen.',
+    dresscode_intro: 'Wir wünschen uns festlich-elegante Kleidung. Lange Kleider und Anzüge in gedeckten Grün- und Blautönen sind willkommen. (Farben zur Orientierung siehe unten)\n\nBitte kein Weiß – dies gehört ganz der Braut – und von lässiger Kleidung bitten wir ebenfalls abzusehen.',
     dresscode_palette_label: 'Unsere Farbpalette',
     dresscode_color_label: 'Farbe',
     dresscode_img_alt: 'Dresscode-Inspiration',
@@ -342,7 +342,7 @@ const translations = {
     // Dresscode
     dresscode_title: 'Dress Code',
     dresscode_label: 'What to wear',
-    dresscode_intro: 'We kindly ask for formal elegant attire. Long dresses, suits, and trouser suits in muted greens and blues are very welcome. (See the colour palette below for reference)\n\nPlease no white — that belongs to the bride — and casual clothing is not appreciated.',
+    dresscode_intro: 'We kindly ask for formal elegant attire. Long dresses and suits in muted greens and blues are very welcome. (See the colour palette below for reference)\n\nPlease no white — that belongs to the bride — and casual clothing is not appreciated.',
     dresscode_palette_label: 'Our color palette',
     dresscode_color_label: 'Color',
     dresscode_img_alt: 'Dress code inspiration',
