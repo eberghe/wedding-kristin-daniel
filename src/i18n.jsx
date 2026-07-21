@@ -109,7 +109,7 @@ const translations = {
     gifts_experience_text: 'Gemeinsame Momente sind das Schönste — ein Konzert, ein Essen, ein Abenteuer.',
     gifts_wishlist: 'Wunschliste',
     gifts_wishlist_text: 'Eine kleine Liste mit Ideen haben wir für euch zusammengestellt.',
-    gifts_iban_label: 'Überweisung',
+    gifts_iban_label: 'Überweisung an unsere IBAN',
     gifts_iban_copy: 'IBAN kopieren',
     gifts_iban_copied: 'Kopiert!',
 
