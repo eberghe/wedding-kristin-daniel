@@ -4,9 +4,10 @@ import { useFadeIn } from '../hooks/useFadeIn'
 
 const COLORS = [
   { hex: '#A0C5E8', outline: false },
+  { hex: '#2E3D52', outline: true },
   { hex: '#B4CAB3', outline: false },
   { hex: '#5B6959', outline: false },
-  { hex: '#2E3D52', outline: true },
+  { hex: '#381C0A', outline: false },
 ]
 
 export default function Dresscode() {
