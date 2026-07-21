@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useLang } from '../i18n'
 import { FloralDivider } from './Florals'
 import { useFadeIn } from '../hooks/useFadeIn'
@@ -40,9 +41,18 @@ const GIFTS = [
   { key: 'wishlist', Icon: GiftIcon },
 ]
 
+const IBAN = 'DE79500105175825619244'
+
 export default function Gifts() {
   const { t } = useLang()
   const ref = useFadeIn()
+  const [copied, setCopied] = useState(false)
+
+  const copyIban = () => {
+    navigator.clipboard.writeText(IBAN)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   return (
     <section
@@ -79,15 +89,16 @@ export default function Gifts() {
         </div>
 
         <div className="text-center">
-          <a
-            href="https://paypal.me/kristinunddaniel"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t('gifts_paypal_aria')}
-            className="inline-block border border-navy/30 text-navy px-8 py-3 text-xs tracking-widest uppercase hover:bg-navy/5 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
-          >
-            {t('gifts_paypal')} ↗
-          </a>
+          <p className="text-xs tracking-widest uppercase text-navy/50 mb-3">{t('gifts_iban_label')}</p>
+          <div className="inline-flex items-center gap-4 border border-navy/20 px-6 py-4 bg-white">
+            <span className="font-display text-lg tracking-widest text-navy select-all">{IBAN}</span>
+            <button
+              onClick={copyIban}
+              className="text-xs tracking-widest uppercase text-blue-accent border border-blue-accent/40 px-3 py-1.5 hover:bg-blue-accent/10 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent whitespace-nowrap"
+            >
+              {copied ? t('gifts_iban_copied') : t('gifts_iban_copy')}
+            </button>
+          </div>
         </div>
       </div>
     </section>

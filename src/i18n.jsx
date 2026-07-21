@@ -95,8 +95,9 @@ const translations = {
     gifts_experience_text: 'Gemeinsame Momente sind das Schönste — ein Konzert, ein Essen, ein Abenteuer.',
     gifts_wishlist: 'Wunschliste',
     gifts_wishlist_text: 'Eine kleine Liste mit Ideen haben wir für euch zusammengestellt.',
-    gifts_paypal: 'Via PayPal schenken',
-    gifts_paypal_aria: 'Über PayPal ein Geschenk senden (öffnet externe Seite)',
+    gifts_iban_label: 'Überweisung',
+    gifts_iban_copy: 'IBAN kopieren',
+    gifts_iban_copied: 'Kopiert!',
 
     // Hotels
     hotels_title: 'Unterkünfte',
@@ -285,8 +286,9 @@ const translations = {
     gifts_experience_text: 'Shared moments are the most precious — a concert, a dinner, an adventure.',
     gifts_wishlist: 'Wish List',
     gifts_wishlist_text: 'We have put together a small list of ideas for you.',
-    gifts_paypal: 'Give via PayPal',
-    gifts_paypal_aria: 'Send a gift via PayPal (opens external site)',
+    gifts_iban_label: 'Bank Transfer',
+    gifts_iban_copy: 'Copy IBAN',
+    gifts_iban_copied: 'Copied!',
 
     hotels_title: 'Accommodation',
     hotels_label: 'Where to stay',
