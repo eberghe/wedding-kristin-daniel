@@ -5,7 +5,6 @@ import { useLang } from '../i18n'
 import { getPhotoUrl, invalidatePhotoCache } from '../utils/storage'
 import {
   PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer,
-  BarChart, Bar, XAxis, YAxis, CartesianGrid
 } from 'recharts'
 
 const PASSWORD = 'kristindaniel2026'
@@ -65,14 +64,6 @@ function Stats({ data, t }) {
     { name: t('admin_declined'), value: declined },
   ].filter(d => d.value > 0)
 
-  const foodMap = {}
-  data.filter(r => r.attending).forEach(r => {
-    ;(r.food_preferences || []).forEach(fp => {
-      if (fp.food) foodMap[fp.food] = (foodMap[fp.food] || 0) + 1
-    })
-  })
-  const foodData = Object.entries(foodMap).map(([name, value]) => ({ name, value }))
-
   const cards = [
     { label: t('admin_total_responses'), value: data.length },
     { label: t('admin_confirmed'), value: confirmed },
@@ -90,36 +81,18 @@ function Stats({ data, t }) {
           </div>
         ))}
       </div>
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white border border-navy/10 p-6">
-          <h3 className="text-xs tracking-widest uppercase text-navy/60 mb-4">{t('admin_rsvp_quote')}</h3>
-          {rsvpData.length > 0 ? (
-            <ResponsiveContainer width="100%" height={220}>
-              <PieChart>
-                <Pie data={rsvpData} cx="50%" cy="50%" innerRadius={55} outerRadius={85} dataKey="value" paddingAngle={3}>
-                  {rsvpData.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
-                </Pie>
-                <Tooltip /><Legend />
-              </PieChart>
-            </ResponsiveContainer>
-          ) : <p className="text-navy/40 text-sm text-center py-10">{t('admin_no_data')}</p>}
-        </div>
-        <div className="bg-white border border-navy/10 p-6">
-          <h3 className="text-xs tracking-widest uppercase text-navy/60 mb-4">{t('admin_food_dist')}</h3>
-          {foodData.length > 0 ? (
-            <ResponsiveContainer width="100%" height={220}>
-              <BarChart data={foodData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#EFEEF5" />
-                <XAxis dataKey="name" tick={{ fontSize: 10 }} />
-                <YAxis allowDecimals={false} tick={{ fontSize: 11 }} />
-                <Tooltip />
-                <Bar dataKey="value" radius={[2,2,0,0]}>
-                  {foodData.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-          ) : <p className="text-navy/40 text-sm text-center py-10">{t('admin_no_data')}</p>}
-        </div>
+      <div className="bg-white border border-navy/10 p-6 max-w-sm mx-auto">
+        <h3 className="text-xs tracking-widest uppercase text-navy/60 mb-4">{t('admin_rsvp_quote')}</h3>
+        {rsvpData.length > 0 ? (
+          <ResponsiveContainer width="100%" height={220}>
+            <PieChart>
+              <Pie data={rsvpData} cx="50%" cy="50%" innerRadius={55} outerRadius={85} dataKey="value" paddingAngle={3}>
+                {rsvpData.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
+              </Pie>
+              <Tooltip /><Legend />
+            </PieChart>
+          </ResponsiveContainer>
+        ) : <p className="text-navy/40 text-sm text-center py-10">{t('admin_no_data')}</p>}
       </div>
     </div>
   )
@@ -183,10 +156,11 @@ function RSVPTable({ data, t, onDelete }) {
     })
 
   const exportCSV = () => {
-    const headers = [t('admin_col_name'), t('admin_col_email'), t('admin_col_attending'), t('admin_col_guests'), t('admin_col_food'), t('admin_col_allergies'), t('admin_col_date')]
+    const headers = [t('admin_col_name'), t('admin_col_email'), t('admin_col_attending'), t('admin_col_guests'), 'Gäste E-Mails', t('admin_col_allergies'), t('admin_col_date')]
     const rows = data.map(r => [
-      r.name, r.email, r.attending ? 'Ja' : 'Nein', r.guest_count || 0,
-      (r.food_preferences || []).map(fp => `${fp.person}: ${fp.food}`).join(' | '),
+      r.name, r.email, r.attending ? 'Ja' : 'Nein',
+      (r.guest_names || []).filter(Boolean).join(', ') || r.guest_count || 0,
+      (r.guest_emails || []).filter(Boolean).join(', ') || '',
       r.allergies || '', new Date(r.created_at).toLocaleDateString('de-DE'),
     ])
     const csv = [headers, ...rows].map(row => row.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n')
@@ -223,7 +197,6 @@ function RSVPTable({ data, t, onDelete }) {
                     <th key={f} className="px-4 py-3 font-medium"><Th field={f} label={l} /></th>
                   ))}
                   <th className="px-4 py-3 font-medium">{t('admin_col_guests')}</th>
-                  <th className="px-4 py-3 font-medium">{t('admin_col_food')}</th>
                   <th className="px-4 py-3 font-medium">{t('admin_col_allergies')}</th>
                   <th className="px-4 py-3 font-medium"><Th field="created_at" label={t('admin_col_date')} /></th>
                   <th className="px-4 py-3 font-medium w-10" aria-label="Aktionen" />
@@ -245,14 +218,11 @@ function RSVPTable({ data, t, onDelete }) {
                     <td className="px-4 py-3 text-navy/70 text-xs">
                       <span className="font-medium text-sm">{r.guest_count || 0}</span>
                       {(r.guest_names || []).filter(Boolean).map((n, i) => (
-                        <div key={i} className="text-navy/50 mt-0.5">{n}</div>
-                      ))}
-                    </td>
-                    <td className="px-4 py-3 text-navy/65 text-xs max-w-[180px]">
-                      {(r.food_preferences || []).map((fp, fi) => (
-                        <div key={fi} className={fi > 0 ? 'mt-1 pt-1 border-t border-navy/5' : ''}>
-                          <span className="font-medium text-navy/80">{fp.person}:</span>{' '}
-                          <span>{fp.food || '—'}</span>
+                        <div key={i} className="text-navy/50 mt-0.5">
+                          {n}
+                          {(r.guest_emails || [])[i] && (
+                            <span className="text-navy/35 ml-1">· {r.guest_emails[i]}</span>
+                          )}
                         </div>
                       ))}
                     </td>
