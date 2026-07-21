@@ -294,7 +294,7 @@ export default function RSVP() {
             const allCovered = committed >= CAKES_NEEDED
             return (
               <div className="mb-5 border border-blue-accent/30 bg-blue-accent/5 p-5">
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex flex-wrap items-center justify-between gap-y-2 mb-2">
                   <p className="text-xs tracking-widest uppercase text-blue-accent">{t('rsvp_cake_title')}</p>
                   <button
                     type="button"

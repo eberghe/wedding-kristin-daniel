@@ -89,8 +89,8 @@ export default function Gifts() {
 
         <div className="text-center">
           <p className="text-xs tracking-widest uppercase text-navy/50 mb-3">{t('gifts_iban_label')}</p>
-          <div className="inline-flex items-center gap-4 border border-navy/20 px-6 py-4 bg-white">
-            <span className="font-display text-lg tracking-widest text-navy select-all">{IBAN}</span>
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 border border-navy/20 px-6 py-4 bg-white w-full max-w-sm sm:max-w-none sm:w-auto mx-auto">
+            <span className="font-display text-base sm:text-lg tracking-wider sm:tracking-widest text-navy select-all break-all text-center">{IBAN}</span>
             <button
               onClick={copyIban}
               className="text-xs tracking-widest uppercase text-blue-accent border border-blue-accent/40 px-3 py-1.5 hover:bg-blue-accent/10 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent whitespace-nowrap"
