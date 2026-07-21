@@ -227,15 +227,15 @@ export function Contact() {
           ))}
         </div>
 
-        {/* Desktop: single 4-col grid — headings row 1, all 4 cards row 2 (equal height) */}
-        <div className="hidden lg:grid lg:grid-cols-4 lg:gap-5">
+        {/* Desktop: Kristin left, Daniel right, gap in middle */}
+        <div className="hidden lg:flex lg:gap-12">
           {WITNESS_TABS.map((tab) => (
-            <div key={tab.person} className="col-span-2 pb-6">
+            <div key={tab.person} className="flex-1">
               <GroupHeading person={tab.person} />
+              <div className="grid grid-cols-2 gap-5 mt-6">
+                {tab.witnesses.map((w) => <WitnessCard key={w.slot} w={w} t={t} />)}
+              </div>
             </div>
-          ))}
-          {WITNESS_TABS.flatMap((tab) => tab.witnesses).map((w) => (
-            <WitnessCard key={w.slot} w={w} t={t} />
           ))}
         </div>
       </div>
