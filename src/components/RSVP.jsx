@@ -274,56 +274,57 @@ export default function RSVP() {
                 </div>
               ))}
 
-              {/* Cake counter */}
-              {(() => {
-                const CAKES_NEEDED = 18
-                const committed = cakeCount ?? 0
-                const remaining = Math.max(0, CAKES_NEEDED - committed - (form.bringingCake ? 1 : 0))
-                const allCovered = committed >= CAKES_NEEDED
-                return (
-                  <div className="mb-5 border border-blue-accent/30 bg-blue-accent/5 p-5">
-                    <p className="text-xs tracking-widest uppercase text-blue-accent mb-2">{t('rsvp_cake_title')}</p>
-                    {allCovered && !form.bringingCake ? (
-                      <p className="text-sm text-navy/70">{t('rsvp_cake_all_covered')}</p>
-                    ) : (
-                      <>
-                        <p className="text-2xl font-display text-navy mb-3">
-                          <span className="font-semibold">{remaining}</span>{' '}
-                          <span className="text-navy/60 text-base">{t('rsvp_cake_of_18')}</span>
-                        </p>
-                        <button
-                          type="button"
-                          onClick={() => set('bringingCake', !form.bringingCake)}
-                          className={`text-xs tracking-widest uppercase px-4 py-2.5 border transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent ${
-                            form.bringingCake
-                              ? 'bg-blue-accent text-white border-blue-accent'
-                              : 'border-blue-accent/50 text-blue-accent hover:bg-blue-accent/10'
-                          }`}
-                        >
-                          {form.bringingCake ? t('rsvp_cake_undo') : t('rsvp_cake_btn')}
-                        </button>
-                        {form.bringingCake && (
-                          <div className="mt-4">
-                            <label htmlFor="rsvp-cake-type" className="block text-xs tracking-widest uppercase text-navy/60 mb-1.5">
-                              {t('rsvp_cake_type')}
-                            </label>
-                            <input
-                              id="rsvp-cake-type"
-                              type="text"
-                              value={form.cakeType}
-                              onChange={e => set('cakeType', e.target.value)}
-                              placeholder={t('rsvp_cake_placeholder')}
-                              className="w-full border border-navy/20 bg-white px-4 py-3 text-navy text-sm placeholder:text-navy/30 focus:border-blue-accent focus:outline-none transition-colors duration-200"
-                            />
-                          </div>
-                        )}
-                      </>
-                    )}
-                  </div>
-                )
-              })()}
             </div>
           )}
+
+          {/* Cake counter — always visible when attending */}
+          {form.attending === 'yes' && (() => {
+            const CAKES_NEEDED = 18
+            const committed = cakeCount ?? 0
+            const remaining = Math.max(0, CAKES_NEEDED - committed - (form.bringingCake ? 1 : 0))
+            const allCovered = committed >= CAKES_NEEDED
+            return (
+              <div className="mb-5 border border-blue-accent/30 bg-blue-accent/5 p-5">
+                <p className="text-xs tracking-widest uppercase text-blue-accent mb-2">{t('rsvp_cake_title')}</p>
+                {allCovered && !form.bringingCake ? (
+                  <p className="text-sm text-navy/70">{t('rsvp_cake_all_covered')}</p>
+                ) : (
+                  <>
+                    <p className="text-2xl font-display text-navy mb-3">
+                      <span className="font-semibold">{remaining}</span>{' '}
+                      <span className="text-navy/60 text-base">{t('rsvp_cake_of_18')}</span>
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => set('bringingCake', !form.bringingCake)}
+                      className={`text-xs tracking-widest uppercase px-4 py-2.5 border transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent ${
+                        form.bringingCake
+                          ? 'bg-blue-accent text-white border-blue-accent'
+                          : 'border-blue-accent/50 text-blue-accent hover:bg-blue-accent/10'
+                      }`}
+                    >
+                      {form.bringingCake ? t('rsvp_cake_undo') : t('rsvp_cake_btn')}
+                    </button>
+                    {form.bringingCake && (
+                      <div className="mt-4">
+                        <label htmlFor="rsvp-cake-type" className="block text-xs tracking-widest uppercase text-navy/60 mb-1.5">
+                          {t('rsvp_cake_type')}
+                        </label>
+                        <input
+                          id="rsvp-cake-type"
+                          type="text"
+                          value={form.cakeType}
+                          onChange={e => set('cakeType', e.target.value)}
+                          placeholder={t('rsvp_cake_placeholder')}
+                          className="w-full border border-navy/20 bg-white px-4 py-3 text-navy text-sm placeholder:text-navy/30 focus:border-blue-accent focus:outline-none transition-colors duration-200"
+                        />
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            )
+          })()}
 
           {/* Allergies */}
           <div className="mb-8">
