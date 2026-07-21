@@ -38,7 +38,6 @@ function GiftIcon() {
 const GIFTS = [
   { key: 'travel', Icon: PlaneIcon },
   { key: 'experience', Icon: SparkleIcon },
-  { key: 'wishlist', Icon: GiftIcon },
 ]
 
 const IBAN = 'DE79500105175825619244'
@@ -72,7 +71,7 @@ export default function Gifts() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-8 md:gap-12 mb-14">
+        <div className="grid sm:grid-cols-2 gap-8 md:gap-12 mb-14 max-w-2xl mx-auto">
           {GIFTS.map(({ key, Icon }) => (
             <div key={key} className="text-center">
               <div className="flex justify-center mb-5 text-blue-accent">
