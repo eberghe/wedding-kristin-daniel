@@ -43,7 +43,7 @@ export default function Countdown({ light = false }) {
       {units.map(({ value, label }) => (
         <div key={label} className="flex flex-col items-center">
           <span
-            className={`font-display text-4xl sm:text-5xl md:text-6xl leading-none ${light ? 'text-cream' : 'text-navy'}`}
+            className={`font-display text-5xl sm:text-6xl md:text-7xl leading-none ${light ? 'text-cream' : 'text-navy'}`}
             aria-label={`${value} ${label}`}
           >
             {pad(value)}

@@ -49,7 +49,7 @@ export default function Hero() {
 
         <FloralDivider className="mx-auto mt-6 mb-5 opacity-60" color="#EFEEF5" />
 
-        <p className="text-base sm:text-lg md:text-xl tracking-[0.25em] uppercase text-cream/90">
+        <p className="text-lg sm:text-xl md:text-2xl tracking-[0.25em] uppercase text-cream/90">
           {t('hero_date')}
         </p>
 
