@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLang } from '../i18n'
 import { FloralDivider } from './Florals'
 import { useFadeIn } from '../hooks/useFadeIn'
