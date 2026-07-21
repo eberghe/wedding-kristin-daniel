@@ -105,10 +105,10 @@ export default function Nav() {
                   key={key}
                   href={href}
                   onClick={(e) => handleNavClick(e, href)}
-                  className={`text-xs tracking-widest uppercase transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent border-b pb-0.5 ${
+                  className={`text-xs font-semibold tracking-widest uppercase transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent border-b pb-0.5 ${
                     light
-                      ? `hover:text-cream ${isActive ? 'text-cream border-cream/70' : 'text-cream/75 border-transparent'}`
-                      : `hover:text-navy ${isActive ? 'text-navy border-blue-accent' : 'text-navy/70 border-transparent'}`
+                      ? `hover:text-cream ${isActive ? 'text-cream border-cream/70' : 'text-cream/90 border-transparent'}`
+                      : `hover:text-navy ${isActive ? 'text-navy border-blue-accent' : 'text-navy/85 border-transparent'}`
                   }`}
                 >
                   {t(key)}
@@ -181,8 +181,8 @@ export default function Nav() {
                   key={key}
                   href={href}
                   onClick={(e) => handleNavClick(e, href)}
-                  className={`py-3 text-sm tracking-widest uppercase border-b border-navy/5 last:border-0 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent flex items-center gap-2 ${
-                    isActive ? 'text-navy' : 'text-navy/70 hover:text-navy'
+                  className={`py-3 text-sm font-semibold tracking-widest uppercase border-b border-navy/5 last:border-0 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent flex items-center gap-2 ${
+                    isActive ? 'text-navy' : 'text-navy/85 hover:text-navy'
                   }`}
                 >
                   {isActive && <span className="w-1 h-1 rounded-full bg-blue-accent flex-shrink-0" aria-hidden="true" />}
