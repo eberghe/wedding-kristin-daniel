@@ -322,20 +322,22 @@ export default function RSVP() {
             )
           })()}
 
-          {/* Allergies */}
-          <div className="mb-8">
-            <label htmlFor="rsvp-allergies" className="block text-xs tracking-widest uppercase text-navy/60 mb-1.5">
-              {t('rsvp_allergies')}
-            </label>
-            <textarea
-              id="rsvp-allergies"
-              rows={3}
-              value={form.allergies}
-              onChange={e => set('allergies', e.target.value)}
-              placeholder={t('rsvp_allergies_placeholder')}
-              className="w-full border border-navy/20 bg-white px-4 py-3 text-navy text-sm placeholder:text-navy/30 focus:border-blue-accent focus:outline-none transition-colors duration-200 resize-none"
-            />
-          </div>
+          {/* Allergies — only when attending */}
+          {form.attending === 'yes' && (
+            <div className="mb-8">
+              <label htmlFor="rsvp-allergies" className="block text-xs tracking-widest uppercase text-navy/60 mb-1.5">
+                {t('rsvp_allergies')}
+              </label>
+              <textarea
+                id="rsvp-allergies"
+                rows={3}
+                value={form.allergies}
+                onChange={e => set('allergies', e.target.value)}
+                placeholder={t('rsvp_allergies_placeholder')}
+                className="w-full border border-navy/20 bg-white px-4 py-3 text-navy text-sm placeholder:text-navy/30 focus:border-blue-accent focus:outline-none transition-colors duration-200 resize-none"
+              />
+            </div>
+          )}
 
           {status === 'error' && (
             <p role="alert" aria-live="assertive" className="text-red-600 text-sm mb-4">
