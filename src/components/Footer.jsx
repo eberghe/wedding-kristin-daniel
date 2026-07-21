@@ -1,12 +1,26 @@
+import { useState, useEffect, useRef } from 'react'
 import { useLang } from '../i18n'
 import { FloralDivider } from './Florals'
 import PhotoSlot from './PhotoSlot'
 
 export default function Footer() {
   const { t } = useLang()
+  const footerRef = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    )
+    if (footerRef.current) observer.observe(footerRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
-    <footer className="relative bg-navy text-cream overflow-hidden" role="contentinfo">
+    <footer ref={footerRef} className="relative bg-navy text-cream overflow-hidden" role="contentinfo">
       {/* <!-- Replace with actual couple photo: footer background --> */}
       <PhotoSlot
         slot="footer"
@@ -25,6 +39,19 @@ export default function Footer() {
         <p className="text-cream/40 text-xs tracking-widest uppercase">
           {t('footer_made')}
         </p>
+
+        <button
+          onClick={scrollToTop}
+          aria-label="Nach oben scrollen"
+          className={`mt-12 mx-auto flex flex-col items-center gap-2 text-cream/40 hover:text-cream/80 transition-all duration-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream/50 ${
+            visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+          }`}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+          </svg>
+          <span className="text-[9px] tracking-[0.3em] uppercase">Nach oben</span>
+        </button>
       </div>
     </footer>
   )
