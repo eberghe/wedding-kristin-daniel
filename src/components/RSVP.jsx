@@ -52,7 +52,9 @@ export default function RSVP() {
 
   useEffect(() => {
     supabase.from('rsvp_responses').select('cake').not('cake', 'is', null).neq('cake', '')
-      .then(({ data }) => setCakeCount(data?.length || 0))
+      .then(({ data, error }) => {
+        if (!error) setCakeCount(data?.length || 0)
+      })
   }, [])
 
   const set = (field, value) => setForm(f => ({ ...f, [field]: value }))
