@@ -5,25 +5,22 @@ import { useFadeIn } from '../hooks/useFadeIn'
 import PhotoSlot from './PhotoSlot'
 
 const HOTELS = [
-  {
-    name: 'Hotel Gut Ising',
-    distance: '8 km',
-    note: { de: 'Ruhige Lage am Chiemsee, gehobenes Ambiente', en: 'Quiet location on Lake Chiemsee, upscale ambiance' },
-    url: 'https://www.gutising.de',
-  },
-  {
-    name: 'Gasthof zur Post',
-    distance: '3 km',
-    note: { de: 'Charmantes Gasthaus mit bayerischem Charakter', en: 'Charming guesthouse with Bavarian character' },
-    url: 'https://example.com',
-  },
-  {
-    name: 'Landhaus Laufen',
-    distance: '5 km',
-    note: { de: 'Familiär und entspannt, gute Frühstücksküche', en: 'Family-run and relaxed, excellent breakfast' },
-    url: 'https://example.com',
-  },
+  // Hotels — sorted by distance
+  { cat: 'hotel',    name: 'Arivo Aparthotel',              address: 'Bayreuther Straße 1, 91301 Forchheim',              url: 'https://www.arivo.de/',                                              distance: 4  },
+  { cat: 'hotel',    name: 'The Niu Hop',                   address: 'Bahnhofplatz 10, 91301 Forchheim',                  url: 'https://www.novum-hotels.com/hotel-hop-forchheim',    distance: 5, badge: { de: 'Größtes Hotel im Landkreis', en: 'Largest hotel in the district' } },
+  { cat: 'gasthaus', name: 'Brauerei Gasthof Pfister',      address: 'Eggerbachstraße 22, 91330 Eggolsheim',              url: 'http://www.gasthof-pfister.de/',      phone: '09545 94260',          distance: 6  },
+  { cat: 'hotel',    name: 'Hotel Franken',                  address: 'Ziegeleistraße 17, 91301 Forchheim',                url: 'http://www.hotelfranken.de/',         phone: '09191 6240',           distance: 7  },
+  { cat: 'hotel',    name: 'Landhotel Schloss Buttenheim',  address: 'Schloßstraße 16, 96155 Buttenheim',                 url: 'http://www.landhotel-buttenheim.de/', phone: '09545 94470',          distance: 8  },
+  { cat: 'hotel',    name: 'Landgasthof Zehner',            address: 'Feuersteinstraße 55, 91330 Eggolsheim',             url: 'http://landgasthof-zehner.de/',       phone: '09545 950264',         distance: 9  },
+  { cat: 'gasthaus', name: 'Landgasthof Rittmayer',         address: 'Willersdorf 108, 91352 Hallerndorf',                url: 'http://www.rittmayer.com/',           phone: '09195 94730',          distance: 11 },
+  { cat: 'hotel',    name: 'Brauerei Gasthof Schwanenbräu', address: 'Am Marktplatz 2, 91320 Ebermannstadt',              url: 'http://www.schwanenbraeu.de',                                        distance: 11 },
+  { cat: 'hotel',    name: 'Center Hotel Drive In',         address: 'Industriestraße 19, 96114 Hirschaid',               url: 'http://www.centerhotels.de/hirschaid/', phone: '09543 8260',          distance: 12 },
+  { cat: 'hotel',    name: 'Hotel Göller',                  address: 'Nürnberger Straße 96–100, 96114 Hirschaid',         url: 'http://www.hotel-goeller.de/de',      phone: '09543 8240',           distance: 12 },
+  { cat: 'gasthaus', name: 'Landgasthof Schrüfer',          address: 'Hauptstraße 27, 91361 Pinzberg',                    url: 'http://www.landgasthof-schruefer.de/', phone: '09191 70970',         distance: 15 },
+  { cat: 'hotel',    name: 'Hotel Schuberths am Schloss',   address: 'Schloßstraße 18, 96155 Buttenheim',                 url: 'http://www.hotel-buttenheim.de/',     phone: '0179 5557249',         distance: null },
 ]
+
+const INITIAL_SHOW = 6
 
 const FAQ_COUNT = 6
 
@@ -47,6 +44,23 @@ const WITNESS_TABS = [
 export function Hotels() {
   const { t, lang } = useLang()
   const ref = useFadeIn()
+  const [filter, setFilter] = useState('all') // 'all' | 'hotel' | 'gasthaus'
+  const [expanded, setExpanded] = useState(false)
+
+  const filtered = filter === 'all' ? HOTELS : HOTELS.filter(h => h.cat === filter)
+  const visible = expanded ? filtered : filtered.slice(0, INITIAL_SHOW)
+  const hiddenCount = filtered.length - INITIAL_SHOW
+
+  const FILTERS = [
+    { key: 'all',      label: t('hotels_filter_all') },
+    { key: 'hotel',    label: t('hotels_filter_hotel') },
+    { key: 'gasthaus', label: t('hotels_filter_gasthaus') },
+  ]
+
+  const handleFilter = (key) => {
+    setFilter(key)
+    setExpanded(false)
+  }
 
   return (
     <section
@@ -54,8 +68,8 @@ export function Hotels() {
       aria-labelledby="hotels-heading"
       className="bg-cream-light py-20 md:py-28"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div ref={ref} className="text-center mb-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <div ref={ref} className="text-center mb-10">
           <p className="section-label text-blue-muted mb-3">{t('hotels_label')}</p>
           <h2 id="hotels-heading" className="font-script text-4xl md:text-5xl text-navy">
             {t('hotels_title')}
@@ -64,28 +78,94 @@ export function Hotels() {
           <p className="text-navy/60 text-base mt-4 max-w-md mx-auto">{t('hotels_intro')}</p>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-5">
-          {HOTELS.map((hotel) => (
-            <article key={hotel.name} className="bg-cream-light border border-blue-accent/20 p-6">
-              <h3 className="font-script text-3xl text-navy mb-1">{hotel.name}</h3>
-              <p className="text-xs tracking-widest uppercase text-blue-muted mb-3">
-                {t('hotels_distance')}: {hotel.distance}
-              </p>
-              <p className="text-navy/65 text-base leading-relaxed mb-4">
-                {hotel.note[lang] || hotel.note.de}
-              </p>
+        {/* Filter tabs */}
+        <div className="flex justify-center gap-2 mb-8" role="group" aria-label="Filter">
+          {FILTERS.map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => handleFilter(key)}
+              aria-pressed={filter === key}
+              className={`text-xs tracking-widest uppercase px-4 py-2 border transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent ${
+                filter === key
+                  ? 'bg-navy text-cream border-navy'
+                  : 'border-navy/20 text-navy/60 hover:border-navy/40 hover:text-navy'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        {/* Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {visible.map((hotel) => (
+            <article key={hotel.name} className="border border-blue-accent/20 bg-white p-5 flex flex-col gap-3">
+              <div className="flex items-start justify-between gap-2">
+                <h3 className="font-script text-2xl text-navy leading-tight">{hotel.name}</h3>
+                {hotel.distance != null && (
+                  <span className="flex-shrink-0 text-[10px] tracking-widest uppercase text-blue-muted border border-blue-accent/20 px-2 py-0.5 mt-1">
+                    {hotel.distance} km
+                  </span>
+                )}
+              </div>
+
+              {hotel.badge && (
+                <p className="text-[10px] tracking-widest uppercase text-blue-accent">
+                  {hotel.badge[lang] || hotel.badge.de}
+                </p>
+              )}
+
+              <p className="text-navy/55 text-sm leading-relaxed flex-1">{hotel.address}</p>
+
+              {hotel.phone && (
+                <a
+                  href={`tel:${hotel.phone.replace(/\s/g, '')}`}
+                  className="text-sm text-navy/50 hover:text-blue-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+                >
+                  {t('hotels_phone')} {hotel.phone}
+                </a>
+              )}
+
               <a
                 href={hotel.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${hotel.name} — ${t('hotels_book_aria')}`}
-                className="text-xs tracking-widest uppercase text-blue-accent hover:text-navy transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+                className="self-start text-xs tracking-widest uppercase text-blue-accent hover:text-navy border border-blue-accent/40 hover:border-navy/40 px-3 py-1.5 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
               >
                 {t('hotels_book')} ↗
               </a>
             </article>
           ))}
         </div>
+
+        {/* Show more / less */}
+        {filtered.length > INITIAL_SHOW && (
+          <div className="text-center mt-8">
+            <button
+              onClick={() => setExpanded(e => !e)}
+              className="text-xs tracking-widest uppercase border border-navy/20 text-navy/60 px-6 py-2.5 hover:bg-navy/5 hover:text-navy transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+            >
+              {expanded
+                ? t('hotels_show_less')
+                : `${t('hotels_show_more')} (${hiddenCount})`}
+            </button>
+          </div>
+        )}
+
+        {/* Note */}
+        <p className="text-center text-navy/45 text-xs leading-relaxed mt-10 max-w-lg mx-auto">
+          {t('hotels_note')}{' '}
+          <a
+            href="http://www.forchheim-erleben.de/de/gastgeber/unterkunftsverzeichnis"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-blue-accent transition-colors duration-200"
+          >
+            {t('hotels_note_link')}
+          </a>
+          .
+        </p>
       </div>
     </section>
   )
