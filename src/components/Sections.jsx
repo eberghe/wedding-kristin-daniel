@@ -22,7 +22,7 @@ const HOTELS = [
 
 const INITIAL_SHOW = 6
 
-const FAQ_COUNT = 6
+const FAQ_COUNT = 7
 
 const WITNESS_TABS = [
   {

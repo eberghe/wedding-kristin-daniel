@@ -2,92 +2,87 @@ import { useLang } from '../i18n'
 import { FloralDivider } from './Florals'
 import { useFadeIn } from '../hooks/useFadeIn'
 
+function DoorIcon() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3 21h18"/>
+      <path d="M9 21V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v16"/>
+      <circle cx="14.5" cy="13" r="0.8" fill="currentColor" stroke="none"/>
+    </svg>
+  )
+}
+
 function RingsIcon() {
   return (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="18" cy="26" r="10"/>
-      <circle cx="30" cy="26" r="10"/>
-      <path d="M22 18.5a10 10 0 0 1 8 0"/>
-      <path d="M18 16a10 10 0 0 1 4.5 2"/>
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="9" cy="13" r="5"/>
+      <circle cx="15" cy="13" r="5"/>
+      <path d="M12 8.5a5 5 0 0 1 3.5 1.5"/>
+      <path d="M9 8a5 5 0 0 1 2 1"/>
     </svg>
   )
 }
 
 function ChampaignIcon() {
   return (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M18 8h12l-3 18H21L18 8Z"/>
-      <line x1="24" y1="26" x2="24" y2="38"/>
-      <line x1="18" y1="38" x2="30" y2="38"/>
-      <path d="M15 11c1-1 3-1 4 0"/>
-      <circle cx="33" cy="9" r="1" fill="currentColor"/>
-      <circle cx="36" cy="6" r="0.8" fill="currentColor"/>
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M8 3h8l-2 10h-4L8 3Z"/>
+      <line x1="12" y1="13" x2="12" y2="21"/>
+      <line x1="8" y1="21" x2="16" y2="21"/>
+      <circle cx="17" cy="4" r="0.7" fill="currentColor" stroke="none"/>
+      <circle cx="19" cy="2.5" r="0.5" fill="currentColor" stroke="none"/>
     </svg>
   )
 }
 
 function CakeIcon() {
   return (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="10" y="28" width="28" height="12" rx="1"/>
-      <rect x="14" y="20" width="20" height="8"/>
-      <rect x="17" y="14" width="14" height="6"/>
-      <line x1="24" y1="14" x2="24" y2="10"/>
-      <path d="M22 10c0-2 4-2 4 0"/>
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M20 21H4a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1Z"/>
+      <path d="M21 16H3v-3a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v3Z"/>
+      <line x1="12" y1="9" x2="12" y2="5"/>
+      <path d="M10 5c0-1.1 1-2 2-2s2 .9 2 2"/>
+    </svg>
+  )
+}
+
+function CameraIcon() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+      <circle cx="12" cy="13" r="4"/>
     </svg>
   )
 }
 
 function DinnerIcon() {
   return (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="24" cy="26" r="13"/>
-      <circle cx="24" cy="26" r="8"/>
-      <line x1="15" y1="10" x2="15" y2="18"/>
-      <line x1="33" y1="10" x2="33" y2="18"/>
-      <path d="M12 10c0 4 6 4 6 8"/>
-      <path d="M31 10v5a2 2 0 0 0 4 0v-5"/>
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="14" r="8"/>
+      <line x1="12" y1="2" x2="12" y2="6"/>
+      <path d="M8 2v3c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
     </svg>
   )
 }
 
 function PartyIcon() {
   return (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M20 8h8l-2 16h-4L20 8Z"/>
-      <path d="M28 8h8l-2 16h-4L28 8Z"/>
-      <line x1="24" y1="24" x2="24" y2="36"/>
-      <line x1="20" y1="24" x2="28" y2="24"/>
-      <line x1="18" y1="36" x2="30" y2="36"/>
-      <circle cx="14" cy="10" r="1.5" fill="currentColor"/>
-      <circle cx="11" cy="14" r="1" fill="currentColor"/>
-      <circle cx="35" cy="8" r="1" fill="currentColor"/>
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
     </svg>
   )
 }
 
-function CarIcon() {
-  return (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M8 28h32v8H8z"/>
-      <path d="M12 28l4-10h16l4 10"/>
-      <circle cx="14" cy="36" r="3"/>
-      <circle cx="34" cy="36" r="3"/>
-      <path d="M20 18h8"/>
-      <path d="M24 10c-2 0-3 1-4 3"/>
-      <path d="M24 10c2 0 3 1 4 3"/>
-      <path d="M22 7c0-2 4-2 4 0"/>
-    </svg>
-  )
-}
-
-const ITEMS = [
-  { key: 'ceremony', time: '13:00', Icon: RingsIcon },
-  { key: 'drinks',   time: '14:00', Icon: ChampaignIcon },
-  { key: 'cake',     time: '16:00', Icon: CakeIcon },
-  { key: 'dinner',   time: '18:00', Icon: DinnerIcon },
-  { key: 'party',    time: '20:00', Icon: PartyIcon },
-  { key: 'end',      time: '00:00', Icon: CarIcon },
+const STEPS = [
+  { key: 'einlass',   Icon: DoorIcon,      hasTime: true  },
+  { key: 'ceremony',  Icon: RingsIcon,     hasTime: true  },
+  { key: 'drinks',    Icon: ChampaignIcon, hasTime: false },
+  { key: 'cake',      Icon: CakeIcon,      hasTime: false },
+  { key: 'photos',    Icon: CameraIcon,    hasTime: false },
+  { key: 'dinner',    Icon: DinnerIcon,    hasTime: false },
+  { key: 'party',     Icon: PartyIcon,     hasTime: false },
 ]
 
 export default function Tagesablauf() {
@@ -105,7 +100,44 @@ export default function Tagesablauf() {
           <FloralDivider className="mx-auto mt-4" color="#EFEEF5CC" />
         </div>
 
-        <p className="text-center text-cream/50 text-base tracking-wider italic font-display">
+        {/* Horizontal steps — scrollable on mobile */}
+        <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 pb-4">
+          <div className="flex items-start min-w-max sm:min-w-0 sm:justify-center gap-0 mx-auto">
+            {STEPS.map(({ key, Icon, hasTime }, i) => (
+              <div key={key} className="flex items-start">
+                {/* Step */}
+                <div className="flex flex-col items-center gap-3 w-28 sm:w-32">
+                  {/* Icon circle */}
+                  <div className="w-14 h-14 rounded-full border border-cream/25 flex items-center justify-center text-cream/80 bg-cream/5 flex-shrink-0">
+                    <Icon />
+                  </div>
+                  {/* Label */}
+                  <div className="text-center px-1">
+                    <p className={`text-xs leading-snug ${hasTime ? 'text-cream font-semibold' : 'text-cream/75'}`}>
+                      {t(`tagesablauf_${key}`)}
+                    </p>
+                    {key === 'einlass' && (
+                      <p className="text-[10px] text-cream/45 mt-1 leading-snug">
+                        {t('tagesablauf_einlass_sub')}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Arrow */}
+                {i < STEPS.length - 1 && (
+                  <div className="flex items-center mt-6 px-1 text-cream/20 flex-shrink-0" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14M13 6l6 6-6 6"/>
+                    </svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p className="text-center text-cream/35 text-xs tracking-widest uppercase mt-10">
           {t('tagesablauf_note')}
         </p>
       </div>
