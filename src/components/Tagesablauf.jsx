@@ -107,11 +107,6 @@ export default function Tagesablauf() {
               key={key}
               className="flex flex-col items-center gap-4 w-36 sm:w-40 lg:flex-1 lg:w-auto"
             >
-              {/* Step number */}
-              <span className="text-[10px] tracking-[0.2em] text-cream/30 uppercase">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-
               {/* Icon */}
               <div className="w-20 h-20 rounded-full border border-cream/20 flex items-center justify-center text-cream/75 bg-cream/5">
                 <Icon />
