@@ -137,7 +137,7 @@ export default function Nav() {
                         : 'border-navy/20 text-navy/60 hover:border-blue-accent'
                   }`}
                 >
-                  {l === 'de' ? '🇩🇪' : '🇬🇧'}
+                  {l === 'de' ? 'DE' : 'EN'}
                 </button>
               ))}
             </div>
