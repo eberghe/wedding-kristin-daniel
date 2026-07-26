@@ -1,8 +1,8 @@
 <svg width="259" height="294" viewBox="0 0 259 294" fill="none" xmlns="http://www.w3.org/2000/svg">
 <style>
   path { fill: #2E3D52; }
-  mask path { fill: white; }
-  @media (prefers-color-scheme: dark) { path { fill: white; } }
+  mask path { fill: white !important; }
+  @media (prefers-color-scheme: dark) { path { fill: white !important; } }
 </style>
 <mask id="mask0_81_837" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="259" height="294">
 <path d="M258.667 0H0V293.333H258.667V0Z" fill="white"/>
