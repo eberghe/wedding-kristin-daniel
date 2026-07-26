@@ -6,7 +6,6 @@ import PhotoSlot from './PhotoSlot'
 
 const HOTELS = [
   // Hotels — sorted by distance
-  { cat: 'hotel',    name: 'Arivo Aparthotel',              address: 'Bayreuther Straße 1, 91301 Forchheim',              url: 'https://www.arivo.de/',                                              distance: 4  },
   { cat: 'hotel',    name: 'The Niu Hop',                   address: 'Bahnhofplatz 10, 91301 Forchheim',                  url: 'https://www.novum-hotels.com/hotel-hop-forchheim',    distance: 5, badge: { de: 'Größtes Hotel im Landkreis', en: 'Largest hotel in the district' } },
   { cat: 'gasthaus', name: 'Brauerei Gasthof Pfister',      address: 'Eggerbachstraße 22, 91330 Eggolsheim',              url: 'http://www.gasthof-pfister.de/',      phone: '09545 94260',          distance: 6  },
   { cat: 'hotel',    name: 'Hotel Franken',                  address: 'Ziegeleistraße 17, 91301 Forchheim',                url: 'http://www.hotelfranken.de/',         phone: '09191 6240',           distance: 7  },
@@ -14,10 +13,11 @@ const HOTELS = [
   { cat: 'hotel',    name: 'Landgasthof Zehner',            address: 'Feuersteinstraße 55, 91330 Eggolsheim',             url: 'http://landgasthof-zehner.de/',       phone: '09545 950264',         distance: 9  },
   { cat: 'gasthaus', name: 'Landgasthof Rittmayer',         address: 'Willersdorf 108, 91352 Hallerndorf',                url: 'http://www.rittmayer.com/',           phone: '09195 94730',          distance: 11 },
   { cat: 'hotel',    name: 'Brauerei Gasthof Schwanenbräu', address: 'Am Marktplatz 2, 91320 Ebermannstadt',              url: 'http://www.schwanenbraeu.de',                                        distance: 11 },
-  { cat: 'hotel',    name: 'Center Hotel Drive In',         address: 'Industriestraße 19, 96114 Hirschaid',               url: 'http://www.centerhotels.de/hirschaid/', phone: '09543 8260',          distance: 12 },
+  { cat: 'hotel',    name: 'Center Hotel Drive In',         address: 'Industriestraße 19, 96114 Hirschaid',               url: 'https://hotelhirschaid.de',           phone: '09543 8260',           distance: 12 },
   { cat: 'hotel',    name: 'Hotel Göller',                  address: 'Nürnberger Straße 96–100, 96114 Hirschaid',         url: 'http://www.hotel-goeller.de/de',      phone: '09543 8240',           distance: 12 },
   { cat: 'gasthaus', name: 'Landgasthof Schrüfer',          address: 'Hauptstraße 27, 91361 Pinzberg',                    url: 'http://www.landgasthof-schruefer.de/', phone: '09191 70970',         distance: 15 },
   { cat: 'hotel',    name: 'Hotel Schuberths am Schloss',   address: 'Schloßstraße 18, 96155 Buttenheim',                 url: 'http://www.hotel-buttenheim.de/',     phone: '0179 5557249',         distance: null },
+  { cat: 'hotel',    name: 'Arivo Aparthotel',              address: 'Bayreuther Straße 1, 91301 Forchheim',                                                                                          distance: null },
 ]
 
 const INITIAL_SHOW = 6
@@ -126,15 +126,17 @@ export function Hotels() {
                 </a>
               )}
 
-              <a
-                href={hotel.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${hotel.name} — ${t('hotels_book_aria')}`}
-                className="self-start text-xs tracking-widest uppercase text-blue-accent hover:text-navy border border-blue-accent/40 hover:border-navy/40 px-3 py-1.5 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
-              >
-                {t('hotels_book')} ↗
-              </a>
+              {hotel.url && (
+                <a
+                  href={hotel.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${hotel.name} — ${t('hotels_book_aria')}`}
+                  className="self-start text-xs tracking-widest uppercase text-blue-accent hover:text-navy border border-blue-accent/40 hover:border-navy/40 px-3 py-1.5 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent"
+                >
+                  {t('hotels_book')} ↗
+                </a>
+              )}
             </article>
           ))}
         </div>
