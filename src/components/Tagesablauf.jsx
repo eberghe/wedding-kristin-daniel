@@ -37,12 +37,12 @@ export default function Tagesablauf() {
             <div key={key} className="flex flex-col items-center gap-4 w-36 sm:w-40 lg:flex-1 lg:w-auto">
 
               {/* Icon */}
-              <div className="h-16 flex items-center justify-center">
+              <div className="h-24 flex items-center justify-center">
                 <img
                   src={icon}
                   alt=""
                   aria-hidden="true"
-                  className="h-16 w-auto"
+                  className="h-24 w-auto"
                   style={{ filter: SVG_FILTER, opacity: 0.8 }}
                 />
               </div>
