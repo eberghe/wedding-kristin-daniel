@@ -37,8 +37,7 @@ const translations = {
     // Tagesablauf
     tagesablauf_title: 'Der Tag',
     tagesablauf_label: 'Was euch erwartet',
-    tagesablauf_einlass: 'Einlass ab 13:30',
-    tagesablauf_einlass_sub: 'Bitte bis 13:45 Uhr da sein',
+    tagesablauf_arrival: 'Einlass um 13:30 · Bitte bis spätestens 13:45 Uhr da sein',
     tagesablauf_ceremony: 'Trauung um 14:00',
     tagesablauf_drinks: 'Sektempfang & Gratulation',
     tagesablauf_cake: 'Kaffee & Kuchen',
@@ -128,6 +127,7 @@ const translations = {
     hotels_show_more: 'Weitere anzeigen',
     hotels_show_less: 'Weniger anzeigen',
     hotels_phone: 'Tel.',
+    hotels_castle: 'Eine gewisse Anzahl an Plätzen ist auch im Schloss selbst verfügbar — meldet euch dafür am besten privat bei Kristin oder Daniel.',
     hotels_note: 'Weitere Hotels in Erlangen (ca. 21 km · 20 min) und Bamberg (ca. 27 km · 25 min). Pensionen & Ferienwohnungen auf',
     hotels_note_link: 'forchheim-erleben.de',
 
@@ -255,8 +255,7 @@ const translations = {
     // Tagesablauf
     tagesablauf_title: 'The Day',
     tagesablauf_label: 'What to expect',
-    tagesablauf_einlass: 'Arrival from 13:30',
-    tagesablauf_einlass_sub: 'Please be there by 13:45',
+    tagesablauf_arrival: 'Doors open at 13:30 · Please arrive by 13:45 at the latest',
     tagesablauf_ceremony: 'Ceremony at 14:00',
     tagesablauf_drinks: 'Welcome Drinks & Congratulations',
     tagesablauf_cake: 'Coffee & Cake',
@@ -342,6 +341,7 @@ const translations = {
     hotels_show_more: 'Show more',
     hotels_show_less: 'Show less',
     hotels_phone: 'Tel.',
+    hotels_castle: 'A limited number of rooms are also available in the castle itself — please contact Kristin or Daniel directly.',
     hotels_note: 'More hotels in Erlangen (approx. 21 km · 20 min) and Bamberg (approx. 27 km · 25 min). B&Bs and holiday apartments at',
     hotels_note_link: 'forchheim-erleben.de',
 

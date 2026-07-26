@@ -153,8 +153,13 @@ export function Hotels() {
           </div>
         )}
 
+        {/* Castle rooms highlight */}
+        <div className="mt-10 border border-blue-accent/25 bg-blue-accent/5 px-6 py-4 max-w-xl mx-auto text-center">
+          <p className="text-sm text-navy/75 leading-relaxed">{t('hotels_castle')}</p>
+        </div>
+
         {/* Note */}
-        <p className="text-center text-navy/45 text-xs leading-relaxed mt-10 max-w-lg mx-auto">
+        <p className="text-center text-navy/45 text-xs leading-relaxed mt-6 max-w-lg mx-auto">
           {t('hotels_note')}{' '}
           <a
             href="http://www.forchheim-erleben.de/de/gastgeber/unterkunftsverzeichnis"
