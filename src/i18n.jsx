@@ -127,7 +127,7 @@ const translations = {
     hotels_show_more: 'Weitere anzeigen',
     hotels_show_less: 'Weniger anzeigen',
     hotels_phone: 'Tel.',
-    hotels_castle: 'Eine gewisse Anzahl an Plätzen ist auch im Schloss selbst verfügbar — meldet euch dafür am besten privat bei Kristin oder Daniel.',
+    hotels_castle: 'Eine gewisse Anzahl an Plätzen ist auch im Schloss selbst verfügbar — meldet euch dafür bitte bei unseren Trauzeugen.',
     hotels_note: 'Weitere Hotels in Erlangen (ca. 21 km · 20 min) und Bamberg (ca. 27 km · 25 min). Pensionen & Ferienwohnungen auf',
     hotels_note_link: 'forchheim-erleben.de',
 
@@ -341,7 +341,7 @@ const translations = {
     hotels_show_more: 'Show more',
     hotels_show_less: 'Show less',
     hotels_phone: 'Tel.',
-    hotels_castle: 'A limited number of rooms are also available in the castle itself — please contact Kristin or Daniel directly.',
+    hotels_castle: 'A limited number of rooms are also available in the castle itself — please get in touch with our witnesses.',
     hotels_note: 'More hotels in Erlangen (approx. 21 km · 20 min) and Bamberg (approx. 27 km · 25 min). B&Bs and holiday apartments at',
     hotels_note_link: 'forchheim-erleben.de',
 
