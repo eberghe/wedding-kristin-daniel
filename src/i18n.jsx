@@ -341,7 +341,7 @@ const translations = {
     hotels_show_more: 'Show more',
     hotels_show_less: 'Show less',
     hotels_phone: 'Tel.',
-    hotels_castle: 'A limited number of rooms are also available in the castle itself — please get in touch with our witnesses.',
+    hotels_castle: 'A limited number of rooms are also available in the castle itself — please get in touch with our best man or maid of honor.',
     hotels_note: 'More hotels in Erlangen (approx. 21 km · 20 min) and Bamberg (approx. 27 km · 25 min). B&Bs and holiday apartments at',
     hotels_note_link: 'forchheim-erleben.de',
 
